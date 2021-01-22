@@ -1,0 +1,11 @@
+@media screen and (max-width: 550px){
+.flex{
+    flex-direction: column;
+}
+.w-40{
+    width: 100%;
+}
+.w-60{
+    width: 100%;
+}
+}
