@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 import Form from './Components/Form/Form';
 import Home from './Components/Home/Home';
+import SignInPage from './Components/SignInPage/SignInPage';
 import Background from './Container/Images/Background.png';
 
 const initialState = {
@@ -29,7 +30,8 @@ class App extends Component {
     	{
     		return(
 				<div>
-	    			<Home formLinkHandler={this.formLinkHandler} />		
+	    			<Home formLinkHandler={this.formLinkHandler} />	
+					<SignInPage/>	
 	    		</div>
     		);	
     	}
@@ -40,7 +42,7 @@ class App extends Component {
     				<Form style={{backgroundImage:`url(${Background})`}} />
     			</div>
     		);
-    	}
+		}
     }
 }
  
