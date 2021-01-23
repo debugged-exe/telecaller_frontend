@@ -1,7 +1,141 @@
-import React from 'react';
+import React,{useState} from 'react';
 import FormBg from '../../Container/Images/FormBg.png';
 
 const Form = () => {
+
+    const [name, setName] = useState("");
+    const [nameFlag, setNameFlag] = useState(false);
+    const [nameErr, setNameErr] = useState("");
+
+    const setNameField = (event) => {
+     setName(event.target.value);
+    }
+
+    const nameValidate = (event) => {
+    if(name!=="")
+    {
+      setNameFlag(true);
+      setNameErr("");
+    }
+    else
+    {
+      setNameFlag(false);
+      setNameErr("*Name Field is compulsary");
+    }
+    }
+
+    const [mobile, setMobile] = useState("");
+    const [mobileFlag, setMobileFlag] = useState(false);
+    const [mobileErr, setMobileErr] = useState("");
+
+    const setMobileField = (event) => {
+    setMobile(event.target.value);
+    }
+
+    const numericFilter = (event) => {
+    event.target.value = event.target.value.replace(/[^\0-9]/ig, "");
+    }
+
+    const mobileValidate = (event) => {
+    if(mobile==="")
+    {
+      setMobileFlag(false);
+      setMobileErr("Phone number field is compulsary");
+    }
+    else if(mobile.length!==10)
+    {
+      setMobileFlag(false);
+      setMobileErr("Enter valid phone no(eg: 9123456780)")
+    }
+    else
+    {
+      setMobileFlag(true);
+      setMobileErr("");
+    }
+    }
+
+    const [permCity, setPermCity] = useState("none");
+    const [permCityFlag, setPermCityFlag] = useState(false);
+    const [permCityErr, setPermCityErr] = useState("");
+
+    const setPermCityField = (event) => {
+    setPermCity(event.target.value);
+    }
+
+    const permCityValidate = () => {
+    if(permCity==="none")
+    {
+      setPermCityFlag(false);
+      setPermCityErr("*City field is compulsary");
+    }
+    else
+    {
+      setPermCityFlag(true);
+      setPermCityErr("");
+    }
+    }
+
+    const [knowledge, setKnowledge] = useState("No");
+
+    const setKnowledgeField = (event) => {
+    setKnowledge(event.target.value);
+    }
+
+    const [demat, setDemat] = useState('No')
+
+    const setDematField = (event) => {
+        setDemat(event.target.value);
+    }
+
+    const [broker, setBroker] = useState('')
+
+    const setBrokerField = (event) => {
+        setBroker(event.target.value);
+    }
+
+    const [preferredLang, setPreferredLang] = useState('None')
+    const [preferredLangFlag, setPreferredLangFlag] = useState(false)
+    const [preferredLangErr, setPreferredLangErr] = useState('')
+
+    const setPreferredLangField = (event) => {
+        setPreferredLang(event.target.value);
+    }
+
+    const preferredLangValidate = () => {
+        if(preferredLang==='None')
+        {
+            setPreferredLangFlag(false)
+            setPreferredLangErr('Preferred Language is compulsary.')
+        }
+        else
+        {
+            setPreferredLangFlag(true)
+            setPreferredLangErr('')
+        }
+    }
+
+    const [submitErr, setSubmitErr] = useState('')
+
+    const onSubmitHandler = () => {
+        if(
+            nameFlag===true &&
+            mobileFlag===true &&
+            permCityFlag===true &&
+            preferredLangFlag===true
+        )
+        {
+            setSubmitErr('')
+            console.log(name,mobile,permCity,knowledge,demat,broker,preferredLang)
+        }
+        else{
+            nameValidate();
+            mobileValidate();
+            permCityValidate();
+            preferredLangValidate();
+            setSubmitErr('Check if all fields are set correclty.')
+        }
+    }
+
     return (
         <div className='flex items-center bg-black pv4 justify-center'>
             <div className='w-100'>
@@ -11,54 +145,90 @@ const Form = () => {
                 <legend className="f2 fw6 ph0 mh0 tc">Session Joining Form</legend>
                     <div className="mv3">
                         <label className="db fw6 lh-copy f4" htmlFor="email-address">Name</label>
-		                <input  className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="text" />
+		                <input  
+                        className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
+                        type="text" 
+                        onChange={(event) => setNameField(event)}
+                        onBlur={() => nameValidate()}/>
+                        <div className="f4 red">{`${nameErr}`}</div>
                     </div>
 
                     <div className="mv3">
                         <label className="db fw6 lh-copy f4" htmlFor="email-address">Phone</label>
-		                <input  className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="text" />
+		                <input  
+                        className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
+                        type="text" 
+                        onChange={(event) => setMobileField(event)}
+                        onBlur={() => mobileValidate()}
+                        onInput={(event) => numericFilter(event)}/>
+                        <div className="f4 red">{`${mobileErr}`}</div>
                     </div>
-
                     <div className="mv3">
                         <label className="db fw6 lh-copy f4" htmlFor="email-address">City</label>
-		                <input  className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="text" />
+		                <input  
+                        className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
+                        type="text" 
+                        onChange={(event) => setPermCityField(event)}
+                        onBlur={() => permCityValidate()}
+                        />
+                        <div className="f4 red">{`${permCityErr}`}</div>
                     </div>
                     
                     <div className="mv3">
                         <label className="db fw6 lh-copy f4">Trading Knowledge</label>
-		                <select className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100">
+		                <select 
+                        className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+                        onChange={(event) => setKnowledgeField(event)}
+                        >
 		        	        <option className = 'db fw6 lh-copy f4 greyed' value='None'>---Select---</option>
-		        	        <option className = 'db fw6 lh-copy f4' >Yes</option>
-		        	        <option className = 'db fw6 lh-copy f4' >No</option>
+		        	        <option className = 'db fw6 lh-copy f4' value='Yes'>Yes</option>
+		        	        <option className = 'db fw6 lh-copy f4' value='No'>No</option>
 		                </select>
                     </div>
 
                     <div className="mv3">
                         <label className="db fw6 lh-copy f4">Demat</label>
-		                <select className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100">
-		        	        <option className = 'db fw6 lh-copy f4 greyed' value='None'>---Select---</option>
-		        	        <option className = 'db fw6 lh-copy f4' >Yes</option>
-		        	        <option className = 'db fw6 lh-copy f4' >No</option>
+		                <select 
+                        className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+                        onChange={(event) => setDematField(event)}>
+		        	        <option className = 'db fw6 lh-copy f4 greyed' value='No'>---Select---</option>
+		        	        <option className = 'db fw6 lh-copy f4' value='Yes'>Yes</option>
+		        	        <option className = 'db fw6 lh-copy f4' value='No'>No</option>
 		                </select>
                     </div>
 
                     <div className="mv3">
                         <label className="db fw6 lh-copy f4" htmlFor="email-address">Broker Name</label>
-		                <input  className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="text" placeholder='eg: Zerodha, Upstocks' />
+		                <input  
+                        className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
+                        type="text" 
+                        placeholder='eg: Zerodha, Upstocks' 
+                        onChange={(event) => setBrokerField(event)}
+                        />
                     </div>
 
                     <div className="mv3">
                         <label className="db fw6 lh-copy f4">Preferred Language</label>
-		                <select className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100">
+		                <select 
+                        className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+                        onChange={(event) => setPreferredLangField(event)}
+                        onBlur={() => preferredLangValidate()}
+                        >
 		        	        <option className = 'db fw6 lh-copy f4 greyed' value='None'>---Select---</option>
-		        	        <option className = 'db fw6 lh-copy f4' >English</option>
-		        	        <option className = 'db fw6 lh-copy f4' >Marathi</option>
-		        	        <option className = 'db fw6 lh-copy f4' >Hindi</option>
+		        	        <option className = 'db fw6 lh-copy f4' value="English">English</option>
+		        	        <option className = 'db fw6 lh-copy f4' value="Marathi">Marathi</option>
+		        	        <option className = 'db fw6 lh-copy f4' value="Marathi">Hindi</option>
 		                </select>
+                        <div className="f4 red">{`${preferredLangErr}`}</div>
                     </div>
                 </fieldset>
                 <div className="flex justify-center items-center">
-                        <input className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f4 dib mb3" type="submit" value="Submit" />
+                        <input 
+                        className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f4 dib mb3" 
+                        type="button" 
+                        value="Submit" 
+                        onClick = {() => onSubmitHandler()}/>
+                        <div className="f4 red">{`${submitErr}`}</div>
                 </div>
             </form>
             </div>
