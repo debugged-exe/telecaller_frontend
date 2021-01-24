@@ -2,7 +2,11 @@ import React, {Component} from 'react';
 import './App.css';
 import Form from './Components/Form/Form';
 import Home from './Components/Home/Home';
+<<<<<<< HEAD
 import Signin from './Components/Signin/Signin';
+=======
+import SignInPage from './Components/SignInPage/SignInPage';
+>>>>>>> df8bb04ea1e271ee543a93871b69b03fb5f06912
 import Background from './Container/Images/Background.png';
 
 const initialState = {
@@ -39,7 +43,7 @@ class App extends Component {
     	{
     		return(
 				<div>
-	    			<Home onRouteChange={this.onRouteChange} />		
+    			     <Home onRouteChange={this.onRouteChange} />
 	    		</div>
     		);	
     	}
@@ -57,8 +61,7 @@ class App extends Component {
                 <div style={{backgroundImage: `url(${Background})`, height: '100vh'}}>
                     <Signin />
                 </div>
-            );
-            
+            );   
         }
     }
 }
