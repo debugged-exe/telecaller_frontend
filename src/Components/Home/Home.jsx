@@ -3,12 +3,18 @@ import 'tachyons';
 import Logo from '../../Container/Images/Logo.jpeg';
 import './Home.css';
 
-const Home = ({formLinkHandler}) => {
+const Home = ({onRouteChange}) => {
     return (
         <div>
             <div style={{ height: '50px'  }} className='flex bg-black justify-start items-center flex-wrap'>
                 <a style={{outline:'none'}} className="f3 mh2 fw6 db white link dim" href="#0">Home </a>
-                <a style={{outline:'none'}} className="f3 mh2 fw6 db white link dim" href="#0">SignIn</a>
+                <a 
+                style={{outline:'none'}} 
+                className="f3 mh2 fw6 db white link dim" 
+                href="#0"
+                onClick={() => onRouteChange('signin')}>
+                    SignIn
+                </a>
             </div>
             <div className='flex justify-center flex-wrap items-center pa2'>
                 <div className='w-40'>
@@ -22,7 +28,7 @@ const Home = ({formLinkHandler}) => {
                     <a 
                     className="f4 link dim ph3 pv2 mb2 dib white br2 grow bg-dark-blue" 
                     href="#0"
-                    onClick = {(event) => formLinkHandler('form')}
+                    onClick = {() => onRouteChange('form')}
                     >
                         Session Joining Form
                     </a>

@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
 import FormBg from '../../Container/Images/FormBg.png';
+import Background from '../../Container/Images/Background.png';
 
 const Form = () => {
 
@@ -137,12 +138,13 @@ const Form = () => {
     }
 
     return (
-        <div className='flex items-center bg-black pv4 justify-center'>
+        <div style={{backgroundImage: `url(${Background})`}}className='flex items-center pv4 justify-center'>
             <div className='w-100'>
-            <form style={{backgroundImage:`url(${FormBg})`}} className="measure center">
+            <form style={{backgroundImage:`url(${FormBg})`}} className="measure center br3 shadow-2">
                 <fieldset id="sign_up" className="ba b--transparent ph4 mh0">
 
-                <legend className="f2 fw6 ph0 mh0 tc">Session Joining Form</legend>
+                <legend className="f2 fw6 ph0 mh0 pv2 tc">Session Joining Form</legend>
+                <hr/>
                     <div className="mv3">
                         <label className="db fw6 lh-copy f4" htmlFor="email-address">Name</label>
 		                <input  
