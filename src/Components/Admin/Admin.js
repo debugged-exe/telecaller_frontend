@@ -41,8 +41,7 @@ const Admin = () => {
 		])
 
 	return(
-		<div className="admin-container">
-			<h1>Welcome to Admin page</h1>
+		<div className="admin-container overflow-auto">
 			<div className='flex justify-center items-center flex-column'>
 				<div>
                     <select>

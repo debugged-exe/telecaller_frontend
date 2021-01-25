@@ -1,0 +1,8 @@
+.pad
+{
+	padding-left: 1200px;
+}
+
+::-webkit-input-placeholder { /* Edge */
+  color: black;
+}

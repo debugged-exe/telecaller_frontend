@@ -6,17 +6,7 @@ import './Home.css';
 const Home = ({onRouteChange}) => {
     return (
         <div>
-            <div style={{ height: '50px'  }} className='flex bg-black justify-start items-center flex-wrap'>
-                <a style={{outline:'none'}} className="f3 mh2 fw6 db white link dim" href="#0">Home </a>
-                <a 
-                style={{outline:'none'}} 
-                className="f3 mh2 fw6 db white link dim" 
-                href="#0"
-                onClick={() => onRouteChange('signin')}>
-                    SignIn
-                </a>
-            </div>
-            <div className='flex justify-center flex-wrap items-center pa2'>
+                <div className='flex justify-center flex-wrap items-center pa2'>
                 <div className='w-40'>
                     <div >
                         <img style={{width:'100%',height:'100%'}} src={Logo} alt='Logo'/>

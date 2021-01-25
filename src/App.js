@@ -4,6 +4,7 @@ import Form from './Components/Form/Form';
 import Home from './Components/Home/Home';
 import Signin from './Components/Signin/Signin';
 import Admin from './Components/Admin/Admin';
+import Navbar from './Components/Navbar/Navbar';
 import Background from './Container/Images/Background.png';
 
 const initialState = {
@@ -40,7 +41,8 @@ class App extends Component {
     	{
     		return(
 				<div>
-    			     <Home onRouteChange={this.onRouteChange} />
+                    <Navbar onRouteChange={this.onRouteChange} />
+    			    <Home onRouteChange={this.onRouteChange} />
 	    		</div>
     		);	
     	}
@@ -48,6 +50,7 @@ class App extends Component {
     	{
     		return(
 				<div className="back">
+                    <Navbar onRouteChange={this.onRouteChange}/>
     				<Form />
     			</div>
     		);
@@ -56,6 +59,7 @@ class App extends Component {
         {
             return(
                 <div style={{backgroundImage: `url(${Background})`, height: '100vh'}}>
+                    <Navbar onRouteChange={this.onRouteChange}/>
                     <Signin onRouteChange={this.onRouteChange}/>
                 </div>
             );   
@@ -64,6 +68,7 @@ class App extends Component {
         {
             return(
                 <div>
+                    <Navbar onRouteChange={this.onRouteChange} />
                     <Admin />
                 </div>
             );
