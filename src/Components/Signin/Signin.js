@@ -3,7 +3,7 @@ import FormBg from '../../Container/Images/FormBg.png';
 import Background from '../../Container/Images/Background.png';
 import './Signin.css';
 
-const Signin = () => {
+const Signin = ({onRouteChange}) => {
 
     const [username, setUserName] = useState("");
     const [usernameFlag, setUserNameFlag] = useState(false);
@@ -54,6 +54,7 @@ const Signin = () => {
     )
     {
         console.log(username, password)
+        onRouteChange('admin')
     }
     else
     {

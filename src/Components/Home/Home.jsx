@@ -7,7 +7,6 @@ const Home = ({onRouteChange}) => {
     return (
         <div>
             <div style={{ height: '50px'  }} className='flex bg-black justify-start items-center flex-wrap'>
-<<<<<<< HEAD
                 <a style={{outline:'none'}} className="f3 mh2 fw6 db white link dim" href="#0">Home </a>
                 <a 
                 style={{outline:'none'}} 
@@ -15,19 +14,6 @@ const Home = ({onRouteChange}) => {
                 href="#0"
                 onClick={() => onRouteChange('signin')}>
                     SignIn
-=======
-                <a style={{outline:'none'}} 
-                className="f3 mh2 fw6 db white link dim" 
-                href="#0"
-                >
-                Home
-                </a>
-                <a style={{outline:'none'}} 
-                className="f3 mh2 fw6 db white link dim" 
-                href="#0"
-                >
-                SignIn
->>>>>>> df8bb04ea1e271ee543a93871b69b03fb5f06912
                 </a>
             </div>
             <div className='flex justify-center flex-wrap items-center pa2'>
