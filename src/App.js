@@ -6,6 +6,7 @@ import Signin from './Components/Signin/Signin';
 import Admin from './Components/Admin/Admin';
 import Navbar from './Components/Navbar/Navbar';
 import Background from './Container/Images/Background.png';
+import JrCaller from './Components/JrCaller/JrCaller';
 
 const initialState = {
 	route: 'home',
@@ -43,6 +44,7 @@ class App extends Component {
 				<div>
                     <Navbar onRouteChange={this.onRouteChange} />
     			    <Home onRouteChange={this.onRouteChange} />
+                    <JrCaller/>
 	    		</div>
     		);	
     	}
