@@ -5,6 +5,11 @@ import Home from './Components/Home/Home';
 import SignInPage from './Components/SignInPage/SignInPage';
 import Admin from './Components/Admin/Admin';
 import Navbar from './Components/Navbar/Navbar';
+<<<<<<< HEAD
+=======
+import Background from './Container/Images/Background.png';
+import JrCaller from './Components/JrCaller/JrCaller';
+>>>>>>> 9203b161231e86c943815358265f1e3fa32636f1
 
 const initialState = {
 	route: 'home',
@@ -62,6 +67,7 @@ class App extends Component {
 				<div>
                     <Navbar onRouteChange={this.onRouteChange} />
     			    <Home onRouteChange={this.onRouteChange} />
+                    <JrCaller/>
 	    		</div>
     		);	
     	}
