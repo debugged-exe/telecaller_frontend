@@ -3,7 +3,10 @@ import React from 'react';
 const JrCaller = () => {
     return (
         <div class="pa4">
-            <div class="overflow-auto">
+            <div class="overflow-auto flex flex-column justify-center items-center">
+            <div className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2 pointer" href="#0">
+                Fetch New Leads            
+            </div>
                 <table class="f6 w-100 mw8 center" cellspacing="0">
                     <thead>
                         <tr>
