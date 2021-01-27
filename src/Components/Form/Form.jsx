@@ -125,8 +125,36 @@ const Form = () => {
             preferredLangFlag===true
         )
         {
+            fetch('http://localhost:3001/form', {
+                method: 'post',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                name: name,
+                mobile: mobile,
+                city: permCity,
+                knowledge: knowledge,
+                demat: demat,
+                broker: broker,
+                preferredLang: preferredLang
+                })
+             })
+            .then(response => response.json())
+            .then(resp => {
+                if(resp==='Registered')
+                {
+                    alert('Registered successfully.A CyberKing representative will call you shortly.')
+                }
+                else if(resp==='Not Unique.')
+                {
+                    alert('Looks like you have already registered with the given mobile no.Please enter other contact no.');
+                }
+                else
+                {
+                    alert('OOPs....something went wrong.Please try again.')
+                }
+            })
+            .catch(err => console.log(err))
             setSubmitErr('')
-            console.log(name,mobile,permCity,knowledge,demat,broker,preferredLang)
         }
         else{
             nameValidate();
@@ -147,7 +175,8 @@ const Form = () => {
                 <hr/>
                     <div className="mv3">
                         <label className="db fw6 lh-copy f4" htmlFor="email-address">Name</label>
-		                <input  
+		                <input 
+                        autoComplete="blej" 
                         className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
                         type="text" 
                         onChange={(event) => setNameField(event)}
@@ -157,7 +186,8 @@ const Form = () => {
 
                     <div className="mv3">
                         <label className="db fw6 lh-copy f4" htmlFor="email-address">Phone</label>
-		                <input  
+		                <input 
+                        autoComplete="blej"
                         className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
                         type="text" 
                         onChange={(event) => setMobileField(event)}
@@ -168,6 +198,7 @@ const Form = () => {
                     <div className="mv3">
                         <label className="db fw6 lh-copy f4" htmlFor="email-address">City</label>
 		                <input  
+                        autoComplete="blej"
                         className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
                         type="text" 
                         onChange={(event) => setPermCityField(event)}
@@ -179,6 +210,7 @@ const Form = () => {
                     <div className="mv3">
                         <label className="db fw6 lh-copy f4">Trading Knowledge</label>
 		                <select 
+                        autoComplete="blej"
                         className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
                         onChange={(event) => setKnowledgeField(event)}
                         >
@@ -191,6 +223,7 @@ const Form = () => {
                     <div className="mv3">
                         <label className="db fw6 lh-copy f4">Demat</label>
 		                <select 
+                        autoComplete="blej"
                         className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
                         onChange={(event) => setDematField(event)}>
 		        	        <option className = 'db fw6 lh-copy f4 greyed' value='No'>---Select---</option>
@@ -202,6 +235,7 @@ const Form = () => {
                     <div className="mv3">
                         <label className="db fw6 lh-copy f4" htmlFor="email-address">Broker Name</label>
 		                <input  
+                        autoComplete="blej"
                         className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
                         type="text" 
                         placeholder='eg: Zerodha, Upstocks' 
@@ -212,6 +246,7 @@ const Form = () => {
                     <div className="mv3">
                         <label className="db fw6 lh-copy f4">Preferred Language</label>
 		                <select 
+                        autoComplete="blej"
                         className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
                         onChange={(event) => setPreferredLangField(event)}
                         onBlur={() => preferredLangValidate()}

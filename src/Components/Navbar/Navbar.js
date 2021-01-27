@@ -29,7 +29,7 @@ const Navbar = ({onRouteChange}) => {
                         <img style={{height:'100%', width:'100%'}} src={Logo} alt='Logo'/>
                     </div>
                 </span>
-                <span className={`hamburger ${line} pr2`}
+                <span className={`hamburger ${line} pr2 pointer`}
                 onClick={()=>hamburger()}
                 >
                         <div className='line'></div>
@@ -38,22 +38,28 @@ const Navbar = ({onRouteChange}) => {
             </span>
                 <span className={`${dropdown}`}>
                     <ul style={{listStyle:'none'}} className={`flex ph4 ${navbar} justify-center items-center ${dropdown}`}>
-                        <li style={{backgroundColor: '#DC3D24'}}className='f4 pointer grow ph3 mv0 br2 white b pa2'>Session Joining Form</li>
                         <li 
-                        className='none ph3 f4 mv0 b tc pt2 point' 
+                        style={{backgroundColor: '#DC3D24'}}
+                        className='f4 pointer grow ph3 mv0 br2 white b pa2'
+                        onClick={() => onRouteChange('form')}
+                        >
+                            Session Joining Form
+                        </li>
+                        <li 
+                        className='none ph3 f4 mv0 b tc pt2 pointer point' 
                         href='#0'
                         onClick={() => onRouteChange('home')}>
                         	Home
                     	</li>
-                        <li className='none ph3 f4 mv0 b tc pt2 point' href='#0'>About Us</li>
-                        <li className='none ph3 f4 mv0 b tc pt2 point' href='#0'>Contact Us</li>
+                        <li className='none ph3 f4 mv0 b tc pt2 pointer point' href='#0'>About Us</li>
+                        <li className='none ph3 f4 mv0 b tc pt2 pointer point' href='#0'>Contact Us</li>
                         <li 
-                        className='none ph3 f4 mv0 b tc pt2 point' 
+                        className='none ph3 f4 mv0 b tc pt2 pointer point' 
                         href='#0'
                         onClick={() => onRouteChange('signin')}>
                         	SignIn
                         </li>
-                        <li className='tc'><p className={`f6 link dim ph3 pv2 mb2 dib white bg-dark-blue cross`} href='#0'
+                        <li className='tc'><p className={`f6 link dim ph3 pv2 mb2 dib white bg-dark-blue cross pointer`} href='#0'
                         onClick={()=>hamburger()}
                         >
                         X

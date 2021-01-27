@@ -49,7 +49,7 @@ const SignInPage = ({ onSubmitHandler }) => {
       usernameFlag === true &&
       passwordFlag === true
     ) {
-      //onSubmitHandler(username, password);
+      onSubmitHandler(username, password);
       setPopState('block');
     }
     else {

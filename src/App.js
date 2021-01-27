@@ -2,10 +2,9 @@ import React, {Component} from 'react';
 import './App.css';
 import Form from './Components/Form/Form';
 import Home from './Components/Home/Home';
-import Signin from './Components/Signin/Signin';
+import SignInPage from './Components/SignInPage/SignInPage';
 import Admin from './Components/Admin/Admin';
 import Navbar from './Components/Navbar/Navbar';
-import Background from './Container/Images/Background.png';
 
 const initialState = {
 	route: 'home',
@@ -34,6 +33,26 @@ class App extends Component {
         }})
     }
 
+    onSubmitHandler = (username, password) => {
+        fetch('http://localhost:3001/signin', {
+                method: 'post',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                username: username,
+                password: password
+                })
+             })
+        .then(response => response.json())
+        .then(resp => {
+        if(resp.des)
+        {
+            this.loadUser(resp);
+            this.onRouteChange(resp.des);
+        }
+        })
+        .catch(err => console.log(err))
+    }
+
   	render()
   	{
   		const {route} = this.state;
@@ -58,13 +77,13 @@ class App extends Component {
         else if(route==='signin')
         {
             return(
-                <div style={{backgroundImage: `url(${Background})`, height: '100vh'}}>
+                <div>
                     <Navbar onRouteChange={this.onRouteChange}/>
-                    <Signin onRouteChange={this.onRouteChange}/>
+                    <SignInPage onSubmitHandler={this.onSubmitHandler} />
                 </div>
             );   
         }
-        else if(route==='admin')
+        else if(route==='Admin')
         {
             return(
                 <div>

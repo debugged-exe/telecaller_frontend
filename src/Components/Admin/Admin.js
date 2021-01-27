@@ -60,6 +60,9 @@ const Admin = () => {
                     </div>
                 </div>
                 <Table headerArray={leadDataHeader} ContentArray={leadData} />
+                <div className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2 pointer" href="#0">
+                Register New Telecallers            
+            </div>
 			</div>
 		</div>
 	);
