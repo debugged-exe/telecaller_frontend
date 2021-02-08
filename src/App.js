@@ -24,10 +24,12 @@ class App extends Component {
 	}
 
 	onRouteChange = (route) => {
+        console.log('Routing')
 		this.setState({route: route})
 	}
 
     loadUser = (user) => {
+        console.log('Loading user');
         this.setState({user:{
             username: user.username,
             telecaller_id: user.telecaller_id,
@@ -57,14 +59,13 @@ class App extends Component {
 
   	render()
   	{
-  		const {route} = this.state;
+  		const {route,user} = this.state;
     	if(route==='home')
     	{
     		return(
 				<div>
-                    <Navbar onRouteChange={this.onRouteChange} />
+                    <Navbar route = {route} onRouteChange={this.onRouteChange} />
     			    <Home onRouteChange={this.onRouteChange} />
-                    <JrCaller/>
 	    		</div>
     		);	
     	}
@@ -72,7 +73,7 @@ class App extends Component {
     	{
     		return(
 				<div className="back">
-                    <Navbar onRouteChange={this.onRouteChange}/>
+                    <Navbar route = {route} onRouteChange={this.onRouteChange}/>
     				<Form />
     			</div>
     		);
@@ -81,8 +82,8 @@ class App extends Component {
         {
             return(
                 <div>
-                    <Navbar onRouteChange={this.onRouteChange}/>
-                    <SignInPage onSubmitHandler={this.onSubmitHandler} />
+                    <Navbar route = {route} onRouteChange={this.onRouteChange}/>
+                    <SignInPage loadUser={this.loadUser} onRouteChange={this.onRouteChange} onSubmitHandler={this.onSubmitHandler} />
                 </div>
             );   
         }
@@ -90,7 +91,7 @@ class App extends Component {
         {
             return(
                 <div>
-                    <Navbar onRouteChange={this.onRouteChange} />
+                    <Navbar route = {route} onRouteChange={this.onRouteChange} />
                     <Admin />
                 </div>
             );
@@ -99,8 +100,8 @@ class App extends Component {
         {
             return(
                 <div>
-                    <Navbar onRouteChange={this.onRouteChange} />
-                    <JrCaller />
+                    <Navbar route = {route} onRouteChange={this.onRouteChange} />
+                    <JrCaller user={user}/>
                 </div>
             );
         }

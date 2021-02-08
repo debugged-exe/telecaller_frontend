@@ -1,11 +1,11 @@
 import React from 'react';
-import Row from './Row.js';
-import './Table.css';
+import JrRow from './JrRow.js';
+import './JrTable.css';
 
-const Table = ({headerArray, ContentArray, showHandler}) =>{
+const JrTable = ({headerArray, ContentArray, onRefresh}) =>{
 
 	return(
-		<div className={`ma2 pa4 table ${ContentArray.length?'pad':null}`}>
+		<div className="ma2 pa4">
             <div>
             	<table className="f6 mw8 center" cellSpacing="0">
             		<thead>
@@ -24,7 +24,7 @@ const Table = ({headerArray, ContentArray, showHandler}) =>{
             				ContentArray.map((item,index) => {
             					return(
             						<tr key={index} className={item.coded==='Yes'?"bg-green":(item.coded==='No'?"bg-red":"")}>
-            							<Row showHandler={showHandler} rowObject={item} />
+            							<JrRow rowObject={item} onRefresh={onRefresh}/>
             						</tr>
             					);
             				})
@@ -36,4 +36,4 @@ const Table = ({headerArray, ContentArray, showHandler}) =>{
 	);
 }
 
-export default Table;
+export default JrTable;

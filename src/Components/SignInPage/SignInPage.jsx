@@ -3,7 +3,7 @@ import 'tachyons';
 import './SignInPage.css';
 import {BeatLoader} from 'react-spinners';
 
-const SignInPage = ({ onSubmitHandler }) => {
+const SignInPage = ({loadUser, onRouteChange}) => {
 
   const [username, setUserName] = useState("");
   const [usernameFlag, setUserNameFlag] = useState(false);
@@ -43,7 +43,33 @@ const SignInPage = ({ onSubmitHandler }) => {
     }
   }
 
+  const onSubmitHandler = (username, password) => {
+    fetch('http://localhost:3001/signin', {
+      method: 'post',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+      username: username,
+      password: password
+      })
+    })
+    .then(response => response.json())
+    .then(resp => {
+    if(resp.des)
+    {
+        loadUser(resp);
+        onRouteChange(resp.des);
+    }
+    else if(resp==='Wrong Credentails')
+    {
+      setPopState('none');
+      setPasswordErr('Wrong Credentails')
+    }
+    })
+    .catch(err => console.log(err))
+  }
+
   const [popState, setPopState] = useState('none');
+
   const submit = () => {
     if (
       usernameFlag === true &&

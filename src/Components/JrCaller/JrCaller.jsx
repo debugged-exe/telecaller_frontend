@@ -1,47 +1,117 @@
-import React from 'react';
+import React,{useState, useEffect} from 'react';
+import JrTable from '../JrTable/JrTable.js';
 
-const JrCaller = () => {
+const JrCaller = ({user}) => {
+
+    const {username, telecaller_id} = user;
+
+    const leadDataHeader = [
+        'LeadId',
+        'LeadName',
+        'LeadContact',
+        'Status 1',
+        'Status 2',
+        'Handedover Status',
+        ''
+    ]
+
+    const [leadData, setLeadData] = useState([])
+
+    useEffect(() => {
+        fetch('http://localhost:3001/jr/fetch/old', {
+            method: 'post',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                username: username,
+                telecaller_id: telecaller_id
+            })
+        })
+        .then(response => response.json())
+        .then(resp => {
+            if(resp!=='Unable to fetch' && resp[0].lead_id)
+            {
+                setLeadData(resp)
+            }
+            else
+            {
+                alert('OOPS...something went wrong in fetching old leads.')
+            }
+        })
+        .catch(err => console.log(err))
+    }, []);
+
+    const onRefresh = () => {
+        fetch('http://localhost:3001/jr/fetch/old', {
+            method: 'post',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                username: username,
+                telecaller_id: telecaller_id
+            })
+        })
+        .then(response => response.json())
+        .then(resp => {
+            if(resp!=='Unable to fetch' && resp[0].lead_id)
+            {
+                setLeadData(resp)
+            }
+            else
+            {
+                alert('OOPS...something went wrong in fetching old leads.')
+            }
+        })
+        .catch(err => console.log(err));
+    }
+
+    const onFetch = () => {
+        fetch('http://localhost:3001/jr/fetch/new', {
+            method: 'post',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                username: username,
+                telecaller_id: telecaller_id
+            })
+        })
+        .then(response => response.json())
+        .then(resp => {
+            if((resp!=='Unable to fetch' || resp!=='Unable to insert') && resp[0].lead_id)
+            {
+                var newArr = leadData;
+                newArr.push(...resp)
+                setLeadData(newArr);
+            }
+            else if(resp==='Not enough leads')
+            {
+                alert('Not enough leads')
+            }
+            else
+            {
+                alert('OOPS...something went wrong.Please try again.')
+            }
+        })
+        .catch(err => console.log(err))
+    }
+
     return (
-        <div class="pa4">
-            <div class="overflow-auto flex flex-column justify-center items-center">
-            <div className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2 pointer" href="#0">
-                Fetch New Leads            
+        <div className="pa4">
+            <div className="overflow-auto flex flex-column justify-center items-center">
+            <div className="flex justify-center">
+                <div 
+                className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2 pointer" 
+                href="#0"
+                onClick = {() => onFetch()}
+                >
+                    Fetch New Leads            
+                </div>
+                <div 
+                className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2 pointer" 
+                href="#0"
+                onClick = {() => onRefresh()}
+                >
+                    Refresh          
+                </div>
             </div>
-                <table class="f6 w-100 mw8 center" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th class="fw10 f4 bb b--black-20 tl pb3 pr3 bg-white">LeadId</th>
-                            <th class="fw10 f4 bb b--black-20 tl pb3 pr3 bg-white">LeadName</th>
-                            <th class="fw10 f4 bb b--black-20 tl pb3 pr3 bg-white">LeadContact</th>
-                            <th class="fw10 f4 bb b--black-20 tl pb3 pr3 bg-white">Status 1</th>
-                            <th class="fw10 f4 bb b--black-20 tl pb3 pr3 bg-white">Status 2</th>
-                        </tr>
-                    </thead>
-                    <tbody class="lh-copy">
-                        <tr>
-                            <td class="pv3 pr3 bb b--black-20">Hassan Johnson</td>
-                            <td class="pv3 pr3 bb b--black-20">@hassan</td>
-                            <td class="pv3 pr3 bb b--black-20">hassan@companywithalongdomain.co</td>
-                            <td class="pv3 pr3 bb b--black-20"><input placeholder='status 1'/></td>
-                            <td class="pv3 pr3 bb b--black-20"><input placeholder='status 2'/></td>
-                            <td>
-                                <a
-                                    className="f4 link dim pa2 mb2 dib white br2 grow bg-dark-blue mr2"
-                                    href="#0">
-                                    Submit
-                                </a>
-                            </td>
-                            <td>
-                                <a
-                                    className="f4 link dim pa2 mb2 dib white br2 bg-dark-blue"
-                                    href="#0">
-                                    HandOver
-                                </a>
-                            </td>
-                        </tr>
-
-                    </tbody>
-                </table>
+               <JrTable headerArray={leadDataHeader} ContentArray={leadData} onRefresh={onRefresh}/>
             </div>
         </div>
 

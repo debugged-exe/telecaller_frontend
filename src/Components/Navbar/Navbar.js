@@ -3,7 +3,7 @@ import Logo from '../../Container/Images/Logo.jpeg';
 import 'tachyons';
 import './Navbar.css';
 
-const Navbar = ({onRouteChange}) => {
+const Navbar = ({onRouteChange, route}) => {
 
 	const [navbar,setNavbar] = useState('navbar')
     const [dropdown, setDropdown]  = useState('hidden');
@@ -46,15 +46,15 @@ const Navbar = ({onRouteChange}) => {
                             Session Joining Form
                         </li>
                         <li 
-                        className='none ph3 f4 mv0 b tc pt2 pointer point' 
+                        className={`none ph3 f4 mv0 b tc pt2 pointer ${route==='home'? 'active': 'effect effect-left'}`}
                         href='#0'
                         onClick={() => onRouteChange('home')}>
                         	Home
                     	</li>
-                        <li className='none ph3 f4 mv0 b tc pt2 pointer point' href='#0'>About Us</li>
-                        <li className='none ph3 f4 mv0 b tc pt2 pointer point' href='#0'>Contact Us</li>
+                        <li className='none ph3 f4 mv0 b tc pt2 pointer effect effect-left' href='#0'>About Us</li>
+                        <li className='none ph3 f4 mv0 b tc pt2 pointer effect effect-left' href='#0'>Contact Us</li>
                         <li 
-                        className='none ph3 f4 mv0 b tc pt2 pointer point' 
+                        className={`none ph3 f4 mv0 b tc pt2 pointer ${route==='signin'? 'active': 'effect effect-left'}`}
                         href='#0'
                         onClick={() => onRouteChange('signin')}>
                         	SignIn
