@@ -2,7 +2,7 @@ import React,{useState} from 'react';
 import './JrRow.css';
 
 const JrRow = ({rowObject, onRefresh}) => {
-	const {lead_id, lead_phone_number, handoverstatus, call_status_1, call_status_2} = rowObject;
+	const {lead_id, lead_phone_number, handoverstatus, call_status_1, call_status_2, coded} = rowObject;
 	var disable;
 
 	if (handoverstatus==='Handed') {
@@ -119,13 +119,13 @@ const JrRow = ({rowObject, onRefresh}) => {
 				if(index===0 || index===1 || index===2)
 				{
 					return(
-						<td key={index} className={`${handoverstatus==='Handed'?'bg-moon-gray':null} pv3 pr3 bb b--black-20`}>{item}</td>
+						<td key={index} className={`${coded==='coded'?'bg-green white fw6':(coded==='notCoded'?'bg-red white fw6':(handoverstatus==='Handed'?'bg-moon-gray':null))} pv3 pr3 bb b--black-20`}>{item}</td>
 					);
 				}
 				else if(index===3)
 				{
 					return(
-						<td key={index} className={`${handoverstatus==='Handed'?'bg-moon-gray':null} pv3 pr3 bb b--black-20`}>
+						<td key={index} className={`${coded==='coded'?'bg-green white fw6':(coded==='notCoded'?'bg-red white fw6':(handoverstatus==='Handed'?'bg-moon-gray':null))} pv3 pr3 bb b--black-20`}>
 							<input 
 							type='text' 
 							name="call_status_1" 
@@ -140,7 +140,7 @@ const JrRow = ({rowObject, onRefresh}) => {
 				else if(index===4)
 				{
 					return(
-						<td key={index} className={`${handoverstatus==='Handed'?'bg-moon-gray':null} pv3 pr3 bb b--black-20`}>
+						<td key={index} className={`${coded==='coded'?'bg-green white fw6':(coded==='notCoded'?'bg-red white fw6':(handoverstatus==='Handed'?'bg-moon-gray':null))} pv3 pr3 bb b--black-20`}>
 							<input 
 							type='text' 
 							name="call_status_2" 
@@ -155,14 +155,14 @@ const JrRow = ({rowObject, onRefresh}) => {
 				else
 				{
 					return(
-						<td key={index} className={`${handoverstatus==='Handed'?'bg-moon-gray':null} pv3 pr3 bb b--black-20`}>
+						<td key={index} className={`${coded==='coded'?'bg-green white fw6':(coded==='notCoded'?'bg-red white fw6':(handoverstatus==='Handed'?'bg-moon-gray':null))} pv3 pr3 bb b--black-20`}>
 							{item}
 						</td>
 					);
 				}
 			})
 		}
-		<div className={`${handoverstatus==='Handed'?'bg-moon-gray':null} flex`}>
+		<div className={`${coded==='coded'?'bg-green white fw6':(coded==='notCoded'?'bg-red white fw6':(handoverstatus==='Handed'?'bg-moon-gray':null))} flex`}>
 			<td
 			style={{cursor: 'pointer'}}
 			className={`${handoverstatus==='Handed'?'bg-moon-gray black':'bg-dark-blue white'} f6 link dim ph3 pv2 mb2 dib br2 ma2`} href="#0"

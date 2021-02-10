@@ -12,6 +12,7 @@ const JrCaller = ({user}) => {
         'Status 1',
         'Status 2',
         'Handedover Status',
+        'Coded Status',
         ''
     ]
 

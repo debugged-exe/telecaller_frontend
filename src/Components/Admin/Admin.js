@@ -9,6 +9,8 @@ const Admin = () => {
 		'Username',
 		'LeadName',
 		'LeadContact',
+		'WhatsApp Number',
+		'Account Opening Number',
 		'First Status',
 		'Second Status',
 		'Update After Hand-Over',
