@@ -160,6 +160,8 @@ const Row = ({rowObject, showHandler}) => {
                 username: username,
                 lead_name: lead_name,
                 lead_phone_number: rowObject.lead_phone_number,
+                whatsapp_number: whatsapp_number,
+                accountopening_number: accountopening_number,
                 call_status_1: call_status_1,
                 call_status_2: call_status_2,
                 updatehandover: updatehandover,
@@ -177,12 +179,15 @@ const Row = ({rowObject, showHandler}) => {
 	       			alert('Success')
 	       			showHandler()
 	       		}
-	       		else
+	       		else if(resp==='Not Unique')
 	       		{
-	       			alert('OOPPSS...something is wrong')
+	       			alert('The given whatsapp/accountopening number is already registered.Please enter other contact and try again.')
 	       		}
 	        })
-	        .catch(err => console.log(err))
+	        .catch(err => {
+	        	console.log(err)
+	        	alert('OOPSS...something went wrong please try again.')
+	        })
 	}
 
 	const onEditHandler = () => {
