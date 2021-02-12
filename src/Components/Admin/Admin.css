@@ -11,3 +11,11 @@
     left: 350px;
     top: 100px;
 }
+
+.pop-up-payment-checkout{
+    position: absolute;
+    height: auto;
+    width: 50%;
+    left: 350px;
+    top: 100px;
+}

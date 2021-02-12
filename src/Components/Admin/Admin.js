@@ -178,6 +178,7 @@ const Admin = () => {
 	}
 
 	const [popState, setPopState] = useState('none');
+	const [popPayState, setPopPayState] = useState('none');
 
 	const setPopStateField = () => {
         if(popState==='none')
@@ -187,6 +188,16 @@ const Admin = () => {
         else
         {
         	setPopState('none')
+        }
+    }
+	const setPopPayStateField = () => {
+        if(popPayState==='none')
+        {
+            setPopPayState('block');
+        }
+        else
+        {
+        	setPopPayState('none')
         }
     }
 
@@ -257,6 +268,29 @@ const Admin = () => {
                     </div>
                 </div>
             </div>
+
+{/*-------------- PopUp fpr Payment CheckOut ----------------------------*/}
+			<div id='pop-up' className='bg-white shadow-4 pop-up-payment-checkout' style={{display: `${popPayState}`}}>
+                <a 
+                onClick={() => setPopPayStateField()} 
+                className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2" 
+                href="#0">
+                    X
+                </a>
+                <div style={{height:'100%'}} className='flex justify-center items-center flex-column'>
+                    <h2>Get Payment Info</h2>
+                    <div>
+						<input placeholder='Enter Telecaller name'/>
+						<a class="f6 link dim ph3 pv2 mb2 dib white bg-dark-gray" href="#0">ShowDetails</a>
+					</div>
+					{/* Yahaoe table */}
+                </div>
+            </div>
+
+{/* ---------------------------------------------------- */}
+
+
+
 			<div className="admin-container overflow-auto">
 					<div className='flex justify-center items-center flex-column'>
 						<div>
