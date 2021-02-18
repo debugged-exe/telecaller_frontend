@@ -3,7 +3,7 @@ import 'tachyons';
 import './Row.css';
 
 const Row = ({rowObject, showHandler}) => {
-	const {lead_id} = rowObject;
+	const {lead_id,lead_phone_number} = rowObject;
 	const keyArr = Object.keys(rowObject);
 	const elementArray = []
 	Object.keys(rowObject).forEach((key) => {
@@ -153,7 +153,7 @@ const Row = ({rowObject, showHandler}) => {
 	}
 
 	const onSave = () => {
-		fetch('http://localhost:3001/admin/update', {
+		fetch('https://frozen-river-89705.herokuapp.com/admin/update', {
                 method: 'post',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
@@ -198,6 +198,65 @@ const Row = ({rowObject, showHandler}) => {
 		else
 		{
 			setRead(true)
+		}
+	}
+
+	const onAddToBatch = (event) => {
+		const name = event.target.getAttribute('name');
+		if(name==='current')
+		{
+			var c1 = window.confirm('Are you  sure you want to add lead to current batch.This will change the status of lead to processed and it will be stored seperately.');
+			if(c1===true)
+			{
+				fetch('http://frozen-river-89705.herokuapp.com/admin/batch', {
+				method: 'post',
+				headers: {'Content-Type': 'application/json'},
+				body: JSON.stringify({
+					lead_id: lead_id,
+					lead_phone_number: lead_phone_number,
+					name: name
+				})
+				})
+				.then(response => response.json())
+				.then(resp => {
+					if(resp==='Success')
+					{
+						alert('Success')
+					}
+					else if(resp==='exists')
+					{
+						alert('Sorry...But the lead already added to next batch.')
+					}
+				})
+				.catch(err => console.log(err))
+			}
+		}
+		else
+		{
+			var c2 = window.confirm('Are you  sure you want to add lead to next batch.This will change the status of lead to processed and it will be stored seperately.');
+			if (c2===true) {
+				fetch('http://frozen-river-89705.herokuapp.com/admin/batch', {
+				method: 'post',
+				headers: {'Content-Type': 'application/json'},
+				body: JSON.stringify({
+					lead_id: lead_id,
+					lead_phone_number: lead_phone_number,
+					name: name
+				})
+				})
+				.then(response => response.json())
+				.then(resp => {
+					if(resp==='Success')
+					{
+						alert('Success')
+					}
+					else if(resp==='exists')
+					{
+						alert('Sorry...But the lead already added to current batch.')
+					}
+				})
+				.catch(err => console.log(err))	
+			}
 		}
 	}
 
@@ -323,6 +382,22 @@ const Row = ({rowObject, showHandler}) => {
 			className={`f6 tc link dim ph3 pv2 mb2 white dib br2 ma2 ${coded==='coded'?'bg-green':(coded==='notCoded'?'bg-red':'bg-dark-blue')}`}
 			>
 				Remove
+			</td>
+			<td
+			name='current'
+			style={{cursor: 'pointer', display: `${coded==='coded'?'block':'none'}`}}
+			className={`f6 tc link dim ph3 pv2 mb2 white dib br2 ma2 ${coded==='coded'?'bg-green':(coded==='notCoded'?'bg-red':'bg-dark-blue')}`}
+			onClick={(event) => onAddToBatch(event)}
+			>
+				AddtoCurrentBatch
+			</td>
+			<td
+			name='next'
+			style={{cursor: 'pointer', display: `${coded==='coded'?'block':'none'}`}}
+			className={`f6 tc link dim ph3 pv2 mb2 white dib br2 ma2 ${coded==='coded'?'bg-green':(coded==='notCoded'?'bg-red':'bg-dark-blue')}`}
+			onClick={(event) => onAddToBatch(event)}
+			>
+				AddtoNextBatch
 			</td>
 		</div>
 		</>

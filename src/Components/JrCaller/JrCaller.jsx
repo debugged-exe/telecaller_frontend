@@ -19,7 +19,7 @@ const JrCaller = ({user}) => {
     const [leadData, setLeadData] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:3001/jr/fetch/old', {
+        fetch('https://frozen-river-89705.herokuapp.com/jr/fetch/old', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -42,7 +42,7 @@ const JrCaller = ({user}) => {
     }, []);
 
     const onRefresh = () => {
-        fetch('http://localhost:3001/jr/fetch/old', {
+        fetch('https://frozen-river-89705.herokuapp.com/jr/fetch/old', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -65,7 +65,7 @@ const JrCaller = ({user}) => {
     }
 
     const onFetch = () => {
-        fetch('http://localhost:3001/jr/fetch/new', {
+        fetch('https://frozen-river-89705.herokuapp.com/jr/fetch/new', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -84,6 +84,10 @@ const JrCaller = ({user}) => {
             else if(resp==='Not enough leads')
             {
                 alert('Not enough leads')
+            }
+            else if(resp==='30min')
+            {
+                alert('30 minutes not yet elapsed from last fetch')
             }
             else
             {

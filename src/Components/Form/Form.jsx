@@ -125,7 +125,7 @@ const Form = () => {
             preferredLangFlag===true
         )
         {
-            fetch('http://localhost:3001/form', {
+            fetch('https://frozen-river-89705.herokuapp.com/form', {
                 method: 'post',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({

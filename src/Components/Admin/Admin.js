@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
 import Table from '../Table/Table.js';
+import LogTable from '../LogTable/LogTable.js';
 import './Admin.css';
 
 const Admin = () => {
@@ -20,6 +21,12 @@ const Admin = () => {
         'Broker' ,
         'Preffered Language',
         'Coded'
+	]
+
+	const logDataHeader = [
+		'Username',
+		'Telecaller Id',
+		'Handover Count'
 	]
 
 	const [leadData, setLeadData] = useState([])
@@ -121,7 +128,7 @@ const Admin = () => {
 			desFlag
 		)
 		{
-			fetch('http://localhost:3001/register', {
+			fetch('https://frozen-river-89705.herokuapp.com/register', {
                 method: 'post',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
@@ -156,7 +163,7 @@ const Admin = () => {
 	}
 
 	const showHandler = () => {
-		fetch('http://localhost:3001/admin/show', {
+		fetch('https://frozen-river-89705.herokuapp.com/admin/show', {
                 method: 'post',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
@@ -178,7 +185,6 @@ const Admin = () => {
 	}
 
 	const [popState, setPopState] = useState('none');
-	const [popPayState, setPopPayState] = useState('none');
 
 	const setPopStateField = () => {
         if(popState==='none')
@@ -190,6 +196,15 @@ const Admin = () => {
         	setPopState('none')
         }
     }
+
+    const [popPayState, setPopPayState] = useState('none');
+    const [teleId, setTeleId] = useState('');
+    const [logContentArray, setLogContentArray] = useState([]);
+
+    const setTeleIdField = (event) => {
+    	setTeleId(event.target.value);
+    }
+
 	const setPopPayStateField = () => {
         if(popPayState==='none')
         {
@@ -198,7 +213,30 @@ const Admin = () => {
         else
         {
         	setPopPayState('none')
+        	setTeleId('')
+        	setLogContentArray([])
         }
+    }
+
+    const onShowDetails = () => {
+    	fetch('http://frozen-river-89705.herokuapp.com/admin/log', {
+    		method: 'post',
+    		headers: {'Content-Type': 'application/json'},
+    		body: JSON.stringify({
+    			teleId: teleId
+    		})
+    	})
+    	.then(response => response.json())
+    	.then(resp => {
+    		if (resp[0].username) {
+    			setLogContentArray(resp)
+    		}
+    		else if(resp==='Incorrect Submission')
+    		{
+    			alert('Incorrect submission')
+    		}
+    	})
+    	.catch(err => console.log(err))
     }
 
 	return(
@@ -270,7 +308,7 @@ const Admin = () => {
             </div>
 
 {/*-------------- PopUp fpr Payment CheckOut ----------------------------*/}
-			<div id='pop-up' className='bg-white shadow-4 pop-up-payment-checkout' style={{display: `${popPayState}`}}>
+			<div id='pop-up' className='bg-white shadow-4 pop-up-payment-checkout' style={{display: `${popPayState}`, zIndex: '1'}}>
                 <a 
                 onClick={() => setPopPayStateField()} 
                 className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2" 
@@ -278,12 +316,22 @@ const Admin = () => {
                     X
                 </a>
                 <div style={{height:'100%'}} className='flex justify-center items-center flex-column'>
-                    <h2>Get Payment Info</h2>
+                    <h2>TELECALLER LOGS</h2>
                     <div>
-						<input placeholder='Enter Telecaller name'/>
-						<a class="f6 link dim ph3 pv2 mb2 dib white bg-dark-gray" href="#0">ShowDetails</a>
+						<input
+						className="pv1 ma2"
+						autoComplete="blej"
+						onChange={(event) => setTeleIdField(event)} 
+						placeholder='Enter Telecaller name'
+						/>
+						<span 
+						class="f6 link dim ph3 pv2 mb2 dib white br2 bg-dark-blue"
+						onClick = {() => onShowDetails()}
+						>
+						ShowDetails
+						</span>
 					</div>
-					{/* Yahaoe table */}
+					<LogTable headerArray={logDataHeader} ContentArray={logContentArray} />
                 </div>
             </div>
 
@@ -321,12 +369,20 @@ const Admin = () => {
 		                    </div>
 		                </div>
 		                <Table showHandler={showHandler} headerArray={leadDataHeader} ContentArray={leadData} />
-		                <div
-		                className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2 pointer" 
-		                href="#0"
-		                onClick={() => setPopStateField()}>
-		                Register New Telecallers            
-		            </div>
+		                <div className="flex">
+			                <div
+			                className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2 pointer" 
+			                href="#0"
+			                onClick={() => setPopStateField()}>
+			                Register New Telecallers            
+			            	</div>
+			                <div
+			                className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2 pointer" 
+			                href="#0"
+			                onClick={() => setPopPayStateField()}>
+			                Check Telecaller Logs            
+			            	</div>
+		            	</div>
 					</div>
 				</div>
 		</div>

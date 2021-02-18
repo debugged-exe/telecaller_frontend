@@ -44,7 +44,7 @@ const JrRow = ({rowObject, onRefresh}) => {
 	const onSubmit = () => {
 		if(handoverstatus!=='Handed')
 		{
-			fetch('http://localhost:3001/jr/update', {
+			fetch('https://frozen-river-89705.herokuapp.com/jr/update', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -90,7 +90,7 @@ const JrRow = ({rowObject, onRefresh}) => {
 	const onHandover = () => {
 		if(handoverstatus!=='Handed')
 		{
-			fetch('http://localhost:3001/jr/handover', {
+			fetch('https://frozen-river-89705.herokuapp.com/jr/handover', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
