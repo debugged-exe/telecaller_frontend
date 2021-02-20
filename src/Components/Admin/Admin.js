@@ -1,6 +1,7 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import Table from '../Table/Table.js';
 import LogTable from '../LogTable/LogTable.js';
+import BatchTable from '../BatchTable/BatchTable.js';
 import './Admin.css';
 
 const Admin = () => {
@@ -218,8 +219,69 @@ const Admin = () => {
         }
     }
 
+    const [popBatch, setPopBatch] = useState('none')
+    const setPopBatches = () => {
+    	if(popBatch==='none')
+    	{
+    		setPopBatch('block')
+    	}
+    	else
+    	{
+    		setPopBatch('none')
+    	}
+    }
+
+    const fetchBatch = () => {
+    	fetch('https://frozen-river-89705.herokuapp.com/admin/batch/fetch', {
+    			method: 'post',
+    			headers: {'Content-Type': 'application/json'},
+    			body: JSON.stringify({
+    				batch: batch
+    			})
+    		})
+    		.then(response => response.json())
+    		.then(resp => {
+    			if(resp!=='fail')
+    			{
+    				setBatchContentArray(resp)
+    			}
+    			else
+    			{
+    				console.log('Fetch call to batches failed')
+    			}
+    		})
+    		.catch(err => console.log(err))
+    }
+
+    const batchDataHeader = [
+    	'LeadId',
+    	'LeadName',
+    	'LeadContact',
+    	'WhatsApp Number',
+		'Account Opening Number',
+		'City',
+		'Knowledge',
+		'Demat',
+		'Broker',
+		'Preffered Language'
+    ]
+
+    const [batchContentArray, setBatchContentArray] = useState([]);
+
+    const [batch, setBatch] = useState('current')
+    const changeBatch = () => {
+    	if(batch==='current')
+    	{
+    		setBatch('next')
+    	}
+    	else
+    	{
+    		setBatch('current')
+    	}
+    }
+
     const onShowDetails = () => {
-    	fetch('http://frozen-river-89705.herokuapp.com/admin/log', {
+    	fetch('https://frozen-river-89705.herokuapp.com/admin/log', {
     		method: 'post',
     		headers: {'Content-Type': 'application/json'},
     		body: JSON.stringify({
@@ -238,6 +300,33 @@ const Admin = () => {
     	})
     	.catch(err => console.log(err))
     }
+
+    const batchHandler = (event) => {
+    	const name = event.target.getAttribute('name');
+    	fetch('https://frozen-river-89705.herokuapp.com/admin/batch/modify', {
+    		method: 'post',
+    		headers: {'Content-Type': 'application/json'},
+    		body: JSON.stringify({
+    			name: name
+    		})
+    	})
+    	.then(response => response.json())
+    	.then(resp => {
+    		if(resp==='Success')
+    		{
+    			alert('Success')
+    			fetchBatch()
+    		}
+    	})
+    	.catch(err => {
+    		console.log(err)
+    		alert('OOPs...something went wrong.Please try again.')
+    	})
+    }
+
+    useEffect(() => {
+    	fetchBatch()
+    }, [batch])
 
 	return(
 		<div style={{display: 'flex', flexDirection: 'column', justifyCenter: 'center', itemsCenter: 'flex-end'}}>
@@ -338,6 +427,43 @@ const Admin = () => {
 {/* ---------------------------------------------------- */}
 
 
+{/*-------------- PopUp fpr Batches ----------------------------*/}
+			<div id='pop-up' className='bg-white shadow-4 pop-up-batches' style={{display: `${popBatch}`, zIndex: '1'}}>
+                <a 
+                onClick={() => setPopBatches()} 
+                className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2">
+                    X
+                </a>
+                <div style={{height:'100%'}} className='flex justify-center items-center flex-column'>
+                	<hr style={{width:'99%', padding: '1px', backgroundColor: 'black'}}/>
+                    <h2>BATCHES</h2>
+                    <hr style={{width:'99%', padding: '1px', backgroundColor: 'black'}}/>
+                    <div className="flex justify-center items-center">
+	                    <h3 
+	                    className={`ma2 pa2 f4 b tc pointer ${batch==='current'?'active1':'effect1 effect1-left'}`}
+	                    onClick={() => changeBatch()}>
+	                    Current
+	                    </h3>
+	                    <h3 
+	                    className={`ma2 pa2 f4 b tc pointer ${batch==='next'?'active1':'effect1 effect1-left'}`}
+	                    onClick={() => changeBatch()}>
+	                    Next
+	                    </h3>
+					</div>
+					<BatchTable headerArray={batchDataHeader} ContentArray={batchContentArray} />
+					<div className="flex">
+						<div 
+						name={batch} 
+						className="pointer f6 link dim ph3 pv2 mb2 dib white br2 bg-dark-blue mh2"
+						onClick={(event) => batchHandler(event)}>
+						{batch==='current'?'Clear Batch':'Transfer to Current'}
+						</div>
+					</div>
+					
+                </div>
+            </div>
+
+{/* ---------------------------------------------------- */}
 
 			<div className="admin-container overflow-auto">
 					<div className='flex justify-center items-center flex-column'>
@@ -381,6 +507,11 @@ const Admin = () => {
 			                href="#0"
 			                onClick={() => setPopPayStateField()}>
 			                Check Telecaller Logs            
+			            	</div>
+			            	<div
+			                className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2 pointer" 
+			                onClick={() => setPopBatches()}>
+			                Check Batches    
 			            	</div>
 		            	</div>
 					</div>

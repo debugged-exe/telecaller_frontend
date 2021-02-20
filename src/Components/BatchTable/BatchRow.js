@@ -1,7 +1,7 @@
 import React from 'react';
-import './LogRow.css'
+import './BatchRow.css';
 
-const LogRow = ({rowObject}) => {
+const BatchRow = ({rowObject}) => {
 	const elementArray = []
 	Object.keys(rowObject).forEach((key) => {
 				elementArray.push(rowObject[key])
@@ -18,7 +18,6 @@ const LogRow = ({rowObject}) => {
 			}
 		</>
 	);
-
 }
 
-export default LogRow;
+export default BatchRow;
