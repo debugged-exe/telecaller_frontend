@@ -121,12 +121,42 @@ const Admin = () => {
 		}
 	}
 
+	const [assigned, setAssigned] = useState('')
+	const [assignedFlag, setAssignedFlag] = useState(false)
+	const [assignedErr, setAssignedErr] = useState('')
+
+	const setAssignedField = (event) => {
+		setAssigned(event.target.value);
+	}
+
+	const assignedValidate = () => {
+		if(des==='JrCaller')
+		{
+			if(assigned==='')
+			{
+				setAssignedFlag(false)
+				setAssignedErr('Assigned to field compulsary.')
+			}
+			else
+			{
+				setAssignedFlag(true)
+				setAssignedErr('')
+			}
+		}
+		else
+		{
+			setAssignedFlag(true)
+			setAssignedErr('')
+		}
+	}
+
 	const addTelecaller = () => {
 		if(
 			usernameFlag &&
 			passwordFlag &&
 			telecallerFlag &&
-			desFlag
+			desFlag &&
+			assignedFlag
 		)
 		{
 			fetch('https://frozen-river-89705.herokuapp.com/register', {
@@ -136,7 +166,8 @@ const Admin = () => {
                 username: username,
                 password: password,
                 telecaller_id: telecaller_id,
-                des: des
+                des: des,
+                assigned: assigned
                 })
              })
 	        .then(response => response.json())
@@ -384,6 +415,26 @@ const Admin = () => {
 							<option value='JrCaller'>Junior Caller</option>
 						</select>
                     </div>
+                    <div className="flex justify-center items-center ma2 pa3" style = {{display: `${des==='JrCaller'?'flex':'none'}`}}>
+						<p>Assigned to:</p>
+						<div className="flex flex-column justify-center items-center pa2">
+							<input
+							id="assigned_to"
+							type="text"
+							autoComplete="blej"
+							onChange={(event) => setAssignedField(event)}
+							onBlur={() => assignedValidate()}
+							/>
+							<div className="f4 red">{assignedErr}</div>
+						</div>
+						<div
+	                    style={{cursor: "pointer"}}
+	                    className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2"
+	                    >
+	                   	Preview Sr Callers
+	                    </div>
+                    </div>
+                    <div className="f4 red">{telecallerErr}</div>
                     <div className="f4 red">{desErr}</div>
                     <div
                     style={{cursor: "pointer"}}
