@@ -1,9 +1,10 @@
 import React,{useState, useEffect} from 'react';
 import Table from '../Table/Table.js';
+import Modal from 'react-modal';
 import LogTable from '../LogTable/LogTable.js';
 import BatchTable from '../BatchTable/BatchTable.js';
 import './Admin.css';
-
+Modal.setAppElement('#root');
 const Admin = () => {
 
 	const leadDataHeader = [
@@ -328,8 +329,12 @@ const Admin = () => {
     	fetchBatch()
     }, [batch])
 
+
+	const [setPreview,setPreviewState] = useState(false);
+
+
 	return(
-		<div style={{display: 'flex', flexDirection: 'column', justifyCenter: 'center', itemsCenter: 'flex-end'}}>
+		<div style={{display: 'flex', flexDirection: 'column', justifyCenter: 'center', itemsCenter: 'flex-end'}}>	
 			 <div id='pop-up' className='bg-white shadow-4 pop-up' style={{display: `${popState}`}}>
                 <a 
                 onClick={() => setPopStateField()} 
@@ -513,6 +518,22 @@ const Admin = () => {
 			                onClick={() => setPopBatches()}>
 			                Check Batches    
 			            	</div>
+			            	<div
+			                className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2 pointer" 
+			                onClick={() => setPreviewState(true)}>
+			                Preview    
+			            	</div>
+							<Modal isOpen={setPreview}>
+			            		<div
+			                	className="flex justify-end">
+								<p
+			                	className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2 pointer flex justify-end items-center" 
+			                	onClick={() => setPreviewState(false)}
+								>X</p> 
+			            		</div>
+								<h1>HEllo Modal</h1>
+								<p>Modal Body</p>
+							</Modal>
 		            	</div>
 					</div>
 				</div>
