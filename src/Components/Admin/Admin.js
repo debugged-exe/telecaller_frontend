@@ -8,7 +8,7 @@ const Admin = () => {
 
 	const leadDataHeader = [
 		'LeadId',
-		'Username',
+		'Assigned To',
 		'LeadName',
 		'LeadContact',
 		'WhatsApp Number',
@@ -21,6 +21,7 @@ const Admin = () => {
         'Demat',
         'Broker' ,
         'Preffered Language',
+        'Microsoft Id',
         'Coded'
 	]
 

@@ -23,6 +23,7 @@ const Row = ({rowObject, showHandler}) => {
 	const [dmat_acc, setDmat_acc] = useState(rowObject.dmat_acc)
 	const [broker, setBroker] = useState(rowObject.broker)
 	const [preferred_lang, setLanguage] = useState(rowObject.preferred_lang)
+	const [microsoftid, setMicrosoftId] = useState(rowObject.microsoftid)
 	const [coded, setCoded] = useState(rowObject.coded)
 
 	const onChange = (event) => {
@@ -109,6 +110,10 @@ const Row = ({rowObject, showHandler}) => {
 		}
 		else if(name==='coded')
 		{
+			if(value==='')
+			{
+				return setCoded(rowObject.coded)
+			}
 			setCoded(value)
 		}
 		else if(name==='whatsapp_number')
@@ -119,12 +124,19 @@ const Row = ({rowObject, showHandler}) => {
 			}
 			setWhatsapp(value);
 		}
-		else if(name='accountopening_number')
+		else if(name==='accountopening_number')
 		{
 			if (!value) {
 				return setAccountOpening(rowObject.accountopening_number)
 			}
 			setAccountOpening(value);
+		}
+		else if(name==='microsoftid')
+		{
+			if (!value) {
+				return setMicrosoftId(rowObject.microsoftid)
+			}
+			setMicrosoftId(value)
 		}
 	}
 
@@ -170,6 +182,7 @@ const Row = ({rowObject, showHandler}) => {
                 dmat_acc: dmat_acc,
                 broker_name: broker,
                 preferred_lang: preferred_lang,
+                microsoftid: microsoftid,
                 coded: coded
                 })
              })
@@ -260,6 +273,31 @@ const Row = ({rowObject, showHandler}) => {
 		}
 	}
 
+	const addtoProcessedList = () => {
+		if(window.confirm('Are you sure you want to add lead to processed list?'))
+		{
+			fetch('https://frozen-river-89705.herokuapp.com/admin/processed', {
+				method: 'post',
+				headers: {'Content-Type': 'application/json'},
+				body: JSON.stringify({
+					lead_id: lead_id,
+					lead_phone_number: lead_phone_number
+				})
+			})
+			.then(response => response.json())
+			.then(resp => {
+				if(resp==='Success')
+				{
+					alert(resp)
+				}
+			})
+			.catch(err => {
+				console.log(err)
+				alert('OOPSS...something went wrong.Please try again.')
+			})
+		}
+	}
+
 	const x = 'Done'
 	const Edit = 'Edit'
 
@@ -346,6 +384,7 @@ const Row = ({rowObject, showHandler}) => {
 							disabled={read}
 							onChange={(event) => onChange(event)}
 							>
+								<option value=''>--select--</option>
 								<option value='null'>Null</option>
 								<option value='coded'>Coded</option>
 								<option value='notCoded'>Not Coded</option>
@@ -378,12 +417,6 @@ const Row = ({rowObject, showHandler}) => {
 				SaveChanges
 			</td>
 			<td
-			style={{cursor: 'pointer'}}
-			className={`f6 tc link dim ph3 pv2 mb2 white dib br2 ma2 ${coded==='coded'?'bg-green':(coded==='notCoded'?'bg-red':'bg-dark-blue')}`}
-			>
-				Remove
-			</td>
-			<td
 			name='current'
 			style={{cursor: 'pointer', display: `${coded==='coded'?'block':'none'}`}}
 			className={`f6 tc link dim ph3 pv2 mb2 white dib br2 ma2 ${coded==='coded'?'bg-green':(coded==='notCoded'?'bg-red':'bg-dark-blue')}`}
@@ -398,6 +431,14 @@ const Row = ({rowObject, showHandler}) => {
 			onClick={(event) => onAddToBatch(event)}
 			>
 				AddtoNextBatch
+			</td>
+			<td
+			name='next'
+			style={{cursor: 'pointer', display: `${coded==='notCoded'?'block':'none'}`}}
+			className={`f6 tc link dim ph3 pv2 mb2 white dib br2 ma2 ${coded==='coded'?'bg-green':(coded==='notCoded'?'bg-red':'bg-dark-blue')}`}
+			onClick={() => addtoProcessedList()}
+			>
+				AddtoProcessedList
 			</td>
 		</div>
 		</>
