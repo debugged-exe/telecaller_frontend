@@ -115,7 +115,12 @@ const Admin = () => {
 			setDesFlag(false)
 			setDesErr('Set Designation of caller')
 		}
-		else
+		else if(des!=='JrCaller')
+		{
+			setAssigned('')
+			document.getElementById('assigned_to').value = ''
+			console.log(document.getElementById('assigned_to').value)
+		}
 		{
 			setDesFlag(true)
 			setDesErr('')
@@ -152,6 +157,11 @@ const Admin = () => {
 	}
 
 	const addTelecaller = () => {
+		if(assigned==='' && des!=='JrCaller')
+		{
+			setAssignedFlag(true)
+			setAssignedErr('')
+		}
 		if(
 			usernameFlag &&
 			passwordFlag &&
