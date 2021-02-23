@@ -235,6 +235,7 @@ const Row = ({rowObject, showHandler}) => {
 					if(resp==='Success')
 					{
 						alert('Success')
+						showHandler()
 					}
 					else if(resp==='exists')
 					{

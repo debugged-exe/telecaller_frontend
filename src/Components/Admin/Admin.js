@@ -1,9 +1,9 @@
 import React,{useState, useEffect} from 'react';
 import Table from '../Table/Table.js';
+import ModalPreview from '../ModalPreview/ModalPreview.js';
 import LogTable from '../LogTable/LogTable.js';
 import BatchTable from '../BatchTable/BatchTable.js';
 import './Admin.css';
-
 const Admin = () => {
 
 	const leadDataHeader = [
@@ -360,8 +360,14 @@ const Admin = () => {
     	fetchBatch()
     }, [batch])
 
+
+	const [setPreview,setPreviewState] = useState(false);
+	const setPreviewStateField = (state) => {
+		setPreviewState(state)
+	}
+
 	return(
-		<div style={{display: 'flex', flexDirection: 'column', justifyCenter: 'center', itemsCenter: 'flex-end'}}>
+		<div style={{display: 'flex', flexDirection: 'column', justifyCenter: 'center', itemsCenter: 'flex-end', zIndex: `${setPreview?'0':null}`}}>	
 			 <div id='pop-up' className='bg-white shadow-4 pop-up' style={{display: `${popState}`}}>
                 <a 
                 onClick={() => setPopStateField()} 
@@ -431,9 +437,11 @@ const Admin = () => {
 						<div
 	                    style={{cursor: "pointer"}}
 	                    className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2"
+	                    onClick={() => setPreviewStateField(true)}
 	                    >
 	                   	Preview Sr Callers
 	                    </div>
+	                    <ModalPreview setPreviewStateField = {setPreviewStateField} setPreview = {setPreview}/>
                     </div>
                     <div className="f4 red">{telecallerErr}</div>
                     <div className="f4 red">{desErr}</div>
