@@ -138,8 +138,10 @@ const Admin = () => {
 	const assignedValidate = () => {
 		if(des==='JrCaller')
 		{
+			console.log(des)
 			if(assigned==='')
 			{
+				console.log(assigned)
 				setAssignedFlag(false)
 				setAssignedErr('Assigned to field compulsary.')
 			}
@@ -366,8 +368,25 @@ const Admin = () => {
     	})
     }
 
+    const [srCaller, setSrCaller] = useState([])
+
+    const fetchSrCallers = () => {
+    	fetch('https://frozen-river-89705.herokuapp.com/admin/srcaller')
+    	.then(response => response.json())
+    	.then(resp => {
+    		if(resp[0].username)
+    		{
+    			setSrCaller(resp)
+    		}
+    	})
+    	.catch(err => {
+    		console.log(err)
+    	})
+    }
+
     useEffect(() => {
     	fetchBatch()
+    	fetchSrCallers()
     }, [batch])
 
 
@@ -432,26 +451,30 @@ const Admin = () => {
 							<option value='JrCaller'>Junior Caller</option>
 						</select>
                     </div>
-                    <div className="flex justify-center items-center ma2 pa3" style = {{display: `${des==='JrCaller'?'flex':'none'}`}}>
+                    <div className="flex flex-column justify-center items-center ma2 pa3" style = {{display: `${des==='JrCaller'?'flex':'none'}`}}>
 						<p>Assigned to:</p>
-						<div className="flex flex-column justify-center items-center pa2">
+						<div className="flex justify-center items-center pa2">
 							<input
 							id="assigned_to"
 							type="text"
 							autoComplete="blej"
+							placeholder='Enter SrCaller Id'
+							className='ma1'
 							onChange={(event) => setAssignedField(event)}
 							onBlur={() => assignedValidate()}
-							/>
+							></input>
+							<select>
+							<option value=''>Select SrCaller</option>
+								{
+									srCaller.map((item) => {
+										return(
+											<option value={item.telecaller_id}>{`${item.username}(${item.telecaller_id})`}</option>
+										);
+									})
+								}
+							</select>
 							<div className="f4 red">{assignedErr}</div>
 						</div>
-						<div
-	                    style={{cursor: "pointer"}}
-	                    className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2"
-	                    onClick={() => setPreviewStateField(true)}
-	                    >
-	                   	Preview Sr Callers
-	                    </div>
-	                    <ModalPreview setPreviewStateField = {setPreviewStateField} setPreview = {setPreview}/>
                     </div>
                     <div className="f4 red">{telecallerErr}</div>
                     <div className="f4 red">{desErr}</div>

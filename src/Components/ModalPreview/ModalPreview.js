@@ -7,7 +7,7 @@ Modal.setAppElement('#root');
 const ModalPreview = ({setPreviewStateField, setPreview}) => {
 	return(
 		<div>
-		 	<Modal isOpen={setPreview}>
+		 	<Modal isOpen={setPreview} >
 	    		<div
 	        	className="flex justify-end">
 				<p
