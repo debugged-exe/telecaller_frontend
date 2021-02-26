@@ -7,6 +7,7 @@ import Admin from './Components/Admin/Admin';
 import Navbar from './Components/Navbar/Navbar';
 import Background from './Container/Images/Background.png';
 import JrCaller from './Components/JrCaller/JrCaller';
+import SrCaller from './Components/SrCaller/SrCaller';
 
 const initialState = {
 	route: 'home',
@@ -67,7 +68,7 @@ class App extends Component {
                     <Navbar route = {route} onRouteChange={this.onRouteChange} />
     			    <Home onRouteChange={this.onRouteChange} />
 	    		</div>
-    		);	
+    		);
     	}
     	else if(route==='form')
     	{
@@ -85,7 +86,7 @@ class App extends Component {
                     <Navbar route = {route} onRouteChange={this.onRouteChange}/>
                     <SignInPage loadUser={this.loadUser} onRouteChange={this.onRouteChange} onSubmitHandler={this.onSubmitHandler} />
                 </div>
-            );   
+            );
         }
         else if(route==='Admin')
         {
@@ -105,7 +106,15 @@ class App extends Component {
                 </div>
             );
         }
+				else if(route==='SrCaller'){
+					return(
+							<div>
+									<Navbar route = {route} onRouteChange={this.onRouteChange} />
+									<SrCaller user={user}/>
+							</div>
+					);
+				}
     }
 }
- 
+
 export default App;
