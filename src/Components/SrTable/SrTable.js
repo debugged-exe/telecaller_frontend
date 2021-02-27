@@ -1,7 +1,8 @@
 import React from 'react';
+import SrRow from './SrRow.js';
 import './SrTable.css';
 
-const SrTable = ({headerArray}) =>{
+const SrTable = ({headerArray, contentArray, setJrCaller}) =>{
 
 	return(
 		<div className="ma2 pa4">
@@ -19,7 +20,19 @@ const SrTable = ({headerArray}) =>{
 	            		</tr>
             		</thead>
             		<tbody className="lh-copy">
-
+            		{
+            			contentArray.map((item,index) => {
+            				return(
+                                          <tr key={index}>
+                  					<SrRow 
+                                                key={index} 
+                                                rowObject={item}
+                                                setJrCaller={setJrCaller}
+                                                />
+                                          </tr>
+            				);
+            			})
+            		}
             		</tbody>
             	</table>
             </div>
