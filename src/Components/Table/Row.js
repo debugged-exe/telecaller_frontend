@@ -224,7 +224,7 @@ const Row = ({rowObject, showHandler}) => {
 			var c1 = window.confirm('Are you  sure you want to add lead to current batch.This will change the status of lead to processed and it will be stored seperately.');
 			if(c1===true)
 			{
-				fetch('http://frozen-river-89705.herokuapp.com/admin/batch', {
+				fetch('https://frozen-river-89705.herokuapp.com/admin/batch', {
 				method: 'post',
 				headers: {'Content-Type': 'application/json'},
 				body: JSON.stringify({
@@ -255,7 +255,7 @@ const Row = ({rowObject, showHandler}) => {
 		{
 			var c2 = window.confirm('Are you  sure you want to add lead to next batch.This will change the status of lead to processed and it will be stored seperately.');
 			if (c2===true) {
-				fetch('http://frozen-river-89705.herokuapp.com/admin/batch', {
+				fetch('https://frozen-river-89705.herokuapp.com/admin/batch', {
 				method: 'post',
 				headers: {'Content-Type': 'application/json'},
 				body: JSON.stringify({
