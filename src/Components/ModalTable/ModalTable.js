@@ -1,7 +1,7 @@
 import React from 'react';
 import ModalRow from './ModalRow.js'
 
-const ModalTable = ({headerArray, contentArray}) => {
+const ModalTable = ({headerArray, contentArray, fetchLogs}) => {
 	return(
 		<div className="ma2 pa4">
 			<div>
@@ -22,7 +22,7 @@ const ModalTable = ({headerArray, contentArray}) => {
 					contentArray.map((item,index) => {
 						return(
 							<tr key={index} className={item.coded==='Yes'?"bg-green":(item.coded==='No'?"bg-red":"")}>
-								<ModalRow rowObject={item} />
+								<ModalRow rowObject={item} fetchLogs={fetchLogs} />
 							</tr>
 						);
 					})

@@ -26,6 +26,8 @@ const Row = ({rowObject, showHandler}) => {
 	const [microsoftid, setMicrosoftId] = useState(rowObject.microsoftid)
 	const [coded, setCoded] = useState(rowObject.coded)
 
+	console.log(lead_id,coded)
+
 	const onChange = (event) => {
 		const {value, name} = event.target;
 		if(name==='username')
@@ -115,6 +117,7 @@ const Row = ({rowObject, showHandler}) => {
 				return setCoded(rowObject.coded)
 			}
 			setCoded(value)
+			console.log(coded)
 		}
 		else if(name==='whatsapp_number')
 		{
@@ -235,6 +238,9 @@ const Row = ({rowObject, showHandler}) => {
 					if(resp==='Success')
 					{
 						alert('Success')
+						setWhatsapp(rowObject.whatsapp_number)
+						setAccountOpening(rowObject.accountopening_number)
+						console.log(whatsapp_number,accountopening_number)
 						showHandler()
 					}
 					else if(resp==='exists')

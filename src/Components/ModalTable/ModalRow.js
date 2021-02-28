@@ -1,19 +1,11 @@
 import React,{useState} from 'react';
 
-const ModalRow = ({rowObject}) => {
-	const {lead_id, lead_phone_number, handoverstatus, call_status_1, call_status_2, coded} = rowObject;
-	var disable;
-
-	if (handoverstatus==='Handed') {
-		disable=true;
-	}
-	else
-	{
-		disable=false;
-	}
+const ModalRow = ({rowObject,fetchLogs}) => {
+	const {lead_id, lead_phone_number, handoverstatus, call_status_1, call_status_2, updatehandover, coded} = rowObject;
 
 	const [status1, setStatus1] = useState(call_status_1)
 	const [status2, setStatus2] = useState(call_status_2)
+	const [update, setUpdate] = useState(updatehandover)
 
 	const status1Handler = (event) => {
 		setStatus1(event.target.value);
@@ -29,30 +21,34 @@ const ModalRow = ({rowObject}) => {
 		{
 			setStatus1(value);
 		}
-		else
+		else if(name==='call_status_2')
 		{
 			setStatus2(value);
+		}
+		else
+		{
+			setUpdate(value);
 		}
 	}
 
 	const [read, setRead] = useState(true)
 
 	const onSubmit = () => {
-		if(handoverstatus!=='Handed')
-		{
-			fetch('https://frozen-river-89705.herokuapp.com/jr/update', {
+		fetch('https://frozen-river-89705.herokuapp.com/sr/update', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
             	lead_phone_number: lead_phone_number,
                 call_status_1: status1,
-                call_status_2: status2
+                call_status_2: status2,
+                updatehandover: update
             })
 	        })
 	        .then(response => response.json())
 	        .then(resp => {
 	            if (resp==='Success') {
 	            	alert('Status updated successfully.')
+	            	fetchLogs()
 	            }
 	            else
 	            {
@@ -60,45 +56,16 @@ const ModalRow = ({rowObject}) => {
 	            }
 	        })
 	        .catch(err => console.log(err))
-		}
-	}
-
-	const onHandover = () => {
-		if(handoverstatus!=='Handed')
-		{
-			fetch('https://frozen-river-89705.herokuapp.com/jr/handover', {
-            method: 'post',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-            	lead_id: lead_id,
-            	lead_phone_number: lead_phone_number
-            })
-	        })
-	        .then(response => response.json())
-	        .then(resp => {
-	            if (resp==='Success') {
-	            	alert('Status updated successfully.Refresh to view changes.')
-	            }
-	            else
-	            {
-	            	alert('OOps something went wrong.Please try again.')
-	            }
-	        })
-	        .catch(err => console.log(err))
-		}
 	}
 
 	const onEditHandler = () => {
-		if(handoverstatus!=='Handed')
+		if(read===true)
 		{
-			if(read===true)
-			{
-				setRead(false)
-			}
-			else
-			{
-				setRead(true)
-			}
+			setRead(false)
+		}
+		else
+		{
+			setRead(true)
 		}
 	}
 
@@ -131,7 +98,7 @@ const ModalRow = ({rowObject}) => {
 							placeholder={`${item}`} 
 							readOnly={read}
 							onChange={(event) => onChange(event)}
-							disabled={disable}/>
+							/>
 						</td>
 					);
 				}
@@ -146,7 +113,22 @@ const ModalRow = ({rowObject}) => {
 							placeholder={`${item}`} 
 							readOnly={read}
 							onChange={(event) => onChange(event)}
-							disabled={disable}/>
+							/>
+						</td>
+					);
+				}
+				else if(index===5)
+				{
+					return(
+						<td key={index} className={`${coded==='coded'?'bg-green white fw6':(coded==='notCoded'?'bg-red white fw6':(handoverstatus==='Handed'?'bg-moon-gray':null))} pv3 pr3 bb b--black-20`}>
+							<input 
+							type='text' 
+							name="updatehandover" 
+							autoComplete='blej' 
+							placeholder={`${item}`} 
+							readOnly={read}
+							onChange={(event) => onChange(event)}
+							/>
 						</td>
 					);
 				}
@@ -163,7 +145,7 @@ const ModalRow = ({rowObject}) => {
 		<div className={`${coded==='coded'?'bg-green white fw6':(coded==='notCoded'?'bg-red white fw6':(handoverstatus==='Handed'?'bg-moon-gray':null))} flex`}>
 			<td
 			style={{cursor: 'pointer'}}
-			className={`${handoverstatus==='Handed'?'bg-moon-gray black':'bg-dark-blue white'} f6 link dim ph3 pv2 mb2 dib br2 ma2`} href="#0"
+			className='bg-dark-blue white f6 link dim ph3 pv2 mb2 dib br2 ma2'
 			onClick={() => onEditHandler()}
 			>
 				{
@@ -172,18 +154,10 @@ const ModalRow = ({rowObject}) => {
 			</td>
 			<td
 			style={{cursor: 'pointer'}}
-			className={`${handoverstatus==='Handed'?'bg-moon-gray black':'bg-dark-blue white'} f6 link dim ph3 pv2 mb2 dib br2 ma2`}
-			href="#0"
+			className="bg-dark-blue white f6 link dim ph3 pv2 mb2 dib br2 ma2"
 			onClick = {() => onSubmit()} 
 			>
 				UpdateStatus
-			</td>
-			<td
-			style={{cursor: 'pointer'}}
-			className={`${handoverstatus==='Handed'?'bg-moon-gray black':'bg-dark-blue white'} f6 link dim ph3 pv2 mb2 dib br2 ma2`} href="#0" 
-			onClick = {() => onHandover()} 
-			>
-				Handover
 			</td>
 		</div>
 		</>

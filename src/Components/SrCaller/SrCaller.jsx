@@ -50,7 +50,6 @@ import Modal from 'react-modal';
           }, () => {
             console.log('')
           })
-          console.log(this.state.jrContent)
         }
         else if(resp==='empty')
         {
@@ -114,6 +113,7 @@ import Modal from 'react-modal';
         'LeadContact',
         'Status1',
         'Status2',
+        'UpdateAfterHandover',
         'HandoverStatus',
         'Coded Status'
       ]
@@ -140,7 +140,14 @@ import Modal from 'react-modal';
             </div>
             <div className='flex flex-column justify-center items-center'>
               <h1>{`LOGS OF ${jrName}(${jrTeleId})`}</h1>
-              <ModalTable headerArray={jrHeader} contentArray={jrContent}/>
+              <div
+              style={{cursor: 'pointer'}}
+              className="bg-dark-blue white f6 link dim ph3 pv2 mb2 dib br2 ma2"
+              onClick={() => this.fetchLogs()}
+              >
+              Refresh
+              </div>
+              <ModalTable headerArray={jrHeader} contentArray={jrContent} fetchLogs={this.fetchLogs}/>
             </div>
           </Modal>
         </div>
