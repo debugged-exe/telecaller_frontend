@@ -1,7 +1,9 @@
 import React,{useState} from 'react';
 import FormBg from '../../Container/Images/FormBg.png';
 import Background from '../../Container/Images/Background.png';
-
+import ReCAPTCHA from "react-google-recaptcha";
+require('dotenv').config();
+ 
 const Form = () => {
 
     const [name, setName] = useState("");
@@ -122,7 +124,8 @@ const Form = () => {
             nameFlag===true &&
             mobileFlag===true &&
             permCityFlag===true &&
-            preferredLangFlag===true
+            preferredLangFlag===true &&
+            captchaFlag === true
         )
         {
             fetch('https://frozen-river-89705.herokuapp.com/form', {
@@ -158,18 +161,45 @@ const Form = () => {
         }
         else{
             nameValidate();
+            captchaValidate();
             mobileValidate();
             permCityValidate();
             preferredLangValidate();
             setSubmitErr('Check if all fields are set correclty.')
         }
     }
+    const recaptchaRef = React.useRef();
+    const [captchaFlag, setCaptchaFlag] = useState(false);
+    const [captchaErr, setCaptchaErr] = useState("");
+    function onCapChange(value) {
+        if(value!==""){
+          setCaptchaFlag(true)
+          setCaptchaErr("")
+        }
+      }
+
+      const captchaValidate = (event) => {
+        const val = recaptchaRef.current.getValue()
+        if(val==="")
+        {
+          setCaptchaFlag(false);
+          setCaptchaErr("*Please solve the captcha.");
+  
+        }
+        else
+        {
+          setCaptchaFlag(true);
+          setCaptchaErr("");
+        }
+    }
+
+    console.log(process.env.REACT_APP_CAPTCHA_API_KEY);
 
     return (
         <div style={{backgroundImage: `url(${Background})`}}className='flex items-center pv4 justify-center'>
             <div className='w-100'>
             <form style={{backgroundImage:`url(${FormBg})`}} className="measure center br3 shadow-2">
-                <fieldset id="sign_up" className="ba b--transparent ph4 mh0">
+                <fieldset id="sign_up" className="ba b--transparent mh0">
 
                 <legend className="f2 fw6 ph0 mh0 pv2 tc">Session Joining Form</legend>
                 <hr/>
@@ -258,6 +288,12 @@ const Form = () => {
 		                </select>
                         <div className="f4 red">{`${preferredLangErr}`}</div>
                     </div>
+                    <ReCAPTCHA
+                    ref={recaptchaRef}
+                    sitekey={process.env.REACT_APP_CAPTCHA_API_KEY}
+                    onChange={onCapChange}
+                    />
+                    <div className="f4 red">{`${captchaErr}`}</div>
                 </fieldset>
                 <div className="flex justify-center items-center">
                         <input 
