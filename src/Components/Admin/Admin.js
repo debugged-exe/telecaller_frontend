@@ -560,10 +560,10 @@ const Admin = () => {
 		                        <option value="*">--Select--</option>
 		                        <option value='*'>All</option>
 		                        <option value='no'>Unassigned</option>
-		                        <option value='Sryes'>Assigned to Sr Caller</option>
 		                        <option value='Jryes'>Assigned to Jr Caller</option>
 		                        <option value="Handed Over">IsHandedOver(Y)</option>
 		                        <option value="Not Handed Over">IsHandedOver(N)</option>
+		                        <option value="processed">Processed</option>
 		                    </select>
 		                    <div 
 		                    className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2 pointer" 
