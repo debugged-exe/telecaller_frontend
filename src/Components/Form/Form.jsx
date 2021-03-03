@@ -85,15 +85,26 @@ const Form = () => {
     }
 
     const [demat, setDemat] = useState('No')
+    const [brokerDisable, setDisable] = useState(false)
 
     const setDematField = (event) => {
-        setDemat(event.target.value);
+        const {value} = event.target
+        if(value==='Yes')
+        {
+            setDisable(false)
+            setDemat(value)
+        }
+        else
+        {
+            setDisable(true)
+            setDemat(value)
+        }
     }
 
     const [broker, setBroker] = useState('')
 
     const setBrokerField = (event) => {
-        setBroker(event.target.value);
+       setBroker(event.target.value)
     }
 
     const [preferredLang, setPreferredLang] = useState('None')
@@ -193,8 +204,6 @@ const Form = () => {
         }
     }
 
-    console.log(process.env.REACT_APP_CAPTCHA_API_KEY);
-
     return (
         <div style={{backgroundImage: `url(${Background})`}}className='flex items-center pv4 justify-center'>
             <div className='w-100'>
@@ -268,7 +277,8 @@ const Form = () => {
                         autoComplete="blej"
                         className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
                         type="text" 
-                        placeholder='eg: Zerodha, Upstocks' 
+                        placeholder='eg: Zerodha, Upstocks'
+                        disabled={brokerDisable}
                         onChange={(event) => setBrokerField(event)}
                         />
                     </div>
