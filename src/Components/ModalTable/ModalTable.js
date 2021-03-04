@@ -1,9 +1,10 @@
 import React from 'react';
 import ModalRow from './ModalRow.js'
+import './ModalTable.css'
 
 const ModalTable = ({headerArray, contentArray, fetchLogs}) => {
 	return(
-		<div className="ma2 pa4">
+		<div className="ma2 pa4 table">
 			<div>
 				<table className="f6 mw8 center" cellSpacing="0">
 				<thead>

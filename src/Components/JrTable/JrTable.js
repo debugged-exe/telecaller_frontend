@@ -5,7 +5,7 @@ import './JrTable.css';
 const JrTable = ({headerArray, ContentArray, onRefresh}) =>{
 
 	return(
-		<div className="ma2 pa4">
+		<div className="ma2 pa4 table">
             <div>
             	<table className="f6 mw8 center" cellSpacing="0">
             		<thead>

@@ -305,6 +305,32 @@ const Row = ({rowObject, showHandler}) => {
 		}
 	}
 
+	const onRemove = () => {
+		if(window.confirm('Are you sure you want to permanently delete the lead.'))
+		{
+			fetch('https://frozen-river-89705.herokuapp.com/admin/delete', {
+				method: 'post',
+				headers: {'Content-Type': 'application/json'},
+				body: JSON.stringify({
+					lead_id: lead_id,
+					lead_phone_number: lead_phone_number
+				})
+			})
+			.then(response => response.json())
+			.then(resp => {
+				if(resp==='Success')
+				{
+					alert(resp)
+					showHandler()
+				}
+			})
+			.catch(err => {
+				console.log(err)
+				alert('OOps...something went wrong.Please try again.')
+			})
+		}
+	}
+
 	const x = 'Done'
 	const Edit = 'Edit'
 
@@ -422,6 +448,12 @@ const Row = ({rowObject, showHandler}) => {
 			className={`f6 tc link dim ph3 pv2 mb2 white dib br2 ma2 ${coded==='coded'?'bg-green':(coded==='notCoded'?'bg-red':'bg-dark-blue')}`}
 			onClick={() => onSave()}>
 				SaveChanges
+			</td>
+			<td
+			style={{cursor: 'pointer'}}
+			className={`f6 tc link dim ph3 pv2 mb2 white dib br2 ma2 ${coded==='coded'?'bg-green':(coded==='notCoded'?'bg-red':'bg-dark-blue')}`}
+			onClick={() => onRemove()}>
+				Remove
 			</td>
 			<td
 			name='current'

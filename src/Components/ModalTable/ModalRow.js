@@ -81,13 +81,13 @@ const ModalRow = ({rowObject,fetchLogs}) => {
 		<>
 		{
 			elementArray.map((item,index) => {
-				if(index===0 || index===1 || index===2)
+				if(index>=0 && index<=7)
 				{
 					return(
 						<td key={index} className={`${coded==='coded'?'bg-green white fw6':(coded==='notCoded'?'bg-red white fw6':(handoverstatus==='Handed'?'bg-moon-gray':null))} pv3 pr3 bb b--black-20`}>{item}</td>
 					);
 				}
-				else if(index===3)
+				else if(index===8)
 				{
 					return(
 						<td key={index} className={`${coded==='coded'?'bg-green white fw6':(coded==='notCoded'?'bg-red white fw6':(handoverstatus==='Handed'?'bg-moon-gray':null))} pv3 pr3 bb b--black-20`}>
@@ -102,7 +102,7 @@ const ModalRow = ({rowObject,fetchLogs}) => {
 						</td>
 					);
 				}
-				else if(index===4)
+				else if(index===9)
 				{
 					return(
 						<td key={index} className={`${coded==='coded'?'bg-green white fw6':(coded==='notCoded'?'bg-red white fw6':(handoverstatus==='Handed'?'bg-moon-gray':null))} pv3 pr3 bb b--black-20`}>
@@ -117,7 +117,7 @@ const ModalRow = ({rowObject,fetchLogs}) => {
 						</td>
 					);
 				}
-				else if(index===5)
+				else if(index===10)
 				{
 					return(
 						<td key={index} className={`${coded==='coded'?'bg-green white fw6':(coded==='notCoded'?'bg-red white fw6':(handoverstatus==='Handed'?'bg-moon-gray':null))} pv3 pr3 bb b--black-20`}>

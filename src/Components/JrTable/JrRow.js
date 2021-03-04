@@ -42,9 +42,7 @@ const JrRow = ({rowObject, onRefresh}) => {
 	}
 
 	const onSubmit = () => {
-		if(handoverstatus!=='Handed')
-		{
-			fetch('https://frozen-river-89705.herokuapp.com/jr/update', {
+		fetch('https://frozen-river-89705.herokuapp.com/jr/update', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -65,22 +63,18 @@ const JrRow = ({rowObject, onRefresh}) => {
 	            }
 	        })
 	        .catch(err => console.log(err))
-		}
 	}
 
 	const [read, setRead] = useState(true)
 
 	const onEditHandler = () => {
-		if(handoverstatus!=='Handed')
+		if(read===true)
 		{
-			if(read===true)
-			{
-				setRead(false)
-			}
-			else
-			{
-				setRead(true)
-			}
+			setRead(false)
+		}
+		else
+		{
+			setRead(true)
 		}
 	}
 
@@ -116,13 +110,13 @@ const JrRow = ({rowObject, onRefresh}) => {
 		<>
 		{
 			elementArray.map((item,index) => {
-				if(index===0 || index===1 || index===2)
+				if(index>=0 && index<=7)
 				{
 					return(
 						<td key={index} className={`${coded==='coded'?'bg-green white fw6':(coded==='notCoded'?'bg-red white fw6':(handoverstatus==='Handed'?'bg-moon-gray':null))} pv3 pr3 bb b--black-20`}>{item}</td>
 					);
 				}
-				else if(index===3)
+				else if(index===8)
 				{
 					return(
 						<td key={index} className={`${coded==='coded'?'bg-green white fw6':(coded==='notCoded'?'bg-red white fw6':(handoverstatus==='Handed'?'bg-moon-gray':null))} pv3 pr3 bb b--black-20`}>
@@ -133,11 +127,11 @@ const JrRow = ({rowObject, onRefresh}) => {
 							placeholder={`${item}`} 
 							readOnly={read}
 							onChange={(event) => onChange(event)}
-							disabled={disable}/>
+							/>
 						</td>
 					);
 				}
-				else if(index===4)
+				else if(index===9)
 				{
 					return(
 						<td key={index} className={`${coded==='coded'?'bg-green white fw6':(coded==='notCoded'?'bg-red white fw6':(handoverstatus==='Handed'?'bg-moon-gray':null))} pv3 pr3 bb b--black-20`}>
@@ -148,7 +142,7 @@ const JrRow = ({rowObject, onRefresh}) => {
 							placeholder={`${item}`} 
 							readOnly={read}
 							onChange={(event) => onChange(event)}
-							disabled={disable}/>
+							/>
 						</td>
 					);
 				}
