@@ -5,9 +5,9 @@ import Home from './Components/Home/Home';
 import SignInPage from './Components/SignInPage/SignInPage';
 import Admin from './Components/Admin/Admin';
 import Navbar from './Components/Navbar/Navbar';
-import Background from './Container/Images/Background.png';
 import JrCaller from './Components/JrCaller/JrCaller';
 import SrCaller from './Components/SrCaller/SrCaller';
+import Footer from './Components/Footer/Footer';
 
 const initialState = {
 	route: 'home',
@@ -65,8 +65,9 @@ class App extends Component {
     	{
     		return(
 				<div>
-                    <Navbar route = {route} onRouteChange={this.onRouteChange} />
+                    {/* <Navbar route = {route} onRouteChange={this.onRouteChange} /> */}
     			    <Home onRouteChange={this.onRouteChange} />
+                    <Footer onRouteChange={this.onRouteChange}/>
 	    		</div>
     		);
     	}

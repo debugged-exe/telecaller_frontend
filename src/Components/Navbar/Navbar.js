@@ -51,8 +51,6 @@ const Navbar = ({onRouteChange, route}) => {
                         onClick={() => onRouteChange('home')}>
                         	Home
                     	</li>
-                        <li className='none ph3 f4 mv0 b tc pt2 pointer effect effect-left' href='#0'>About Us</li>
-                        <li className='none ph3 f4 mv0 b tc pt2 pointer effect effect-left' href='#0'>Contact Us</li>
                         <li 
                         className={`none ph3 f4 mv0 b tc pt2 pointer ${route==='signin'? 'active': 'effect effect-left'}`}
                         href='#0'
