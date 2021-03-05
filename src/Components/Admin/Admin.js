@@ -21,7 +21,8 @@ const Admin = () => {
         'Broker' ,
         'Preffered Language',
         'Microsoft Id',
-        'Coded'
+        'Coded',
+        'Payment'
 	]
 
 	const logDataHeader = [

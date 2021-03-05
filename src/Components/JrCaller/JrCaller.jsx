@@ -18,7 +18,7 @@ const JrCaller = ({user}) => {
         'Status 2',
         'Handedover Status',
         'Coded Status',
-        ''
+        'Payment Status'
     ]
 
     const [leadData, setLeadData] = useState([])

@@ -9,6 +9,7 @@ const Row = ({rowObject, showHandler}) => {
 	Object.keys(rowObject).forEach((key) => {
 				elementArray.push(rowObject[key])
 			})
+	console.log(elementArray)
 
 	const [read, setRead] = useState(true)
 	const [username, setUsername] = useState(rowObject.username)
@@ -25,6 +26,7 @@ const Row = ({rowObject, showHandler}) => {
 	const [preferred_lang, setLanguage] = useState(rowObject.preferred_lang)
 	const [microsoftid, setMicrosoftId] = useState(rowObject.microsoftid)
 	const [coded, setCoded] = useState(rowObject.coded)
+	const [payment, setPayment] = useState(rowObject.payment)
 
 	console.log(lead_id,coded)
 
@@ -117,7 +119,6 @@ const Row = ({rowObject, showHandler}) => {
 				return setCoded(rowObject.coded)
 			}
 			setCoded(value)
-			console.log(coded)
 		}
 		else if(name==='whatsapp_number')
 		{
@@ -140,6 +141,14 @@ const Row = ({rowObject, showHandler}) => {
 				return setMicrosoftId(rowObject.microsoftid)
 			}
 			setMicrosoftId(value)
+		}
+		else if(name==='payment')
+		{
+			if(value==='')
+			{
+				return setPayment(rowObject.payment)
+			}
+			setPayment(value)
 		}
 	}
 
@@ -186,7 +195,8 @@ const Row = ({rowObject, showHandler}) => {
                 broker_name: broker,
                 preferred_lang: preferred_lang,
                 microsoftid: microsoftid,
-                coded: coded
+                coded: coded,
+                payment: payment
                 })
              })
 	        .then(response => response.json())
@@ -269,6 +279,7 @@ const Row = ({rowObject, showHandler}) => {
 					if(resp==='Success')
 					{
 						alert('Success')
+						showHandler()
 					}
 					else if(resp==='exists')
 					{
@@ -391,22 +402,26 @@ const Row = ({rowObject, showHandler}) => {
 							</td>
 						);	
 				}
-				else if(index!==elementArray.length-1)
+				else if(index===elementArray.length-1)
 				{
 					return(
 						<td key={index} className={`pv3 pr4 bb b--black-20 ${coded==='coded'?'bg-green':(coded==='notCoded'?'bg-red':null)}`}>
-							<input 
-							name={keyArr[index]} 
-							type='text' 
-							autoComplete='blej' 
-							placeholder={`${item}`} 
-							readOnly={read}
+							<select
+							name={keyArr[index]}  
+							autoComplete='blej'
+							value={payment}
+							disabled={read}
 							onChange={(event) => onChange(event)}
-							/>
+							>
+								<option value=''>--select--</option>
+								<option value='null'>Null</option>
+								<option value='done'>Done</option>
+								<option value='notDone'>NotDone</option>
+							</select>
 						</td>
 					);
 				}
-				else
+				else if(index===elementArray.length-2)
 				{
 					return(
 						<td key={index} className={`pv3 pr4 bb b--black-20 ${coded==='coded'?'bg-green':(coded==='notCoded'?'bg-red':null)}`}>
@@ -422,6 +437,21 @@ const Row = ({rowObject, showHandler}) => {
 								<option value='coded'>Coded</option>
 								<option value='notCoded'>Not Coded</option>
 							</select>
+						</td>
+					);
+				}
+				else if(index!==elementArray.length-1)
+				{
+					return(
+						<td key={index} className={`pv3 pr4 bb b--black-20 ${coded==='coded'?'bg-green':(coded==='notCoded'?'bg-red':null)}`}>
+							<input 
+							name={keyArr[index]} 
+							type='text' 
+							autoComplete='blej' 
+							placeholder={`${item}`} 
+							readOnly={read}
+							onChange={(event) => onChange(event)}
+							/>
 						</td>
 					);
 				}

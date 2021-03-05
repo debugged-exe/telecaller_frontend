@@ -120,7 +120,8 @@ import Modal from 'react-modal';
         'Status2',
         'UpdateAfterHandover',
         'HandoverStatus',
-        'Coded Status'
+        'Coded Status',
+        'Payment Status'
       ]
 
       const {username, telecaller_id} = this.state.user;
