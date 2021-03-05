@@ -1,0 +1,19 @@
+.custom-link a{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    font-size: 14px;
+    color: white;
+}
+hr.colorWhite{
+    border: 1px solid white;
+    width: 30px;
+}
+.hoverLine:hover{
+    padding-left: 50px;
+    color: red;
+    background-color: red;
+}
+.noDecoration{
+    text-decoration: none;
+}

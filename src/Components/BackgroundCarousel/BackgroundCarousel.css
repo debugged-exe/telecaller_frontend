@@ -1,0 +1,82 @@
+.font-size{
+    font-size: 4rem;
+}
+
+.center-logo{
+    background-color: white;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-wrap;
+    position: absolute;
+    left: 45%;
+    top: 30px;
+    z-index: 3;
+    border-radius: 50%;
+}
+
+.stroke{
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-width: 2px;
+}
+
+.rec-arrow{
+    display: none;
+}
+
+.rec-dot{
+    display: none;
+}
+
+.slide1{
+    background:rgba(0, 0, 0, 0.4) url('https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8c3RvY2slMjBtYXJrZXR8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60') no-repeat center center/cover;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    background-blend-mode: darken;
+}
+.slide2{
+    background:rgba(0, 0, 0, 0.4) url('https://images.unsplash.com/photo-1559028006-448665bd7c7f?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=967&q=80') no-repeat center center/cover;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    background-blend-mode: darken;
+}
+.slide3{
+    background:rgba(0, 0, 0, 0.4) url('https://images.unsplash.com/photo-1583752028088-91e3e9880b46?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80') no-repeat center center/cover;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    background-blend-mode: darken;
+}
+
+.left-side {
+    width: 50%;
+    height: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-wrap;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+    margin-left: 30px;
+    z-index: 3;
+  }
+  
+  .link1:hover {
+    text-decoration: underline;
+  }
+  @media only screen and (max-width: 700px) {
+    .side-nav {
+      display: none;
+    }
+    .font-size{
+        font-size: 2.5rem;
+    }
+    .center-logo{
+        left: 39%;
+    }
+  }
