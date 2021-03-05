@@ -9,6 +9,12 @@ hr.colorWhite{
     border: 1px solid white;
     width: 30px;
 }
+
+.hoverLine
+{
+    transition: all 0.5s ease-out;
+}
+
 .hoverLine:hover{
     padding-left: 50px;
     color: red;

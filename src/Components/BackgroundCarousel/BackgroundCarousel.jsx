@@ -12,16 +12,16 @@ const BackgroundCarousel = () => {
           <li className="di pl3 grow">
             <a
               href="https://twitter.com"
-              className="white f6 fw6 di black link link1 hover-blue"
+              className="white f6 fw6 di black link1"
               title="TWITTER"
             >
               TWITTER
             </a>
           </li>
-          <li className="di pl3 grow">
+          <li className="di pl3">
             <a
               href="https://www.instagram.com"
-              className="white f6 fw6 di black link link1 hover-blue"
+              className="white f6 fw6 di black grow link1"
               title="INSTAGRAM"
             >
               INSTAGRAM
@@ -30,7 +30,7 @@ const BackgroundCarousel = () => {
           <li className="di pl3 grow">
             <a
               href="https://twitter.com"
-              className="white f6 fw6 di black link link1 hover-blue"
+              className="white f6 fw6 di black link1"
               title="TWITTER"
             >
               WHATSAPP
