@@ -2,8 +2,9 @@ import React,{useState} from 'react';
 import Logo from '../../Container/Images/Logo.jpeg';
 import 'tachyons';
 import './Navbar.css';
+import {Link} from 'react-router-dom';
 
-const Navbar = ({onRouteChange, route}) => {
+const Navbar = () => {
 
 	const [navbar,setNavbar] = useState('navbar')
     const [dropdown, setDropdown]  = useState('hidden');
@@ -38,25 +39,20 @@ const Navbar = ({onRouteChange, route}) => {
             </span>
                 <span className={`${dropdown}`}>
                     <ul style={{listStyle:'none'}} className={`flex ph4 ${navbar} justify-center items-center ${dropdown}`}>
-                        <li 
-                        style={{backgroundColor: '#DC3D24'}}
-                        className='f4 pointer grow ph3 mv0 br2 white b pa2'
-                        onClick={() => onRouteChange('form')}
+                        <Link 
+                        style={{outline:'none'}}
+                        className={`none ph3 white f4 mv0 b tc pt2 pointer`}
+                        to='/'
                         >
-                            Session Joining Form
-                        </li>
-                        <li 
-                        className={`none ph3 f4 mv0 b tc pt2 pointer ${route==='home'? 'active': 'effect effect-left'}`}
-                        href='#0'
-                        onClick={() => onRouteChange('home')}>
                         	Home
-                    	</li>
-                        <li 
-                        className={`none ph3 f4 mv0 b tc pt2 pointer ${route==='signin'? 'active': 'effect effect-left'}`}
-                        href='#0'
-                        onClick={() => onRouteChange('signin')}>
+                    	</Link>
+                        <Link 
+                        style={{outline:'none'}}
+                        className={`none ph3 white f4 mv0 b tc pt2 pointer `}
+                        to='/signin'
+                        >
                         	SignIn
-                        </li>
+                        </Link>
                         <li className='tc'><p className={`f6 link dim ph3 pv2 mb2 dib white bg-dark-blue cross pointer`} href='#0'
                         onClick={()=>hamburger()}
                         >

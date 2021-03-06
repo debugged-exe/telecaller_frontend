@@ -5,7 +5,7 @@ import {AiOutlineMail} from 'react-icons/ai';
 import {FaWhatsapp} from 'react-icons/fa';
 export default function stillConfusing() {
     return (
-        <section className={'mr-auto bg-dark-blue pv6'}>
+        <section className={'mr-auto bg-dark-blue pv6 tl'}>
             <div className={'pv5 pb5 w-70-ns ml-auto-ns mr-auto-ns white'}>
                 <div className={'pl3'}>
                     <p className={'pt1 mb0-ns downmove'}>START LEARNING WITH US</p>

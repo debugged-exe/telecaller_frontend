@@ -1,5 +1,11 @@
 import React, {Component} from 'react';
 import './App.css';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    HashRouter
+  } from "react-router-dom";
 import Form from './Components/Form/Form';
 import Home from './Components/Home/Home';
 import SignInPage from './Components/SignInPage/SignInPage';
@@ -60,62 +66,102 @@ class App extends Component {
 
   	render()
   	{
-  		const {route,user} = this.state;
-    	if(route==='home')
-    	{
-    		return(
-				<div>
-                    {/* <Navbar route = {route} onRouteChange={this.onRouteChange} /> */}
-    			    <Home onRouteChange={this.onRouteChange} />
-                    <Footer onRouteChange={this.onRouteChange}/>
-	    		</div>
-    		);
-    	}
-    	else if(route==='form')
-    	{
-    		return(
-				<div className="back">
-                    <Navbar route = {route} onRouteChange={this.onRouteChange}/>
-    				<Form />
-    			</div>
-    		);
-    	}
-        else if(route==='signin')
-        {
-            return(
-                <div>
-                    <Navbar route = {route} onRouteChange={this.onRouteChange}/>
-                    <SignInPage loadUser={this.loadUser} onRouteChange={this.onRouteChange} onSubmitHandler={this.onSubmitHandler} />
-                </div>
-            );
+        const {user} = this.state;
+        return(
+            <HashRouter>
+            <div className="App">
+              <Switch>
+                <Route exact path="/">
+                  <Home />
+                  <Footer/>
+                </Route>
+                
+                <Route exact path="/form">
+                  <Navbar />
+                  <Form />
+                </Route>
+
+                <Route exact path="/signin">
+                  <Navbar />
+                  <SignInPage loadUser={this.loadUser} onSubmitHandler={this.onSubmitHandler} /> 
+                </Route>
+
+                <Route exact path="/admin">
+                  <Navbar />
+                  <Admin /> 
+                </Route>
+
+                <Route exact path="/jrcaller">
+                  <Navbar />
+                  <JrCaller user={user}/> 
+                </Route>
+
+                <Route exact path="/srcaller">
+                  <Navbar />
+                  <SrCaller user={user}/>
+                </Route>
+
+              </Switch>
+            </div>
+            </HashRouter>
+        );
+  	// 	const {route,user} = this.state;
+    // 	if(route==='home')
+    // 	{
+    // 		return(
+	// 			<div>
+    //                 {/* <Navbar route = {route} onRouteChange={this.onRouteChange} /> */}
+    // 			    <Home onRouteChange={this.onRouteChange} />
+    //                 <Footer onRouteChange={this.onRouteChange}/>
+	//     		</div>
+    // 		);
+    // 	}
+    // 	else if(route==='form')
+    // 	{
+    // 		return(
+	// 			<div className="back">
+    //                 <Navbar route = {route} onRouteChange={this.onRouteChange}/>
+    // 				<Form />
+    // 			</div>
+    // 		);
+    // 	}
+    //     else if(route==='signin')
+    //     {
+    //         return(
+    //             <div>
+    //                 <Navbar route = {route} onRouteChange={this.onRouteChange}/>
+    //                 <SignInPage loadUser={this.loadUser} onRouteChange={this.onRouteChange} onSubmitHandler={this.onSubmitHandler} />
+    //             </div>
+    //         );
+    //     }
+    //     else if(route==='Admin')
+    //     {
+    //         return(
+    //             <div>
+    //                 <Navbar route = {route} onRouteChange={this.onRouteChange} />
+    //                 <Admin />
+    //             </div>
+    //         );
+    //     }
+    //     else if(route==='JrCaller')
+    //     {
+    //         return(
+    //             <div>
+    //                 <Navbar route = {route} onRouteChange={this.onRouteChange} />
+    //                 <JrCaller user={user}/>
+    //             </div>
+    //         );
+    //     }
+	// 			else if(route==='SrCaller'){
+	// 				return(
+	// 						<div>
+	// 								<Navbar route = {route} onRouteChange={this.onRouteChange} />
+	// 								<SrCaller user={user}/>
+	// 						</div>
+	// 				);
+	// 			}
+    // }
         }
-        else if(route==='Admin')
-        {
-            return(
-                <div>
-                    <Navbar route = {route} onRouteChange={this.onRouteChange} />
-                    <Admin />
-                </div>
-            );
-        }
-        else if(route==='JrCaller')
-        {
-            return(
-                <div>
-                    <Navbar route = {route} onRouteChange={this.onRouteChange} />
-                    <JrCaller user={user}/>
-                </div>
-            );
-        }
-				else if(route==='SrCaller'){
-					return(
-							<div>
-									<Navbar route = {route} onRouteChange={this.onRouteChange} />
-									<SrCaller user={user}/>
-							</div>
-					);
-				}
-    }
 }
 
 export default App;

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import 'tachyons';
 import './SignInPage.css';
 import {BeatLoader} from 'react-spinners';
+import {useHistory} from 'react-router-dom';
 
 const SignInPage = ({loadUser, onRouteChange}) => {
 
@@ -43,6 +44,7 @@ const SignInPage = ({loadUser, onRouteChange}) => {
     }
   }
 
+  let history = useHistory();
   const onSubmitHandler = (username, password) => {
     fetch('https://frozen-river-89705.herokuapp.com/signin', {
       method: 'post',
@@ -57,7 +59,8 @@ const SignInPage = ({loadUser, onRouteChange}) => {
     if(resp.des)
     {
         loadUser(resp);
-        onRouteChange(resp.des);
+        history.push('/'+resp.des);
+        
     }
     else if(resp==='Wrong Credentails')
     {

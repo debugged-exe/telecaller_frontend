@@ -5,31 +5,31 @@ import {FiInstagram} from "react-icons/fi";
 import {SiGmail} from "react-icons/si";
 import {AiOutlineTwitter} from "react-icons/ai";
 import {FaWhatsapp,FaTelegramPlane} from "react-icons/fa";
+import { Link } from "react-router-dom";
 
-function Footer({onRouteChange}) {
+function Footer() {
     return (
-        <div className="body" style={{display: 'inline-block', width: "100%"}}>
+        <div className="body tl" style={{display: 'inline-block', width: "100%"}}>
             <footer className="footer">
                 <div className="footer-left mr4">
                     <span style={{}}>
-                        <img src={Logo} alt=" Soham Kahde" style={{width: "120px", height: "120px",backgroundColor: "white",borderRadius: '50%'}} />
+                        <img src={Logo} alt="Logo" style={{width: "120px", height: "120px",backgroundColor: "white",borderRadius: '50%'}} />
                     </span>
                     <h1 className={'f2'}>
                         Cyberking <span className={'red'}>Capitals</span>
                     </h1>
                     <p className={'p1 f4'}>The Group of Investing</p>
-                    <a style={{outline:'none'}} className="f6 link dim br1 ph3 pv2 mb2 dib white bg-dark-blue" href="#0" onClick={() => onRouteChange('signin')}>Sign In</a>
+                    <Link style={{outline:'none'}} className="f6 link dim br1 ph3 pv2 mb2 dib white bg-dark-blue" to="/signin">Sign In</Link>
                 </div>
                 <ul className="footer-right">
                     <li>
-                        <h2 className={'h2 f3 dark-blue'}>HeadQuarter - India</h2>
                         <ul className="box lh-copy f4">
                             <li><a href={'tel:919156104002'}>+91 91561 04002</a></li>
                             <li><a href={'https://google.com'} target={'_blank'}>cyberkingcapitals@gmail.com</a></li>
                         </ul>
                     </li>
                     <li className="features">
-                        <h2 className={'h2 dark-blue'}> CONNECT WITH US</h2>
+                        <h2 className={'h2 dark-blue mt0'}> CONNECT WITH US</h2>
                         <ul style={{display:'flex'}} className="box">
                             <li><a href={"https://google.com"} target={'_blank'} className={'flex items-center'}><FiInstagram size="2rem" color="white" className={'pr3'}/></a></li>
                             <li><a href="https://google.com" target={'_blank'} className={'flex items-center'} ><SiGmail size="2rem" color="white" className={'pr3'}/></a></li>

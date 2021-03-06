@@ -6,7 +6,7 @@ import Angel from './Angel-Broking.jpg';
 
 export default function OpenAccount() {
     return (
-        <section className={'mr-auto w-100 bg-black white'}>
+        <section className={'mr-auto w-100 bg-black white tl'}>
             <div className={'pv5 pb5 w-80-ns ml-auto-ns mr-auto-ns'}>
                 <div className={''}>
 
