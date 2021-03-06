@@ -1,21 +1,20 @@
 {
   "files": {
-    "main.css": "/static/css/main.9c42aaac.chunk.css",
-    "main.js": "/static/js/main.82c7293d.chunk.js",
-    "main.js.map": "/static/js/main.82c7293d.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.d348bd13.js",
-    "runtime-main.js.map": "/static/js/runtime-main.d348bd13.js.map",
+    "main.css": "/static/css/main.8cfdd5ce.chunk.css",
+    "main.js": "/static/js/main.d67efd83.chunk.js",
+    "main.js.map": "/static/js/main.d67efd83.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.0474432c.js",
+    "runtime-main.js.map": "/static/js/runtime-main.0474432c.js.map",
     "static/css/2.31461e4f.chunk.css": "/static/css/2.31461e4f.chunk.css",
-    "static/js/2.84a9bdd0.chunk.js": "/static/js/2.84a9bdd0.chunk.js",
-    "static/js/2.84a9bdd0.chunk.js.map": "/static/js/2.84a9bdd0.chunk.js.map",
-    "static/js/3.66724a3d.chunk.js": "/static/js/3.66724a3d.chunk.js",
-    "static/js/3.66724a3d.chunk.js.map": "/static/js/3.66724a3d.chunk.js.map",
+    "static/js/2.1267c203.chunk.js": "/static/js/2.1267c203.chunk.js",
+    "static/js/2.1267c203.chunk.js.map": "/static/js/2.1267c203.chunk.js.map",
+    "static/js/3.03af2d77.chunk.js": "/static/js/3.03af2d77.chunk.js",
+    "static/js/3.03af2d77.chunk.js.map": "/static/js/3.03af2d77.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.31461e4f.chunk.css.map": "/static/css/2.31461e4f.chunk.css.map",
-    "static/css/main.9c42aaac.chunk.css.map": "/static/css/main.9c42aaac.chunk.css.map",
-    "static/js/2.84a9bdd0.chunk.js.LICENSE.txt": "/static/js/2.84a9bdd0.chunk.js.LICENSE.txt",
+    "static/css/main.8cfdd5ce.chunk.css.map": "/static/css/main.8cfdd5ce.chunk.css.map",
+    "static/js/2.1267c203.chunk.js.LICENSE.txt": "/static/js/2.1267c203.chunk.js.LICENSE.txt",
     "static/media/Angel-Broking.42e58658.jpg": "/static/media/Angel-Broking.42e58658.jpg",
-    "static/media/Background.23e06f01.png": "/static/media/Background.23e06f01.png",
     "static/media/OurTraining.css": "/static/media/CyberkingCapitals.687d032c.png",
     "static/media/FormBg.5ab80fbd.png": "/static/media/FormBg.5ab80fbd.png",
     "static/media/Logo.322e1831.svg": "/static/media/Logo.322e1831.svg",
@@ -23,10 +22,10 @@
     "static/media/Untitled design (1).322e1831.svg": "/static/media/Untitled design (1).322e1831.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.d348bd13.js",
+    "static/js/runtime-main.0474432c.js",
     "static/css/2.31461e4f.chunk.css",
-    "static/js/2.84a9bdd0.chunk.js",
-    "static/css/main.9c42aaac.chunk.css",
-    "static/js/main.82c7293d.chunk.js"
+    "static/js/2.1267c203.chunk.js",
+    "static/css/main.8cfdd5ce.chunk.css",
+    "static/js/main.d67efd83.chunk.js"
   ]
 }
