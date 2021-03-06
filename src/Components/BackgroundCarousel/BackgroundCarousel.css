@@ -14,6 +14,16 @@
     border-radius: 50%;
 }
 
+.center-tagline{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-wrap;
+    position: absolute;
+    right: 5%;
+    top: 60px;
+    z-index: 3;
+}
+
 .stroke{
     -webkit-text-fill-color: transparent;
     -webkit-text-stroke-width: 2px;
@@ -86,5 +96,8 @@
     }
     .center-logo{
         left: 39%;
+    }
+    .center-tagline{
+        display: none;
     }
   }

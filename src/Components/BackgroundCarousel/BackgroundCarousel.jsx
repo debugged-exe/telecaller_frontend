@@ -7,7 +7,8 @@ const BackgroundCarousel = () => {
     return(
         <div style={{marginLeft:'-10px',marginRight:'-10px'}}>
             <img src={Logo} style={{height:'100px',width:'100px'}} className='center-logo' alt='Logo'/>
-            <aside className="left-side side-nav">
+        <div className='center-tagline red b f4 pointer'>We Rise by Lifting Others</div>
+        <aside className="left-side side-nav">
         <ul className="mr-auto ml-auto">
           <li className="di pl3 grow">
             <a

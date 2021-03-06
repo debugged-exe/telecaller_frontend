@@ -4,7 +4,7 @@ import Logo from './Untitled design (1).svg';
 import {FiInstagram} from "react-icons/fi";
 import {SiGmail} from "react-icons/si";
 import {AiOutlineTwitter} from "react-icons/ai";
-import {FaWhatsapp} from "react-icons/fa";
+import {FaWhatsapp,FaTelegramPlane} from "react-icons/fa";
 
 function Footer({onRouteChange}) {
     return (
@@ -17,7 +17,7 @@ function Footer({onRouteChange}) {
                     <h1 className={'f2'}>
                         Cyberking <span className={'red'}>Capitals</span>
                     </h1>
-                    <p className={'p1 f4'}>We Rise by Lifting Other's</p>
+                    <p className={'p1 f4'}>The Group of Investing</p>
                     <a style={{outline:'none'}} className="f6 link dim br1 ph3 pv2 mb2 dib white bg-dark-blue" href="#0" onClick={() => onRouteChange('signin')}>Sign In</a>
                 </div>
                 <ul className="footer-right">
@@ -25,7 +25,7 @@ function Footer({onRouteChange}) {
                         <h2 className={'h2 f3 dark-blue'}>HeadQuarter - India</h2>
                         <ul className="box lh-copy f4">
                             <li><a href={'tel:919156104002'}>+91 91561 04002</a></li>
-                            <li><a href={'https://google.com'} target={'_blank'}>abc@gmail.com</a></li>
+                            <li><a href={'https://google.com'} target={'_blank'}>cyberkingcapitals@gmail.com</a></li>
                         </ul>
                     </li>
                     <li className="features">
@@ -35,6 +35,7 @@ function Footer({onRouteChange}) {
                             <li><a href="https://google.com" target={'_blank'} className={'flex items-center'} ><SiGmail size="2rem" color="white" className={'pr3'}/></a></li>
                             <li><a href="https://google.com" target={'_blank'} className={'flex items-center'} ><AiOutlineTwitter size="2rem" color="white" className={'pr3'}/></a></li>
                             <li><a href="https://google.com" target={'_blank'} className={'flex items-center'} ><FaWhatsapp size="2rem" color="white" className={'pr3'}/></a></li>
+                            <li><a href="https://google.com" target={'_blank'} className={'flex items-center'} ><FaTelegramPlane size="2rem" color="white" className={'pr3'}/></a></li>
                         </ul>
                     </li>
                 </ul>

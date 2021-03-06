@@ -24,7 +24,7 @@ export default function OurTraining() {
                                 borderRadius: '50%'
                             }}/>
                             <h1 className='ma0'><span>Cyberking <span className={'red'}>Capitals</span> </span></h1>
-                            <p className={'ma0 mb4 f3'}>We Rise by Lifting Other's</p>
+                            <p className={'ma0 mb4 f3'}>We Rise by Lifting Others</p>
                             </div>
                         The Well Designed and Informative Lessons, Clear Instructions, and Dedicated Support Team make
                         sure that our clients get the BEST TRAINING on the Stock Market. When you train with us, you get

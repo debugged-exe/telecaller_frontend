@@ -2,7 +2,7 @@ import React from "react";
 import 'tachyons';
 import './OpenAccount.css';
 import ZerodhaImg from './Zerodha.jpg';
-import FypersImg from './Fyers.png';
+import Angel from './Angel-Broking.jpg';
 
 export default function OpenAccount() {
     return (
@@ -20,7 +20,7 @@ export default function OpenAccount() {
                         <div className={'flex flex-wrap justify-center'}>
                             <div className="tc">
                                 <div>
-                                    <img width="290px" className="img-fluid partner_img" src={ZerodhaImg}
+                                    <img width="290px" height='130px' className="img-fluid partner_img" src={ZerodhaImg}
                                          alt="Zerodha Logo"/>
                                 </div>
                                 <p className={'w-70-ns f4-ns mr-auto ml-auto '}>
@@ -43,7 +43,7 @@ export default function OpenAccount() {
                         <div className={'flex flex-wrap justify-center'}>
                             <div className="tc">
                                 <div>
-                                    <img width="290px" className="img-fluid partner_img" src={FypersImg}
+                                    <img width="290px" height='130px' className="img-fluid partner_img" src={Angel}
                                          alt="Zerodha Logo"/>
                                 </div>
                                 <p className={'w-70-ns f4-ns mr-auto ml-auto '}>
