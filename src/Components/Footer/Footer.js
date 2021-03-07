@@ -25,17 +25,17 @@ function Footer() {
                     <li>
                         <ul className="box lh-copy f4">
                             <li><a href={'tel:919156104002'}>+91 91561 04002</a></li>
-                            <li><a href={'https://google.com'} target={'_blank'}>cyberkingcapitals@gmail.com</a></li>
+                            <li><a href={'https://mailto:cyberkingcapitals@gmail.com'} target={'_blank'}>cyberkingcapitals@gmail.com</a></li>
                         </ul>
                     </li>
                     <li className="features">
                         <h2 className={'h2 dark-blue mt0'}> CONNECT WITH US</h2>
                         <ul style={{display:'flex'}} className="box">
-                            <li><a href={"https://google.com"} target={'_blank'} className={'flex items-center'}><FiInstagram size="2rem" color="white" className={'pr3'}/></a></li>
-                            <li><a href="https://google.com" target={'_blank'} className={'flex items-center'} ><SiGmail size="2rem" color="white" className={'pr3'}/></a></li>
+                            <li><a href={"https://instagram.com/cyberking_capitals?igshid=mjv77zi1djho"} target={'_blank'} className={'flex items-center'}><FiInstagram size="2rem" color="white" className={'pr3'}/></a></li>
+                            <li><a href="https://mailto:cyberkingcapitals@gmail.com" target={'_blank'} className={'flex items-center'} ><SiGmail size="2rem" color="white" className={'pr3'}/></a></li>
                             <li><a href="https://google.com" target={'_blank'} className={'flex items-center'} ><AiOutlineTwitter size="2rem" color="white" className={'pr3'}/></a></li>
-                            <li><a href="https://google.com" target={'_blank'} className={'flex items-center'} ><FaWhatsapp size="2rem" color="white" className={'pr3'}/></a></li>
-                            <li><a href="https://google.com" target={'_blank'} className={'flex items-center'} ><FaTelegramPlane size="2rem" color="white" className={'pr3'}/></a></li>
+                            <li><a href="https://wa.me/9191566104002" target={'_blank'} className={'flex items-center'} ><FaWhatsapp size="2rem" color="white" className={'pr3'}/></a></li>
+                            <li><a href="https://t.me/cyberkingcapitals" target={'_blank'} className={'flex items-center'} ><FaTelegramPlane size="2rem" color="white" className={'pr3'}/></a></li>
                         </ul>
                     </li>
                 </ul>

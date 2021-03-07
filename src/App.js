@@ -68,8 +68,7 @@ class App extends Component {
   	{
         const {user} = this.state;
         return(
-            <HashRouter>
-            <div className="App">
+            <Router>
               <Switch>
                 <Route exact path="/">
                   <Home />
@@ -102,8 +101,7 @@ class App extends Component {
                 </Route>
 
               </Switch>
-            </div>
-            </HashRouter>
+            </Router>
         );
   	// 	const {route,user} = this.state;
     // 	if(route==='home')

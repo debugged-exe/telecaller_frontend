@@ -1,5 +1,4 @@
 import React,{useState} from 'react';
-import FormBg from '../../Container/Images/FormBg.png';
 import './Form.css';
 import ReCAPTCHA from "react-google-recaptcha";
 require('dotenv').config();
@@ -213,9 +212,9 @@ const Form = () => {
                 <legend className="f2 red fw6 ph0 mh0 pv2 tc">Session Joining Form</legend>
                 <hr/>
                     <div className="mv3">
-                        <label className="db fw6 lh-copy f4" htmlFor="email-address">Name</label>
+                        <label className="db fw6 lh-copy f4" htmlFor="email-address">Full Name</label>
 		                <input 
-                        placeholder='Enter your Name'
+                        placeholder='Enter your full name'
                         autoComplete="blej" 
                         className="pa2 input-reset ba bg-transparent hover-black w-100" 
                         type="text" 
@@ -225,9 +224,9 @@ const Form = () => {
                     </div>
 
                     <div className="mv3">
-                        <label className="db fw6 lh-copy f4" htmlFor="email-address">Phone</label>
+                        <label className="db fw6 lh-copy f4" htmlFor="email-address">Phone Number</label>
 		                <input
-                        placeholder='Enter your Phone' 
+                        placeholder='Enter your Phone no.' 
                         autoComplete="blej"
                         className="pa2 input-reset ba bg-transparent hover-black w-100" 
                         type="text" 
@@ -250,7 +249,7 @@ const Form = () => {
                     </div>
                     
                     <div className="mv3">
-                        <label className="db fw6 lh-copy f4">Trading Knowledge</label>
+                        <label className="db fw6 lh-copy f4">Do you have any prior knowledge of Stock-market?</label>
 		                <select 
                         autoComplete="blej"
                         className="pa2 input-reset ba bg-transparent hover-black w-100"
@@ -263,7 +262,7 @@ const Form = () => {
                     </div>
 
                     <div className="mv3">
-                        <label className="db fw6 lh-copy f4">Demat</label>
+                        <label className="db fw6 lh-copy f4">Do you have any Demat Account?</label>
 		                <select 
                         autoComplete="blej"
                         className="pa2 input-reset ba bg-transparent hover-black w-100"
@@ -275,7 +274,7 @@ const Form = () => {
                     </div>
 
                     <div className="mv3">
-                        <label className="db fw6 lh-copy f4" htmlFor="email-address">Broker Name</label>
+                        <label className="db fw6 lh-copy f4" htmlFor="email-address">If you have any Demat Account mention your Broker name</label>
 		                <input  
                         autoComplete="blej"
                         className="pa2 input-reset ba bg-transparent hover-black w-100" 
@@ -287,7 +286,7 @@ const Form = () => {
                     </div>
 
                     <div className="mv3">
-                        <label className="db fw6 lh-copy f4">Preferred Language</label>
+                        <label className="db fw6 lh-copy f4">Which language do you prefer for Counseling call from us?</label>
 		                <select 
                         autoComplete="blej"
                         className="pa2 input-reset ba bg-transparent hover-black w-100"
