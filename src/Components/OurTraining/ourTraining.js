@@ -12,7 +12,7 @@ export default function OurTraining() {
                         <div className={'w-100-ns pl3 f3-ns tl-ns'}><h1>Our <span className={'red'}>Training</span></h1>
                         </div>
                         <h4 className={'pl3 pr6-ns pt4-ns lh-copy'}>
-                            “INTRADAY TRADING IS THE MOST PROFITABLE THING IF YOU ARE A DISCIPLINED TRADER.”
+                            “Money Needs To Be Invested To Cover The Cost Of Inflation. This Opens Us To The Stock Market. However Is It Safe Or Is It Way To Risky Or Probably Gambling.... NO!”
                         </h4>
                     </div>
                     <div className={'pl2 pr3 w-50-ns f4-ns tc lh-copy'}>
@@ -24,15 +24,9 @@ export default function OurTraining() {
                                 borderRadius: '50%'
                             }}/>
                             <h1 className='ma0'><span>Cyberking <span className={'red'}>Capitals</span> </span></h1>
-                            <p className={'ma0 mb4 f3'}>We Rise by Lifting Other's</p>
-                            </div>
-                        The Well Designed and Informative Lessons, Clear Instructions, and Dedicated Support Team make
-                        sure that our clients get the BEST TRAINING on the Stock Market. When you train with us, you get
-                        the opportunity to LEARN the skills needed to execute our CORE STRATEGY. Our proven techniques
-                        will help you generate regular INCOME and create WEALTH for a secure future. Cyberking Capitals
-                        offers a
-                        comprehensive course covering diverse asset classes. You get the opportunity to CHOOSE the one
-                        that best suits your trading or investing style.
+                            <p className={'ma0 mb4 f3'}>We Rise by Lifting Others</p>
+                            </div>CYBERKING CAPITALS Presents You Best Stock Market Trainings Free Of Cost To Beginners Who Are Eager To Learn Of All Age Groups. This Leading Institute Is Started By Youngsters (YOUTH OF INDIA) With The Aim Of Helping Communities To Expand Horizon And Knowledge. Not Only They Are Teaching But Also Inspiring And Guiding Rural Maharashtra Locals To Follow The Leads. 
+Get In Touch With This Fantastic Team To Grab Such A Great Opportunity In Today's Era.
                         <br/>
                         <span><hr style={{float: "left"}} color={'red'} className={'mt5'} width={"15%"}/></span>
                     </div>

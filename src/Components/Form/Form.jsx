@@ -1,6 +1,5 @@
 import React,{useState} from 'react';
-import FormBg from '../../Container/Images/FormBg.png';
-import Background from '../../Container/Images/Background.png';
+import './Form.css';
 import ReCAPTCHA from "react-google-recaptcha";
 require('dotenv').config();
  
@@ -205,18 +204,19 @@ const Form = () => {
     }
 
     return (
-        <div style={{backgroundImage: `url(${Background})`}}className='flex items-center pv4 justify-center'>
+        <div className='form-bg flex items-center pv4 justify-center'>
             <div className='w-100'>
-            <form style={{backgroundImage:`url(${FormBg})`}} className="measure center br3 shadow-2">
+            <form className="measure center br3 white tl">
                 <fieldset id="sign_up" className="ba b--transparent mh0">
 
-                <legend className="f2 fw6 ph0 mh0 pv2 tc">Session Joining Form</legend>
+                <legend className="f2 red fw6 ph0 mh0 pv2 tc">Session Joining Form</legend>
                 <hr/>
                     <div className="mv3">
-                        <label className="db fw6 lh-copy f4" htmlFor="email-address">Name</label>
+                        <label className="db fw6 lh-copy f4" htmlFor="email-address">Full Name</label>
 		                <input 
+                        placeholder='Enter your full name'
                         autoComplete="blej" 
-                        className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
+                        className="pa2 input-reset ba bg-transparent hover-black w-100" 
                         type="text" 
                         onChange={(event) => setNameField(event)}
                         onBlur={() => nameValidate()}/>
@@ -224,10 +224,11 @@ const Form = () => {
                     </div>
 
                     <div className="mv3">
-                        <label className="db fw6 lh-copy f4" htmlFor="email-address">Phone</label>
-		                <input 
+                        <label className="db fw6 lh-copy f4" htmlFor="email-address">Phone Number</label>
+		                <input
+                        placeholder='Enter your Phone no.' 
                         autoComplete="blej"
-                        className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
+                        className="pa2 input-reset ba bg-transparent hover-black w-100" 
                         type="text" 
                         onChange={(event) => setMobileField(event)}
                         onBlur={() => mobileValidate()}
@@ -236,9 +237,10 @@ const Form = () => {
                     </div>
                     <div className="mv3">
                         <label className="db fw6 lh-copy f4" htmlFor="email-address">City</label>
-		                <input  
+		                <input
+                        placeholder='Enter your City'  
                         autoComplete="blej"
-                        className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
+                        className="pa2 input-reset ba bg-transparent hover-black w-100" 
                         type="text" 
                         onChange={(event) => setPermCityField(event)}
                         onBlur={() => permCityValidate()}
@@ -247,10 +249,10 @@ const Form = () => {
                     </div>
                     
                     <div className="mv3">
-                        <label className="db fw6 lh-copy f4">Trading Knowledge</label>
+                        <label className="db fw6 lh-copy f4">Do you have any prior knowledge of Stock-market?</label>
 		                <select 
                         autoComplete="blej"
-                        className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+                        className="pa2 input-reset ba bg-transparent hover-black w-100"
                         onChange={(event) => setKnowledgeField(event)}
                         >
 		        	        <option className = 'db fw6 lh-copy f4 greyed' value='None'>---Select---</option>
@@ -260,10 +262,10 @@ const Form = () => {
                     </div>
 
                     <div className="mv3">
-                        <label className="db fw6 lh-copy f4">Demat</label>
+                        <label className="db fw6 lh-copy f4">Do you have any Demat Account?</label>
 		                <select 
                         autoComplete="blej"
-                        className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+                        className="pa2 input-reset ba bg-transparent hover-black w-100"
                         onChange={(event) => setDematField(event)}>
 		        	        <option className = 'db fw6 lh-copy f4 greyed' value='No'>---Select---</option>
 		        	        <option className = 'db fw6 lh-copy f4' value='Yes'>Yes</option>
@@ -272,10 +274,10 @@ const Form = () => {
                     </div>
 
                     <div className="mv3">
-                        <label className="db fw6 lh-copy f4" htmlFor="email-address">Broker Name</label>
+                        <label className="db fw6 lh-copy f4" htmlFor="email-address">If you have any Demat Account mention your Broker name</label>
 		                <input  
                         autoComplete="blej"
-                        className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
+                        className="pa2 input-reset ba bg-transparent hover-black w-100" 
                         type="text" 
                         placeholder='eg: Zerodha, Upstocks'
                         disabled={brokerDisable}
@@ -284,10 +286,10 @@ const Form = () => {
                     </div>
 
                     <div className="mv3">
-                        <label className="db fw6 lh-copy f4">Preferred Language</label>
+                        <label className="db fw6 lh-copy f4">Which language do you prefer for Counseling call from us?</label>
 		                <select 
                         autoComplete="blej"
-                        className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+                        className="pa2 input-reset ba bg-transparent hover-black w-100"
                         onChange={(event) => setPreferredLangField(event)}
                         onBlur={() => preferredLangValidate()}
                         >
@@ -308,6 +310,7 @@ const Form = () => {
                 <div className="flex justify-center items-center">
                         <input 
                         className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f4 dib mb3" 
+                        style={{backgroundColor:'red',color:'white'}}
                         type="button" 
                         value="Submit" 
                         onClick = {() => onSubmitHandler()}/>
