@@ -9,6 +9,8 @@ const JrCaller = ({user}) => {
         'LeadId',
         'LeadName',
         'LeadContact',
+        'WhatsappNo',
+        'AccountOpening No',
         'LeadCity',
         'Demat Account',
         'Broker Name',

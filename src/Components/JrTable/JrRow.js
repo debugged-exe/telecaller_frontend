@@ -2,7 +2,7 @@ import React,{useState} from 'react';
 import './JrRow.css';
 
 const JrRow = ({rowObject, onRefresh}) => {
-	const {lead_id, lead_phone_number, handoverstatus, call_status_1, call_status_2, coded} = rowObject;
+	const {lead_id, lead_phone_number, whatsapp_number, handoverstatus, call_status_1, call_status_2, coded} = rowObject;
 	var disable;
 
 	if (handoverstatus==='Handed') {
@@ -21,13 +21,7 @@ const JrRow = ({rowObject, onRefresh}) => {
 	const [status1, setStatus1] = useState(call_status_1)
 	const [status2, setStatus2] = useState(call_status_2)
 
-	const status1Handler = (event) => {
-		setStatus1(event.target.value);
-	}
-
-	const status2Handler = (event) => {
-		setStatus2(event.target.value);
-	}
+	const [whatsapp, setWhatsapp] = useState(whatsapp_number);
 
 	const onChange = (event) => {
 		const {value, name} = event.target;
@@ -35,10 +29,15 @@ const JrRow = ({rowObject, onRefresh}) => {
 		{
 			setStatus1(value);
 		}
-		else
+		else if(name==='call_status_2')
 		{
 			setStatus2(value);
 		}
+		else if(name==='whatsapp')
+		{
+			setWhatsapp(value);
+		}
+		console.log(whatsapp);
 	}
 
 	const onSubmit = () => {
@@ -48,7 +47,8 @@ const JrRow = ({rowObject, onRefresh}) => {
             body: JSON.stringify({
             	lead_phone_number: lead_phone_number,
                 call_status_1: status1,
-                call_status_2: status2
+                call_status_2: status2,
+                whatsapp_number: whatsapp
             })
 	        })
 	        .then(response => response.json())
@@ -110,13 +110,28 @@ const JrRow = ({rowObject, onRefresh}) => {
 		<>
 		{
 			elementArray.map((item,index) => {
-				if(index>=0 && index<=7)
+				if(index>=0 && index<=9 && index!==3)
 				{
 					return(
 						<td key={index} className={`${coded==='coded'?'bg-green white fw6':(coded==='notCoded'?'bg-red white fw6':(handoverstatus==='Handed'?'bg-moon-gray':null))} pv3 pr3 bb b--black-20`}>{item}</td>
 					);
 				}
-				else if(index===8)
+				else if(index===3)
+				{
+					return(
+						<td key={index} className={`${coded==='coded'?'bg-green white fw6':(coded==='notCoded'?'bg-red white fw6':(handoverstatus==='Handed'?'bg-moon-gray':null))} pv3 pr3 bb b--black-20`}>
+							<input 
+							type='text' 
+							name="whatsapp" 
+							autoComplete='blej'
+							placeholder={`${item}`} 
+							readOnly={read}
+							onChange={(event) => onChange(event)}
+							/>
+						</td>
+					)
+				}
+				else if(index===10)
 				{
 					return(
 						<td key={index} className={`${coded==='coded'?'bg-green white fw6':(coded==='notCoded'?'bg-red white fw6':(handoverstatus==='Handed'?'bg-moon-gray':null))} pv3 pr3 bb b--black-20`}>
@@ -131,7 +146,7 @@ const JrRow = ({rowObject, onRefresh}) => {
 						</td>
 					);
 				}
-				else if(index===9)
+				else if(index===11)
 				{
 					return(
 						<td key={index} className={`${coded==='coded'?'bg-green white fw6':(coded==='notCoded'?'bg-red white fw6':(handoverstatus==='Handed'?'bg-moon-gray':null))} pv3 pr3 bb b--black-20`}>
