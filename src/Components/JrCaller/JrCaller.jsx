@@ -120,13 +120,12 @@ const JrCaller = ({user}) => {
                 href="#0"
                 onClick = {() => onRefresh()}
                 >
-                    Refresh          
+                    Refresh        
                 </div>
             </div>
                <JrTable headerArray={leadDataHeader} ContentArray={leadData} onRefresh={onRefresh}/>
             </div>
         </div>
-
     );
 }
 

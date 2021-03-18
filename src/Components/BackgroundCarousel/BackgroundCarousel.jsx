@@ -39,7 +39,7 @@ const BackgroundCarousel = () => {
           </li>
         </ul>
       </aside>
-            <Carousel enableAutoPlay='true' autoPlaySpeed='2000'>
+            <Carousel enableAutoPlay={true} autoPlaySpeed={2000}>
                 <div className='slide1 flex justify-center items-center font-size flex-column'>
                     <div className='red b tl'>
                         CREATE

@@ -1,19 +1,13 @@
 import React,{useState} from 'react';
 
 const ModalRow = ({rowObject,fetchLogs}) => {
-	const {lead_id, lead_phone_number, handoverstatus, call_status_1, call_status_2, updatehandover, coded} = rowObject;
+	const {lead_id, lead_phone_number, whatsapp_number, accountopening_number, handoverstatus, call_status_1, call_status_2, updatehandover, coded} = rowObject;
 
 	const [status1, setStatus1] = useState(call_status_1)
 	const [status2, setStatus2] = useState(call_status_2)
 	const [update, setUpdate] = useState(updatehandover)
-
-	const status1Handler = (event) => {
-		setStatus1(event.target.value);
-	}
-
-	const status2Handler = (event) => {
-		setStatus2(event.target.value);
-	}
+	const [whatsapp, setWhatsapp] = useState(whatsapp_number)
+	const [accountopening, setAccountOpening] = useState(accountopening_number)
 
 	const onChange = (event) => {
 		const {value, name} = event.target;
@@ -25,9 +19,17 @@ const ModalRow = ({rowObject,fetchLogs}) => {
 		{
 			setStatus2(value);
 		}
-		else
+		else if(name==='updatehandover')
 		{
 			setUpdate(value);
+		}
+		else if(name==='whatsapp')
+		{
+			setWhatsapp(value);
+		}
+		else if(name==='accountopening')
+		{
+			setAccountOpening(value);
 		}
 	}
 
@@ -41,7 +43,9 @@ const ModalRow = ({rowObject,fetchLogs}) => {
             	lead_phone_number: lead_phone_number,
                 call_status_1: status1,
                 call_status_2: status2,
-                updatehandover: update
+                updatehandover: update,
+                whatsapp_number: whatsapp,
+                accountopening_number: accountopening
             })
 	        })
 	        .then(response => response.json())
@@ -50,6 +54,10 @@ const ModalRow = ({rowObject,fetchLogs}) => {
 	            	alert('Status updated successfully.')
 	            	fetchLogs()
 	            }
+	            else if(resp==='Not Unique')
+	       		{
+	       			alert('The given whatsapp/accountopening number is already registered.Please enter other contact and try again.')
+	       		}
 	            else
 	            {
 	            	alert('OOps something went wrong.Please try again.')
@@ -81,13 +89,43 @@ const ModalRow = ({rowObject,fetchLogs}) => {
 		<>
 		{
 			elementArray.map((item,index) => {
-				if(index>=0 && index<=7)
+				if(index>=0 && index<=9 && index!==3 && index!=4)
 				{
 					return(
 						<td key={index} className={`${coded==='coded'?'bg-green white fw6':(coded==='notCoded'?'bg-red white fw6':(handoverstatus==='Handed'?'bg-moon-gray':null))} pv3 pr3 bb b--black-20`}>{item}</td>
 					);
 				}
-				else if(index===8)
+				else if(index===3)
+				{
+					return(	
+						<td key={index} className={`${coded==='coded'?'bg-green white fw6':(coded==='notCoded'?'bg-red white fw6':(handoverstatus==='Handed'?'bg-moon-gray':null))} pv3 pr3 bb b--black-20`}>
+							<input 
+							type='text' 
+							name="whatsapp" 
+							autoComplete='blej'
+							placeholder={`${item}`} 
+							readOnly={read}
+							onChange={(event) => onChange(event)}
+							/>
+						</td>
+					);
+				}
+				else if(index===4)
+				{
+					return(	
+						<td key={index} className={`${coded==='coded'?'bg-green white fw6':(coded==='notCoded'?'bg-red white fw6':(handoverstatus==='Handed'?'bg-moon-gray':null))} pv3 pr3 bb b--black-20`}>
+							<input 
+							type='text' 
+							name="accountopening" 
+							autoComplete='blej'
+							placeholder={`${item}`} 
+							readOnly={read}
+							onChange={(event) => onChange(event)}
+							/>
+						</td>
+					);
+				}
+				else if(index===10)
 				{
 					return(
 						<td key={index} className={`${coded==='coded'?'bg-green white fw6':(coded==='notCoded'?'bg-red white fw6':(handoverstatus==='Handed'?'bg-moon-gray':null))} pv3 pr3 bb b--black-20`}>
@@ -102,7 +140,7 @@ const ModalRow = ({rowObject,fetchLogs}) => {
 						</td>
 					);
 				}
-				else if(index===9)
+				else if(index===11)
 				{
 					return(
 						<td key={index} className={`${coded==='coded'?'bg-green white fw6':(coded==='notCoded'?'bg-red white fw6':(handoverstatus==='Handed'?'bg-moon-gray':null))} pv3 pr3 bb b--black-20`}>
@@ -117,7 +155,7 @@ const ModalRow = ({rowObject,fetchLogs}) => {
 						</td>
 					);
 				}
-				else if(index===10)
+				else if(index===12)
 				{
 					return(
 						<td key={index} className={`${coded==='coded'?'bg-green white fw6':(coded==='notCoded'?'bg-red white fw6':(handoverstatus==='Handed'?'bg-moon-gray':null))} pv3 pr3 bb b--black-20`}>

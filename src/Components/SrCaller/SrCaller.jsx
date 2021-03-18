@@ -111,6 +111,8 @@ import Modal from 'react-modal';
         'LeadId',
         'LeadName',
         'LeadContact',
+        'Whatsapp',
+        'AccountOpening No',
         'LeadCity',
         'Demat Account',
         'Broker Name',
