@@ -29,7 +29,7 @@ export default function OpenAccount() {
                                     introducing low brokerage scheme.
                                 </p>
                                 <div className={'db custom-link w-60-ns f3-ns hoverLine mr-auto ml-auto mt5 ba pt3 pl3 pb3 b--red br3'}>
-                                    <a className={'noDecoration'} href={'www.google.com'}>
+                                    <a className={'noDecoration'} target='_blank' href={'https://zerodha.com/open-account?c=ZMPAIV'}>
                                         <div className={'lines'}>
                                             <hr className={'colorWhite'}/>
                                         </div>
@@ -49,7 +49,7 @@ export default function OpenAccount() {
                                 <p className={'w-70-ns f4-ns mr-auto ml-auto '}>
                                 Angel Broking is a low brokerage stock broker in India. They are among the cheapest stock broker online. Angel Broking simple pricing model offers trading across segments for same flat brokerage fee of maximum ₹20 per executed order.</p>
                                 <div className={'db custom-link w-60-ns hoverLine f3-ns mr-auto ml-auto mt5 ba pt3 pl3 pb3 b--red br3'}>
-                                    <a className={'noDecoration'} href={'www.google.com'}>
+                                    <a className={'noDecoration'} target='_blank' href={'http://tinyurl.com/ybanzogq'}>
                                         <div className={'lines'}>
                                             <hr className={'colorWhite '}/>
                                         </div>
