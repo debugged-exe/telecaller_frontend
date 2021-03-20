@@ -384,6 +384,37 @@ const Admin = () => {
     	})
     }
 
+    const [leadNameFilter, setLeadNameFilter] = useState('')
+
+    const fetchByName = () => {
+    	fetch('https://frozen-river-89705.herokuapp.com/admin/name', {
+    		method: 'post',
+    		headers: {'Content-Type': 'application/json'},
+    		body: JSON.stringify({
+    			leadNameFilter: leadNameFilter
+    		})
+    	})
+    	.then(response => response.json())
+    	.then(resp => {
+    		if(resp!=='Unable to fetch')
+       		{
+       			setLeadData(resp)
+       		}
+       		else if(resp==='Incorrect submission')
+       		{
+       			alert(resp);
+       		}
+       		else
+       		{
+       			alert('Unable to fetch.Please try again.')
+       		}
+    	})
+    	.catch(err =>{
+    		console.log(err)
+    		alert('OOPs...something went wrong.Please try again.');
+    	})
+    }
+
     useEffect(() => {
     	fetchBatch()
     	fetchSrCallers()
@@ -574,24 +605,36 @@ const Admin = () => {
 		                    Show Data
 		                    </div>
 		                    <div 
-		                    className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2 pointer" 
-		                    href="#0"
+		                    className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2 pointer"
 		                    onClick = {() => showHandler()} 
 		                    >
 		                    Refresh
 		                    </div>
 		                </div>
+		                <div className="flex justify-center">
+		                	<input 
+		                	type="text" 
+		                	className="ma2" 
+		                	placeholder="Search by telecallerName"
+		                	style={{width: "190px"}}
+		                	onChange={(event) => setLeadNameFilter(event.target.value)}
+		                	/>
+		                	<div 
+		                	className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2 pointer"
+		                	onClick = {() => fetchByName()}
+		                	>
+		                	Search
+		                	</div>
+		                </div>
 		                <Table showHandler={showHandler} headerArray={leadDataHeader} ContentArray={leadData} />
 		                <div className="flex">
 			                <div
-			                className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2 pointer" 
-			                href="#0"
+			                className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2 pointer"
 			                onClick={() => setPopStateField()}>
 			                Register New Telecallers            
 			            	</div>
 			                <div
-			                className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2 pointer" 
-			                href="#0"
+			                className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2 pointer"
 			                onClick={() => setPopPayStateField()}>
 			                Check Telecaller Logs            
 			            	</div>
