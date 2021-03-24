@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import Logo from '../../Container/Images/Logo.jpeg';
+import Logo from '../../Container/Images/Logo_3D.png';
 import 'tachyons';
 import './Navbar.css';
 import {Link} from 'react-router-dom';
@@ -26,7 +26,7 @@ const Navbar = () => {
         <div>
             <nav style={{backgroundColor: '#232B2B', color: 'white'}}className={`flex items-center justify-between pv0 mv0 flex-wrap w-100 shadow-2 ${navbar}`}>
                 <span>
-                    <div style={{height:'60px', width:'60px'}} className='mh2'>
+                    <div style={{height:'50px', width:'110px'}} className='mh2'>
                         <img style={{height:'100%', width:'100%'}} src={Logo} alt='Logo'/>
                     </div>
                 </span>

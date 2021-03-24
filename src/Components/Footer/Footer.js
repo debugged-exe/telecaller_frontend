@@ -1,6 +1,6 @@
 import React from "react";
 import './Footer.css';
-import Logo from './Untitled design (1).svg';
+import Logo from '../../Container/Images/Logo_3D2.png';
 import {FiInstagram} from "react-icons/fi";
 import {SiGmail} from "react-icons/si";
 import {AiOutlineTwitter} from "react-icons/ai";
@@ -13,7 +13,7 @@ function Footer() {
             <footer className="footer">
                 <div className="footer-left mr4">
                     <span style={{}}>
-                        <img src={Logo} alt="Logo" style={{width: "120px", height: "120px",backgroundColor: "white",borderRadius: '50%'}} />
+                        <img src={Logo} alt="Logo" style={{width: "180px", height: "120px"}} />
                     </span>
                     <h1 className={'f2'}>
                         Cyberking <span className={'red'}>Capitals</span>

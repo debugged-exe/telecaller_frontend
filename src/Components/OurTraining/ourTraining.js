@@ -1,7 +1,7 @@
 import React from "react";
 import 'tachyons';
 import './OurTraining.css';
-import Logo from './Logo.svg';
+import Logo from '../../Container/Images/Logo_3D2.png';
 
 export default function OurTraining() {
     return (
@@ -18,10 +18,8 @@ export default function OurTraining() {
                     <div className={'pl2 pr3 w-50-ns f4-ns tc lh-copy'}>
                         <div className={'w-100-ns pl3 f3-ns tl-ns flex flex-column '}>
                             <img src={Logo} alt=" Soham Kahde" style={{
-                                width: "120px",
-                                height: "120px",
-                                backgroundColor: "white",
-                                borderRadius: '50%'
+                                width: "180px",
+                                height: "100px"
                             }}/>
                             <h1 className='ma0'><span>Cyberking <span className={'red'}>Capitals</span> </span></h1>
                             <p className={'ma0 mb4 f3'}>We Rise by Lifting Others</p>
