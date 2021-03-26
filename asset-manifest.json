@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/static/css/main.b28d0fd1.chunk.css",
+    "main.css": "/static/css/main.4fe68d58.chunk.css",
     "main.js": "/static/js/main.c65abe24.chunk.js",
     "main.js.map": "/static/js/main.c65abe24.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.15ad663e.js",
@@ -12,7 +12,7 @@
     "static/js/3.5642e728.chunk.js.map": "/static/js/3.5642e728.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.31461e4f.chunk.css.map": "/static/css/2.31461e4f.chunk.css.map",
-    "static/css/main.b28d0fd1.chunk.css.map": "/static/css/main.b28d0fd1.chunk.css.map",
+    "static/css/main.4fe68d58.chunk.css.map": "/static/css/main.4fe68d58.chunk.css.map",
     "static/js/2.3654cf6a.chunk.js.LICENSE.txt": "/static/js/2.3654cf6a.chunk.js.LICENSE.txt",
     "static/media/Angel-Broking.42e58658.jpg": "/static/media/Angel-Broking.42e58658.jpg",
     "static/media/OurTraining.css": "/static/media/CyberkingCapitals.687d032c.png",
@@ -23,7 +23,7 @@
     "static/js/runtime-main.15ad663e.js",
     "static/css/2.31461e4f.chunk.css",
     "static/js/2.3654cf6a.chunk.js",
-    "static/css/main.b28d0fd1.chunk.css",
+    "static/css/main.4fe68d58.chunk.css",
     "static/js/main.c65abe24.chunk.js"
   ]
 }
