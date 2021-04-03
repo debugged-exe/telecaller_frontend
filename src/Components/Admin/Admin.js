@@ -1,4 +1,4 @@
-import React,{useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Table from '../Table/Table.js';
 import LogTable from '../LogTable/LogTable.js';
 import BatchTable from '../BatchTable/BatchTable.js';
@@ -15,14 +15,14 @@ const Admin = () => {
 		'First Status',
 		'Second Status',
 		'Update After Hand-Over',
-        'City',
-        'Knowledge', 
-        'Demat',
-        'Broker' ,
-        'Preffered Language',
-        'Microsoft Id',
-        'Coded',
-        'Payment'
+		'City',
+		'Knowledge',
+		'Demat',
+		'Broker',
+		'Preffered Language',
+		'Microsoft Id',
+		'Coded',
+		'Payment'
 	]
 
 	const logDataHeader = [
@@ -34,9 +34,14 @@ const Admin = () => {
 	const [leadData, setLeadData] = useState([])
 
 	const [filter, setFilter] = useState('*')
+	const [languageFilter, setLanguageFilter] = useState('Marathi')
 
 	const setFilterField = (event) => {
 		setFilter(event.target.value);
+	}
+
+	const setLanguageFilterField = (event) => {
+		setLanguageFilter(event.target.value);
 	}
 
 	const [username, setUsername] = useState('')
@@ -48,19 +53,17 @@ const Admin = () => {
 	}
 
 	const usernameValidate = () => {
-		if(username==='')
-		{
+		if (username === '') {
 			setUsernameFlag(false)
 			setUsernameErr('Set username field')
 		}
-		else
-		{
+		else {
 			setUsernameFlag(true)
 			setUsernameErr('')
 		}
 	}
 
-// ---------------------------Prefferrred Language Validations----------------------------------------------
+	// ---------------------------Prefferrred Language Validations----------------------------------------------
 	const [language, setLanguage] = useState('')
 	const [languageFlag, setLanguageFlag] = useState(false)
 	const [languageErr, setLanguageErr] = useState('')
@@ -70,18 +73,16 @@ const Admin = () => {
 	}
 
 	const languageValidate = () => {
-		if(language==='none')
-		{
+		if (language === 'none') {
 			setLanguageFlag(false)
 			setLanguageErr('Set TeleCaller Language')
 		}
-		else
-		{
+		else {
 			setLanguageFlag(true)
 			setLanguageErr('')
 		}
 	}
-// -----------------------------------------------------------------------------
+	// -----------------------------------------------------------------------------
 	const [password, setPassword] = useState('')
 	const [passwordFlag, setPasswordFlag] = useState(false)
 	const [passwordErr, setPasswordErr] = useState('')
@@ -91,13 +92,11 @@ const Admin = () => {
 	}
 
 	const passwordValidate = () => {
-		if(password==='')
-		{
+		if (password === '') {
 			setPasswordFlag(false)
 			setPasswordErr('Set password field')
 		}
-		else
-		{
+		else {
 			setPasswordFlag(true)
 			setPasswordErr('')
 		}
@@ -112,13 +111,11 @@ const Admin = () => {
 	}
 
 	const telecallerValidate = () => {
-		if(telecaller_id==='')
-		{
+		if (telecaller_id === '') {
 			setTelecallerFlag(false)
 			setTelecallerErr('Set Telecaller Id')
 		}
-		else
-		{
+		else {
 			setTelecallerFlag(true)
 			setTelecallerErr('')
 		}
@@ -133,12 +130,11 @@ const Admin = () => {
 	}
 
 	const desValidate = () => {
-		if (des==='none') {
+		if (des === 'none') {
 			setDesFlag(false)
 			setDesErr('Set Designation of caller')
 		}
-		else if(des!=='JrCaller')
-		{
+		else if (des !== 'JrCaller') {
 			setAssigned('')
 			document.getElementById('assigned_to').value = ''
 			console.log(document.getElementById('assigned_to').value)
@@ -158,72 +154,64 @@ const Admin = () => {
 	}
 
 	const assignedValidate = () => {
-		if(des==='JrCaller')
-		{
+		if (des === 'JrCaller') {
 			console.log(des)
-			if(assigned==='')
-			{
+			if (assigned === '') {
 				console.log(assigned)
 				setAssignedFlag(false)
 				setAssignedErr('Assigned to field compulsary.')
 			}
-			else
-			{
+			else {
 				setAssignedFlag(true)
 				setAssignedErr('')
 			}
 		}
-		else
-		{
+		else {
 			setAssignedFlag(true)
 			setAssignedErr('')
 		}
 	}
 
 	const addTelecaller = () => {
-		if(assigned==='' && des!=='JrCaller')
-		{
+		if (assigned === '' && des !== 'JrCaller') {
 			setAssignedFlag(true)
 			setAssignedErr('')
 		}
-		if(
+		if (
 			usernameFlag &&
 			passwordFlag &&
 			telecallerFlag &&
 			languageFlag &&
 			desFlag &&
 			assignedFlag
-		)
-		{
+		) {
 			fetch('https://frozen-river-89705.herokuapp.com/register', {
-                method: 'post',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({
-                username: username,
-                password: password,
-                telecaller_id: telecaller_id,
-				language: language,
-                des: des,
-                assigned: assigned
-                })
-             })
-	        .then(response => response.json())
-	        .then(resp => {
-	       		if (resp==='Registered') {
-	       			alert('Telecaller registered successfully')
-	       		}
-	       		else if(resp==='Not Unique.')
-	       		{
-	       			alert('Looks like telecaller with same Telecaller Id is already registered.')
-	       		}
-	       		else{
-	       			alert('OOPs....something went wrong.Please try again.')
-	       		}
-	        })
-	        .catch(err => console.log(err))
+				method: 'post',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({
+					username: username,
+					password: password,
+					telecaller_id: telecaller_id,
+					language: language,
+					des: des,
+					assigned: assigned
+				})
+			})
+				.then(response => response.json())
+				.then(resp => {
+					if (resp === 'Registered') {
+						alert('Telecaller registered successfully')
+					}
+					else if (resp === 'Not Unique.') {
+						alert('Looks like telecaller with same Telecaller Id is already registered.')
+					}
+					else {
+						alert('OOPs....something went wrong.Please try again.')
+					}
+				})
+				.catch(err => console.log(err))
 		}
-		else
-		{
+		else {
 			usernameValidate()
 			passwordValidate()
 			telecallerValidate()
@@ -234,467 +222,465 @@ const Admin = () => {
 
 	const showHandler = () => {
 		fetch('https://frozen-river-89705.herokuapp.com/admin/show', {
-                method: 'post',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({
-                filter: filter
-                })
-             })
-	        .then(response => response.json())
-	        .then(resp => {
-	       		if(resp!=='Unable to fetch')
-	       		{
-	       			setLeadData(resp)
-	       		}
-	       		else
-	       		{
-	       			alert('Unable to fetch.Please try again.')
-	       		}
-	        })
-	        .catch(err => console.log(err))
+			method: 'post',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({
+				filter: filter,
+				languageFilter:languageFilter
+			})
+		})
+			.then(response => response.json())
+			.then(resp => {
+				if (resp !== 'Unable to fetch') {
+					setLeadData(resp)
+				}
+				else {
+					alert('Unable to fetch.Please try again.')
+				}
+			})
+			.catch(err => console.log(err))
 	}
 
 	const [popState, setPopState] = useState('none');
 
 	const setPopStateField = () => {
-        if(popState==='none')
-        {
-            setPopState('block');
-        }
-        else
-        {
-        	setPopState('none')
-        }
-    }
+		if (popState === 'none') {
+			setPopState('block');
+		}
+		else {
+			setPopState('none')
+		}
+	}
 
-    const [popPayState, setPopPayState] = useState('none');
-    const [teleId, setTeleId] = useState('');
-    const [logContentArray, setLogContentArray] = useState([]);
+	const [popPayState, setPopPayState] = useState('none');
+	const [teleId, setTeleId] = useState('');
+	const [logContentArray, setLogContentArray] = useState([]);
 
-    const setTeleIdField = (event) => {
-    	setTeleId(event.target.value);
-    }
+	const setTeleIdField = (event) => {
+		setTeleId(event.target.value);
+	}
 
 	const setPopPayStateField = () => {
-        if(popPayState==='none')
-        {
-            setPopPayState('block');
-        }
-        else
-        {
-        	setPopPayState('none')
-        	setTeleId('')
-        	setLogContentArray([])
-        }
-    }
+		if (popPayState === 'none') {
+			setPopPayState('block');
+		}
+		else {
+			setPopPayState('none')
+			setTeleId('')
+			setLogContentArray([])
+		}
+	}
 
-    const [popBatch, setPopBatch] = useState('none')
-    const setPopBatches = () => {
-    	if(popBatch==='none')
-    	{
-    		setPopBatch('block')
-    	}
-    	else
-    	{
-    		setPopBatch('none')
-    	}
-    }
+	const [popBatch, setPopBatch] = useState('none')
+	const setPopBatches = () => {
+		if (popBatch === 'none') {
+			setPopBatch('block')
+		}
+		else {
+			setPopBatch('none')
+		}
+	}
 
-    const fetchBatch = () => {
-    	fetch('https://frozen-river-89705.herokuapp.com/admin/batch/fetch', {
-    			method: 'post',
-    			headers: {'Content-Type': 'application/json'},
-    			body: JSON.stringify({
-    				batch: batch
-    			})
-    		})
-    		.then(response => response.json())
-    		.then(resp => {
-    			if(resp!=='fail')
-    			{
-    				setBatchContentArray(resp)
-    			}
-    			else
-    			{
-    				console.log('Fetch call to batches failed')
-    			}
-    		})
-    		.catch(err => console.log(err))
-    }
+	const fetchBatch = () => {
+		fetch('https://frozen-river-89705.herokuapp.com/admin/batch/fetch', {
+			method: 'post',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({
+				batch: batch
+			})
+		})
+			.then(response => response.json())
+			.then(resp => {
+				if (resp !== 'fail') {
+					setBatchContentArray(resp)
+				}
+				else {
+					console.log('Fetch call to batches failed')
+				}
+			})
+			.catch(err => console.log(err))
+	}
 
-    const batchDataHeader = [
-    	'LeadId',
-    	'LeadName',
-    	'LeadContact',
-    	'WhatsApp Number',
+	const batchDataHeader = [
+		'LeadId',
+		'LeadName',
+		'LeadContact',
+		'WhatsApp Number',
 		'Account Opening Number',
 		'City',
 		'Knowledge',
 		'Demat',
 		'Broker',
 		'Preffered Language'
-    ]
+	]
 
-    const [batchContentArray, setBatchContentArray] = useState([]);
+	const [batchContentArray, setBatchContentArray] = useState([]);
 
-    const [batch, setBatch] = useState('current')
-    const changeBatch = () => {
-    	if(batch==='current')
-    	{
-    		setBatch('next')
-    	}
-    	else
-    	{
-    		setBatch('current')
-    	}
-    }
+	const [batch, setBatch] = useState('current')
+	const changeBatch = () => {
+		if (batch === 'current') {
+			setBatch('next')
+		}
+		else {
+			setBatch('current')
+		}
+	}
 
-    const onShowDetails = () => {
-    	fetch('https://frozen-river-89705.herokuapp.com/admin/log', {
-    		method: 'post',
-    		headers: {'Content-Type': 'application/json'},
-    		body: JSON.stringify({
-    			teleId: teleId
-    		})
-    	})
-    	.then(response => response.json())
-    	.then(resp => {
-    		if (resp[0].username) {
-    			setLogContentArray(resp)
-    		}
-    		else if(resp==='Incorrect Submission')
-    		{
-    			alert('Incorrect submission')
-    		}
-    	})
-    	.catch(err => console.log(err))
-    }
+	const onShowDetails = () => {
+		fetch('https://frozen-river-89705.herokuapp.com/admin/log', {
+			method: 'post',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({
+				teleId: teleId
+			})
+		})
+			.then(response => response.json())
+			.then(resp => {
+				if (resp[0].username) {
+					setLogContentArray(resp)
+				}
+				else if (resp === 'Incorrect Submission') {
+					alert('Incorrect submission')
+				}
+			})
+			.catch(err => console.log(err))
+	}
 
-    const batchHandler = (event) => {
-    	const name = event.target.getAttribute('name');
-    	fetch('https://frozen-river-89705.herokuapp.com/admin/batch/modify', {
-    		method: 'post',
-    		headers: {'Content-Type': 'application/json'},
-    		body: JSON.stringify({
-    			name: name
-    		})
-    	})
-    	.then(response => response.json())
-    	.then(resp => {
-    		if(resp==='Success')
-    		{
-    			alert('Success')
-    			fetchBatch()
-    		}
-    	})
-    	.catch(err => {
-    		console.log(err)
-    		alert('OOPs...something went wrong.Please try again.')
-    	})
-    }
+	const batchHandler = (event) => {
+		const name = event.target.getAttribute('name');
+		fetch('https://frozen-river-89705.herokuapp.com/admin/batch/modify', {
+			method: 'post',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({
+				name: name
+			})
+		})
+			.then(response => response.json())
+			.then(resp => {
+				if (resp === 'Success') {
+					alert('Success')
+					fetchBatch()
+				}
+			})
+			.catch(err => {
+				console.log(err)
+				alert('OOPs...something went wrong.Please try again.')
+			})
+	}
 
-    const [srCaller, setSrCaller] = useState([])
+	const [srCaller, setSrCaller] = useState([])
 
-    const fetchSrCallers = () => {
-    	fetch('https://frozen-river-89705.herokuapp.com/admin/srcaller')
-    	.then(response => response.json())
-    	.then(resp => {
-    		if(resp[0].username)
-    		{
-    			setSrCaller(resp)
-    		}
-    	})
-    	.catch(err => {
-    		console.log(err)
-    	})
-    }
+	const fetchSrCallers = () => {
+		fetch('https://frozen-river-89705.herokuapp.com/admin/srcaller')
+			.then(response => response.json())
+			.then(resp => {
+				if (resp[0].username) {
+					setSrCaller(resp)
+				}
+			})
+			.catch(err => {
+				console.log(err)
+			})
+	}
 
-    const [leadNameFilter, setLeadNameFilter] = useState('')
+	const [leadNameFilter, setLeadNameFilter] = useState('')
 
-    const fetchByName = () => {
-    	fetch('https://frozen-river-89705.herokuapp.com/admin/name', {
-    		method: 'post',
-    		headers: {'Content-Type': 'application/json'},
-    		body: JSON.stringify({
-    			leadNameFilter: leadNameFilter
-    		})
-    	})
-    	.then(response => response.json())
-    	.then(resp => {
-    		if(resp!=='Unable to fetch')
-       		{
-       			setLeadData(resp)
-       		}
-       		else if(resp==='Incorrect submission')
-       		{
-       			alert(resp);
-       		}
-       		else
-       		{
-       			alert('Unable to fetch.Please try again.')
-       		}
-    	})
-    	.catch(err =>{
-    		console.log(err)
-    		alert('OOPs...something went wrong.Please try again.');
-    	})
-    }
+	const fetchByName = () => {
+		fetch('https://frozen-river-89705.herokuapp.com/admin/name', {
+			method: 'post',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({
+				leadNameFilter: leadNameFilter
+			})
+		})
+			.then(response => response.json())
+			.then(resp => {
+				if (resp !== 'Unable to fetch') {
+					setLeadData(resp)
+				}
+				else if (resp === 'Incorrect submission') {
+					alert(resp);
+				}
+				else {
+					alert('Unable to fetch.Please try again.')
+				}
+			})
+			.catch(err => {
+				console.log(err)
+				alert('OOPs...something went wrong.Please try again.');
+			})
+	}
 
-    useEffect(() => {
-    	fetchBatch()
-    	fetchSrCallers()
-    }, [batch])
+	useEffect(() => {
+		fetchBatch()
+		fetchSrCallers()
+	}, [batch])
 
-	return(
-		<div style={{display: 'flex', flexDirection: 'column', justifyCenter: 'center', itemsCenter: 'flex-end'}}>	
-			 <div id='pop-up' className='bg-white shadow-4 pop-up' style={{display: `${popState}`}}>
-                <div 
-                onClick={() => setPopStateField()} 
-                className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2" 
-                >
-                    X
+	return (
+		<div style={{ display: 'flex', flexDirection: 'column', justifyCenter: 'center', itemsCenter: 'flex-end' }}>
+			<div id='pop-up' className='bg-white shadow-4 pop-up' style={{ display: `${popState}` }}>
+				<div
+					onClick={() => setPopStateField()}
+					className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2"
+				>
+					X
                 </div>
-                <div style={{height:'100%'}} className='flex justify-center items-center flex-column'>
-                    <h2>Add New Telecaller</h2>
-                    
+				<div style={{ height: '100%' }} className='flex justify-center items-center flex-column'>
+					<h2>Add New Telecaller</h2>
+
 					<div>
-                        <p>New Username</p>
-                        <input
-                        id="number" 
-                        type="text" 
-                        autoComplete="blej"
-                        onChange={(event) => setUsernameField(event)}
-                        onBlur={() => usernameValidate()}
-                        />
-                    </div>
-                    <div className="f4 red">{usernameErr}</div>
-                    
+						<p>New Username</p>
+						<input
+							id="number"
+							type="text"
+							autoComplete="blej"
+							onChange={(event) => setUsernameField(event)}
+							onBlur={() => usernameValidate()}
+						/>
+					</div>
+					<div className="f4 red">{usernameErr}</div>
+
 					<div>
-                        <p>Password</p>
-                        <input
-                        id="password"
-                        type="password"
-                        autoComplete="blej"
-                        onChange={(event) => setPasswordField(event)}
-                        onBlur={() => passwordValidate()}
-                        />
-                    </div>
-                    <div className="f4 red">{passwordErr}</div>
-	                
+						<p>Password</p>
+						<input
+							id="password"
+							type="password"
+							autoComplete="blej"
+							onChange={(event) => setPasswordField(event)}
+							onBlur={() => passwordValidate()}
+						/>
+					</div>
+					<div className="f4 red">{passwordErr}</div>
+
 					<div>
 						<p>Telecaller Id</p>
 						<input
-						id="telecaller_id"
-						type="text"
-						autoComplete="blej"
-						onChange={(event) => setTelecallerField(event)}
-						onBlur={() => telecallerValidate()}
+							id="telecaller_id"
+							type="text"
+							autoComplete="blej"
+							onChange={(event) => setTelecallerField(event)}
+							onBlur={() => telecallerValidate()}
 						/>
-                    </div>
-                    <div className="f4 red">{telecallerErr}</div>
-                    
-{/* ------------------------------Language Section------------------------------------------- */}
+					</div>
+					<div className="f4 red">{telecallerErr}</div>
+
+					{/* ------------------------------Language Section------------------------------------------- */}
 					<div>
-                        <p>Select Language</p>
-						<select 
-						style={{width: '185px'}}
-						onChange={(event) => setLanguageField(event)}
-						onBlur={() => languageValidate()}
+						<p>Select Language</p>
+						<select
+							style={{ width: '185px' }}
+							onChange={(event) => setLanguageField(event)}
+							onBlur={() => languageValidate()}
 						>
 							<option value='none'>None</option>
 							<option value='Marathi'>Marathi</option>
 							<option value='Hindi'>Hindi</option>
 						</select>
-                    </div>
-                    <div className="f4 red">{languageErr}</div>
-{/* -------------------------------------------------------------------------------------------------- */}
+					</div>
+					<div className="f4 red">{languageErr}</div>
+					{/* -------------------------------------------------------------------------------------------------- */}
 
 					<div>
 						<p>Designation</p>
-						<select 
-						style={{width: '185px'}}
-						onChange={(event) => setDesField(event)}
-						onBlur={() => desValidate()}
+						<select
+							style={{ width: '185px' }}
+							onChange={(event) => setDesField(event)}
+							onBlur={() => desValidate()}
 						>
 							<option value='none'>None</option>
 							<option value='SrCaller'>Senior Caller</option>
 							<option value='JrCaller'>Junior Caller</option>
 						</select>
-                    </div>
-                    
-					<div className="flex flex-column justify-center items-center ma2 pa3" style = {{display: `${des==='JrCaller'?'flex':'none'}`}}>
+					</div>
+
+					<div className="flex flex-column justify-center items-center ma2 pa3" style={{ display: `${des === 'JrCaller' ? 'flex' : 'none'}` }}>
 						<p>Assigned to:</p>
 						<div className="flex justify-center items-center pa2">
 							<input
-							id="assigned_to"
-							type="text"
-							autoComplete="blej"
-							placeholder='Enter SrCaller Id'
-							className='ma1'
-							onChange={(event) => setAssignedField(event)}
-							onBlur={() => assignedValidate()}
+								id="assigned_to"
+								type="text"
+								autoComplete="blej"
+								placeholder='Enter SrCaller Id'
+								className='ma1'
+								onChange={(event) => setAssignedField(event)}
+								onBlur={() => assignedValidate()}
 							></input>
 							<select>
-							<option value=''>Select SrCaller</option>
+								<option value=''>Select SrCaller</option>
 								{
-									srCaller.map((item) => {
-										return(
-											<option value={item.telecaller_id}>{`${item.username}(${item.telecaller_id})`}</option>
-										);
-									})
+									srCaller
+										.filter(item => item.preferred_lang === language)
+										.map((item) => {
+											return (
+												<option value={item.telecaller_id}>{`${item.username}(${item.telecaller_id})/${item.preferred_lang}`}</option>
+											);
+										})
 								}
 							</select>
 							<div className="f4 red">{assignedErr}</div>
 						</div>
-                    </div>
-                    <div className="f4 red">{telecallerErr}</div>
-                    
-					<div className="f4 red">{desErr}</div>
-                    
-					<div
-                    style={{cursor: "pointer"}}
-                    className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2"
-                    onClick={() => addTelecaller()}
-                    >
-                    Add Telecaller
-                    </div>
-                </div>
-            </div>
+					</div>
+					<div className="f4 red">{telecallerErr}</div>
 
-{/*-------------- PopUp fpr Payment CheckOut ----------------------------*/}
-			<div id='pop-up' className='bg-white shadow-4 pop-up-payment-checkout' style={{display: `${popPayState}`, zIndex: '1'}}>
-                <div 
-                onClick={() => setPopPayStateField()} 
-                className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2" 
-                >
-                    X
+					<div className="f4 red">{desErr}</div>
+
+					<div
+						style={{ cursor: "pointer" }}
+						className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2"
+						onClick={() => addTelecaller()}
+					>
+						Add Telecaller
+                    </div>
+				</div>
+			</div>
+
+			{/*-------------- PopUp fpr Payment CheckOut ----------------------------*/}
+			<div id='pop-up' className='bg-white shadow-4 pop-up-payment-checkout' style={{ display: `${popPayState}`, zIndex: '1' }}>
+				<div
+					onClick={() => setPopPayStateField()}
+					className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2"
+				>
+					X
                 </div>
-                <div style={{height:'100%'}} className='flex justify-center items-center flex-column'>
-                    <h2>TELECALLER LOGS</h2>
-                    <div>
+				<div style={{ height: '100%' }} className='flex justify-center items-center flex-column'>
+					<h2>TELECALLER LOGS</h2>
+					<div>
 						<input
-						className="pv1 ma2"
-						autoComplete="blej"
-						onChange={(event) => setTeleIdField(event)} 
-						placeholder='Enter Telecaller name'
+							className="pv1 ma2"
+							autoComplete="blej"
+							onChange={(event) => setTeleIdField(event)}
+							placeholder='Enter Telecaller name'
 						/>
-						<span 
-						class="f6 link dim ph3 pv2 mb2 dib white br2 bg-dark-blue"
-						onClick = {() => onShowDetails()}
+						<span
+							class="f6 link dim ph3 pv2 mb2 dib white br2 bg-dark-blue"
+							onClick={() => onShowDetails()}
 						>
-						ShowDetails
+							ShowDetails
 						</span>
 					</div>
 					<LogTable headerArray={logDataHeader} ContentArray={logContentArray} />
+				</div>
+			</div>
+
+			{/* ---------------------------------------------------- */}
+
+
+			{/*-------------- PopUp fpr Batches ----------------------------*/}
+			<div id='pop-up' className='bg-white shadow-4 pop-up-batches' style={{ display: `${popBatch}`, zIndex: '1' }}>
+				<div
+					onClick={() => setPopBatches()}
+					className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2">
+					X
                 </div>
-            </div>
-
-{/* ---------------------------------------------------- */}
-
-
-{/*-------------- PopUp fpr Batches ----------------------------*/}
-			<div id='pop-up' className='bg-white shadow-4 pop-up-batches' style={{display: `${popBatch}`, zIndex: '1'}}>
-                <div
-                onClick={() => setPopBatches()} 
-                className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2">
-                    X
-                </div>
-                <div style={{height:'100%'}} className='flex justify-center items-center flex-column'>
-                	<hr style={{width:'99%', padding: '1px', backgroundColor: 'black'}}/>
-                    <h2>BATCHES</h2>
-                    <hr style={{width:'99%', padding: '1px', backgroundColor: 'black'}}/>
-                    <div className="flex justify-center items-center">
-	                    <h3 
-	                    className={`ma2 pa2 f4 b tc pointer ${batch==='current'?'active1':'effect1 effect1-left'}`}
-	                    onClick={() => changeBatch()}>
-	                    Current
+				<div style={{ height: '100%' }} className='flex justify-center items-center flex-column'>
+					<hr style={{ width: '99%', padding: '1px', backgroundColor: 'black' }} />
+					<h2>BATCHES</h2>
+					<hr style={{ width: '99%', padding: '1px', backgroundColor: 'black' }} />
+					<div className="flex justify-center items-center">
+						<h3
+							className={`ma2 pa2 f4 b tc pointer ${batch === 'current' ? 'active1' : 'effect1 effect1-left'}`}
+							onClick={() => changeBatch()}>
+							Current
 	                    </h3>
-	                    <h3 
-	                    className={`ma2 pa2 f4 b tc pointer ${batch==='next'?'active1':'effect1 effect1-left'}`}
-	                    onClick={() => changeBatch()}>
-	                    Next
+						<h3
+							className={`ma2 pa2 f4 b tc pointer ${batch === 'next' ? 'active1' : 'effect1 effect1-left'}`}
+							onClick={() => changeBatch()}>
+							Next
 	                    </h3>
 					</div>
 					<BatchTable headerArray={batchDataHeader} ContentArray={batchContentArray} />
 					<div className="flex">
-						<div 
-						name={batch} 
-						className="pointer f6 link dim ph3 pv2 mb2 dib white br2 bg-dark-blue mh2"
-						onClick={(event) => batchHandler(event)}>
-						{batch==='current'?'Clear Batch':'Transfer to Current'}
+						<div
+							name={batch}
+							className="pointer f6 link dim ph3 pv2 mb2 dib white br2 bg-dark-blue mh2"
+							onClick={(event) => batchHandler(event)}>
+							{batch === 'current' ? 'Clear Batch' : 'Transfer to Current'}
 						</div>
 					</div>
-					
-                </div>
-            </div>
 
-{/* ---------------------------------------------------- */}
+				</div>
+			</div>
+
+			{/* ---------------------------------------------------- */}
 
 			<div className="admin-container overflow-auto">
-					<div className='flex justify-center items-center flex-column'>
-						<div>
-		                    <select
-		                    onChange = {(event) => setFilterField(event)}
-		                    >
-		                        <option value="*">--Select--</option>
-		                        <option value='*'>All</option>
-		                        <option value='no'>Unassigned</option>
-		                        <option value='Jryes'>Assigned to Jr Caller</option>
-		                        <option value="Handed Over">IsHandedOver(Y)</option>
-		                        <option value="Not Handed Over">IsHandedOver(N)</option>
-		                        <option value="processed">Processed</option>
-		                    </select>
-		                    <div 
-		                    className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2 pointer" 
-		                    href="#0"
-		                    onClick = {() => showHandler()} 
-		                    >
-		                    Show Data
+				<div className='flex justify-center items-center flex-column'>
+
+					<div>
+						<select className='mr2'
+							onChange={(event) => setLanguageFilterField(event)}
+						>
+							<option value="none">--Select Language--</option>
+							<option value='Marathi'>Marathi</option>
+							<option value='Hindi'>Hindi</option>
+						</select>
+						<select
+							onChange={(event) => setFilterField(event)}
+						>
+							<option value="*">--Select Filter--</option>
+							<option value='*'>All</option>
+							<option value='no'>Unassigned</option>
+							<option value='Jryes'>Assigned to Jr Caller</option>
+							<option value="Handed Over">IsHandedOver(Y)</option>
+							<option value="Not Handed Over">IsHandedOver(N)</option>
+							<option value="processed">Processed</option>
+						</select>
+						<div
+							className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2 pointer"
+							href="#0"
+							onClick={() => showHandler()}
+						>
+							Show Data
 		                    </div>
-		                    <div 
-		                    className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2 pointer"
-		                    onClick = {() => showHandler()} 
-		                    >
-		                    Refresh
+						<div
+							className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2 pointer"
+							onClick={() => showHandler()}
+						>
+							Refresh
 		                    </div>
-		                </div>
-		                <div className="flex justify-center">
-		                	<input 
-		                	type="text" 
-		                	className="ma2" 
-		                	placeholder="Search by telecallerName"
-		                	style={{width: "190px"}}
-		                	onChange={(event) => setLeadNameFilter(event.target.value)}
-		                	/>
-		                	<div 
-		                	className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2 pointer"
-		                	onClick = {() => fetchByName()}
-		                	>
-		                	Search
+					</div>
+
+
+
+
+
+					<div className="flex justify-center">
+						<input
+							type="text"
+							className="ma2"
+							placeholder="Search by telecallerName"
+							style={{ width: "190px" }}
+							onChange={(event) => setLeadNameFilter(event.target.value)}
+						/>
+						<div
+							className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2 pointer"
+							onClick={() => fetchByName()}
+						>
+							Search
 		                	</div>
-		                </div>
-		                <Table showHandler={showHandler} headerArray={leadDataHeader} ContentArray={leadData} />
-		                <div className="flex">
-			                <div
-			                className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2 pointer"
-			                onClick={() => setPopStateField()}>
-			                Register New Telecallers            
+					</div>
+					<Table showHandler={showHandler} headerArray={leadDataHeader} ContentArray={leadData} />
+					<div className="flex">
+						<div
+							className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2 pointer"
+							onClick={() => setPopStateField()}>
+							Register New Telecallers
 			            	</div>
-			                <div
-			                className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2 pointer"
-			                onClick={() => setPopPayStateField()}>
-			                Check Telecaller Logs            
+						<div
+							className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2 pointer"
+							onClick={() => setPopPayStateField()}>
+							Check Telecaller Logs
 			            	</div>
-			            	<div
-			                className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2 pointer" 
-			                onClick={() => setPopBatches()}>
-			                Check Batches    
+						<div
+							className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2 pointer"
+							onClick={() => setPopBatches()}>
+							Check Batches
 			            	</div>
-		            	</div>
 					</div>
 				</div>
+			</div>
 		</div>
-	
+
 	);
 }
 

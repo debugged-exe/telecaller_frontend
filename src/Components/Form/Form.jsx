@@ -296,7 +296,7 @@ const Form = () => {
 		        	        <option className = 'db fw6 lh-copy f4 greyed' value='None'>---Select---</option>
 		        	        <option className = 'db fw6 lh-copy f4' value="English">English</option>
 		        	        <option className = 'db fw6 lh-copy f4' value="Marathi">Marathi</option>
-		        	        <option className = 'db fw6 lh-copy f4' value="Marathi">Hindi</option>
+		        	        <option className = 'db fw6 lh-copy f4' value="Hindi">Hindi</option>
 		                </select>
                         <div className="f4 red">{`${preferredLangErr}`}</div>
                     </div>

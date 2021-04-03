@@ -20,7 +20,8 @@ const initialState = {
     user: {
         username: '',
         telecaller_id: '',
-        des: ''
+        des: '',
+        preferred_lang:''
     }
 }
 
@@ -40,7 +41,8 @@ class App extends Component {
         this.setState({user:{
             username: user.username,
             telecaller_id: user.telecaller_id,
-            des: user.des
+            des: user.des,
+            preferred_lang:user.preferred_lang
         }})
     }
 
