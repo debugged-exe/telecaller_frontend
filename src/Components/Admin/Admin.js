@@ -60,6 +60,28 @@ const Admin = () => {
 		}
 	}
 
+// ---------------------------Prefferrred Language Validations----------------------------------------------
+	const [language, setLanguage] = useState('')
+	const [languageFlag, setLanguageFlag] = useState(false)
+	const [languageErr, setLanguageErr] = useState('')
+
+	const setLanguageField = (event) => {
+		setLanguage(event.target.value)
+	}
+
+	const languageValidate = () => {
+		if(language==='none')
+		{
+			setLanguageFlag(false)
+			setLanguageErr('Set TeleCaller Language')
+		}
+		else
+		{
+			setLanguageFlag(true)
+			setLanguageErr('')
+		}
+	}
+// -----------------------------------------------------------------------------
 	const [password, setPassword] = useState('')
 	const [passwordFlag, setPasswordFlag] = useState(false)
 	const [passwordErr, setPasswordErr] = useState('')
@@ -168,6 +190,7 @@ const Admin = () => {
 			usernameFlag &&
 			passwordFlag &&
 			telecallerFlag &&
+			languageFlag &&
 			desFlag &&
 			assignedFlag
 		)
@@ -179,6 +202,7 @@ const Admin = () => {
                 username: username,
                 password: password,
                 telecaller_id: telecaller_id,
+				language: language,
                 des: des,
                 assigned: assigned
                 })
@@ -203,6 +227,7 @@ const Admin = () => {
 			usernameValidate()
 			passwordValidate()
 			telecallerValidate()
+			languageValidate()
 			desValidate()
 		}
 	}
@@ -423,15 +448,16 @@ const Admin = () => {
 	return(
 		<div style={{display: 'flex', flexDirection: 'column', justifyCenter: 'center', itemsCenter: 'flex-end'}}>	
 			 <div id='pop-up' className='bg-white shadow-4 pop-up' style={{display: `${popState}`}}>
-                <a 
+                <div 
                 onClick={() => setPopStateField()} 
                 className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2" 
-                href="#0">
+                >
                     X
-                </a>
+                </div>
                 <div style={{height:'100%'}} className='flex justify-center items-center flex-column'>
                     <h2>Add New Telecaller</h2>
-                    <div>
+                    
+					<div>
                         <p>New Username</p>
                         <input
                         id="number" 
@@ -442,7 +468,8 @@ const Admin = () => {
                         />
                     </div>
                     <div className="f4 red">{usernameErr}</div>
-                    <div>
+                    
+					<div>
                         <p>Password</p>
                         <input
                         id="password"
@@ -453,7 +480,8 @@ const Admin = () => {
                         />
                     </div>
                     <div className="f4 red">{passwordErr}</div>
-	                <div>
+	                
+					<div>
 						<p>Telecaller Id</p>
 						<input
 						id="telecaller_id"
@@ -464,7 +492,24 @@ const Admin = () => {
 						/>
                     </div>
                     <div className="f4 red">{telecallerErr}</div>
-                    <div>
+                    
+{/* ------------------------------Language Section------------------------------------------- */}
+					<div>
+                        <p>Select Language</p>
+						<select 
+						style={{width: '185px'}}
+						onChange={(event) => setLanguageField(event)}
+						onBlur={() => languageValidate()}
+						>
+							<option value='none'>None</option>
+							<option value='Marathi'>Marathi</option>
+							<option value='Hindi'>Hindi</option>
+						</select>
+                    </div>
+                    <div className="f4 red">{languageErr}</div>
+{/* -------------------------------------------------------------------------------------------------- */}
+
+					<div>
 						<p>Designation</p>
 						<select 
 						style={{width: '185px'}}
@@ -476,7 +521,8 @@ const Admin = () => {
 							<option value='JrCaller'>Junior Caller</option>
 						</select>
                     </div>
-                    <div className="flex flex-column justify-center items-center ma2 pa3" style = {{display: `${des==='JrCaller'?'flex':'none'}`}}>
+                    
+					<div className="flex flex-column justify-center items-center ma2 pa3" style = {{display: `${des==='JrCaller'?'flex':'none'}`}}>
 						<p>Assigned to:</p>
 						<div className="flex justify-center items-center pa2">
 							<input
@@ -502,11 +548,12 @@ const Admin = () => {
 						</div>
                     </div>
                     <div className="f4 red">{telecallerErr}</div>
-                    <div className="f4 red">{desErr}</div>
-                    <div
+                    
+					<div className="f4 red">{desErr}</div>
+                    
+					<div
                     style={{cursor: "pointer"}}
-                    className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2" 
-                    href="#0"
+                    className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2"
                     onClick={() => addTelecaller()}
                     >
                     Add Telecaller
@@ -516,12 +563,12 @@ const Admin = () => {
 
 {/*-------------- PopUp fpr Payment CheckOut ----------------------------*/}
 			<div id='pop-up' className='bg-white shadow-4 pop-up-payment-checkout' style={{display: `${popPayState}`, zIndex: '1'}}>
-                <a 
+                <div 
                 onClick={() => setPopPayStateField()} 
                 className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2" 
-                href="#0">
+                >
                     X
-                </a>
+                </div>
                 <div style={{height:'100%'}} className='flex justify-center items-center flex-column'>
                     <h2>TELECALLER LOGS</h2>
                     <div>
@@ -547,11 +594,11 @@ const Admin = () => {
 
 {/*-------------- PopUp fpr Batches ----------------------------*/}
 			<div id='pop-up' className='bg-white shadow-4 pop-up-batches' style={{display: `${popBatch}`, zIndex: '1'}}>
-                <a 
+                <div
                 onClick={() => setPopBatches()} 
                 className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2">
                     X
-                </a>
+                </div>
                 <div style={{height:'100%'}} className='flex justify-center items-center flex-column'>
                 	<hr style={{width:'99%', padding: '1px', backgroundColor: 'black'}}/>
                     <h2>BATCHES</h2>
