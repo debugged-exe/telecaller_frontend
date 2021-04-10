@@ -42,7 +42,7 @@ function Footer() {
             </footer>
             <footer className="pv4 ph3 ph5-m ph6-l white flex justify-center" style={{backgroundColor: "red"}}>
                 <small className="f6 db" style={{textAlign: 'center'}}>© 2021 <b className="ttu">Developed by
-                    Debugged.exe</b>., All Rights
+                   <a className="b black" href="https://debuggedexe.com" target="_blank"> Debugged.exe </a></b>| All Rights
                     Reserved</small>
             </footer>
         </div>
