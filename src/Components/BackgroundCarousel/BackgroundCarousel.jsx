@@ -1,12 +1,12 @@
 import React from 'react';
 import Carousel from 'react-elastic-carousel'
 import './BackgroundCarousel.css';
-import Logo from './Logo.svg';
+import Logo from '../../Container/Images/Logo_3D.png';
 
 const BackgroundCarousel = () => {
     return(
         <div style={{marginLeft:'-10px',marginRight:'-10px'}}>
-            <img src={Logo} style={{height:'100px',width:'100px'}} className='center-logo' alt='Logo'/>
+            <img src={Logo} style={{height:'100px',width:'180px'}} className='center-logo' alt='Logo'/>
         <div className='center-tagline red b f4 pointer'>We Rise by Lifting Others</div>
         <aside className="left-side side-nav">
         <ul className="mr-auto ml-auto">
@@ -21,7 +21,7 @@ const BackgroundCarousel = () => {
           </li>
           <li className="di pl3">
             <a
-              href="https://www.instagram.com"
+              href={"https://instagram.com/cyberking_capitals?igshid=mjv77zi1djho"} target={'_blank'}
               className="white f6 fw6 di black grow link1"
               title="INSTAGRAM"
             >
@@ -30,7 +30,7 @@ const BackgroundCarousel = () => {
           </li>
           <li className="di pl3 grow">
             <a
-              href="https://twitter.com"
+            href="https://wa.me/9191566104002" target={'_blank'}
               className="white f6 fw6 di black link1"
               title="TWITTER"
             >

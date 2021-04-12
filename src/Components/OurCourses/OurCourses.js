@@ -18,7 +18,7 @@ export default function OurCourses({onRouteChange}) {
                     <article className="w-50-ns  shadow-2 center br3 pa3 pa4-ns mv3 ">
                         <div className={'flex flex-wrap justify-center'}>
                             <div className="">
-                                <h1 className={'f2 tc '}>Begineer's Course</h1>
+                                <h1 className={'f2 tc '}>Beginner's Course</h1>
                                 <h1 className="f3">Free of Cost</h1>
                                 <hr className="w-50 white" color={'red'}/>
                                 <h4 className={'f4'}>For Equity Traders</h4>

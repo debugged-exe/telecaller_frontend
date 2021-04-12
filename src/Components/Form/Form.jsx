@@ -286,7 +286,9 @@ const Form = () => {
                     </div>
 
                     <div className="mv3">
-                        <label className="db fw6 lh-copy f4">Which language do you prefer for Counseling call from us?</label>
+                        <label className="db fw6 lh-copy f5 mb3">तुम्हाला कोणत्या भाषेत स्टॉक मार्केट बद्दल शिकायला आवडेल?</label>
+                        <label className="db fw6 lh-copy f4 mb3">Which language do you prefer for Attending Trading Sessions?</label>
+                        <label className="db fw6 lh-copy f5 mb2">आप कोंसी भाषा में स्टॉक मार्केट के बारेमे सीखना चाहोगे?</label>
 		                <select 
                         autoComplete="blej"
                         className="pa2 input-reset ba bg-transparent hover-black w-100"
@@ -294,9 +296,8 @@ const Form = () => {
                         onBlur={() => preferredLangValidate()}
                         >
 		        	        <option className = 'db fw6 lh-copy f4 greyed' value='None'>---Select---</option>
-		        	        <option className = 'db fw6 lh-copy f4' value="English">English</option>
 		        	        <option className = 'db fw6 lh-copy f4' value="Marathi">Marathi</option>
-		        	        <option className = 'db fw6 lh-copy f4' value="Marathi">Hindi</option>
+		        	        <option className = 'db fw6 lh-copy f4' value="Hindi">Hindi</option>
 		                </select>
                         <div className="f4 red">{`${preferredLangErr}`}</div>
                     </div>

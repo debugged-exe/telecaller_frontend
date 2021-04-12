@@ -3,7 +3,7 @@ import JrTable from '../JrTable/JrTable.js';
 
 const JrCaller = ({user}) => {
 
-    const {username, telecaller_id} = user;
+    const {username, telecaller_id, preferred_lang} = user;
 
     const leadDataHeader = [
         'LeadId',
@@ -77,7 +77,8 @@ const JrCaller = ({user}) => {
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
                 username: username,
-                telecaller_id: telecaller_id
+                telecaller_id: telecaller_id,
+                preferred_lang:preferred_lang
             })
         })
         .then(response => response.json())
