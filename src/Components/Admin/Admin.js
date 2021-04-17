@@ -2,8 +2,26 @@ import React, { useState, useEffect } from 'react';
 import Table from '../Table/Table.js';
 import LogTable from '../LogTable/LogTable.js';
 import BatchTable from '../BatchTable/BatchTable.js';
+import TeamViewer from './TeamViewer/TeamViewer.js';
+import JrCallerViewer from './JrCallerViewer/JrCallerViewer.js';
 import './Admin.css';
+
 const Admin = () => {
+
+	const SrcallerArray = [
+		{
+			username: 'Tejas',
+			telecaller_id: 'SR001'
+		},
+		{
+			username: 'Soham',
+			telecaller_id: 'SR002'
+		},
+		{
+			username: 'Tanmay',
+			telecaller_id: 'SR003'
+		}
+	]
 
 	const leadDataHeader = [
 		'LeadId',
@@ -253,21 +271,14 @@ const Admin = () => {
 	}
 
 	const [popPayState, setPopPayState] = useState('none');
-	const [teleId, setTeleId] = useState('');
-	const [logContentArray, setLogContentArray] = useState([]);
-
-	const setTeleIdField = (event) => {
-		setTeleId(event.target.value);
-	}
-
+	
 	const setPopPayStateField = () => {
 		if (popPayState === 'none') {
+			fetchCallers();
 			setPopPayState('block');
 		}
 		else {
 			setPopPayState('none')
-			setTeleId('')
-			setLogContentArray([])
 		}
 	}
 
@@ -326,26 +337,6 @@ const Admin = () => {
 		}
 	}
 
-	const onShowDetails = () => {
-		fetch('https://frozen-river-89705.herokuapp.com/admin/log', {
-			method: 'post',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({
-				teleId: teleId
-			})
-		})
-			.then(response => response.json())
-			.then(resp => {
-				if (resp[0].username) {
-					setLogContentArray(resp)
-				}
-				else if (resp === 'Incorrect Submission') {
-					alert('Incorrect submission')
-				}
-			})
-			.catch(err => console.log(err))
-	}
-
 	const batchHandler = (event) => {
 		const name = event.target.getAttribute('name');
 		fetch('https://frozen-river-89705.herokuapp.com/admin/batch/modify', {
@@ -375,7 +366,7 @@ const Admin = () => {
 			.then(response => response.json())
 			.then(resp => {
 				if (resp[0].username) {
-					setSrCaller(resp)
+					setSrCaller(resp);
 				}
 			})
 			.catch(err => {
@@ -409,6 +400,83 @@ const Admin = () => {
 				console.log(err)
 				alert('OOPs...something went wrong.Please try again.');
 			})
+	}
+
+	const TeamHeader = [
+		'Username',
+		'TeleCaller Id',
+		'Preffered Language',
+		'Designation'
+	];
+
+	const [teamLang, setTeamLang] = useState('none');
+
+	const setTeamLangField = (event) => {
+		setTeamLang(event.target.value);
+	}
+
+	const [caller, setCaller] = useState([]);
+
+	const fetchCallers = () => {
+		fetch('https://frozen-river-89705.herokuapp.com/admin/caller')
+		.then(response => response.json())
+		.then(resp => {
+			if(resp[0].username)
+			{
+				setCaller(resp);
+			}
+		})
+		.catch(err => {
+			console.log(err)
+			alert('Failed to fetch teams');
+		})
+	}
+
+	const JrHeader = [
+		'Username',
+		'TeleCaller Id',
+		'Preffered Language',
+		'Designation',
+		'Assigned to'
+	]
+
+	const [jrcaller, setJrCaller] = useState([]);
+
+	const setJrCallerArray = (telecaller_id) => {
+		let tempArray;
+		if (caller.length>0) {
+			tempArray = caller.filter(item => item.assigned_to===telecaller_id);
+			setJrCaller(tempArray);
+		}
+		else
+		{
+			setJrCaller([]);
+		}
+	}
+
+	const setJrLog = (telecaller_id) => {
+		fetch('https://frozen-river-89705.herokuapp.com/admin/jrlog', {
+			method: 'post',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({
+				telecaller_id: telecaller_id
+			})
+		})
+		.then(response => response.json())
+		.then(resp => {
+			if(resp !== 'Unable to fetch')
+			{
+				setLeadData(resp);
+				setPopPayState('none');
+			}
+			else
+			{
+				alert('Unable to fetch jr caller logs');
+			}
+		})
+		.catch(err => {
+			console.log(err);
+		})
 	}
 
 	useEffect(() => {
@@ -535,7 +603,7 @@ const Admin = () => {
 			</div>
 
 			{/*-------------- PopUp fpr Payment CheckOut ----------------------------*/}
-			<div id='pop-up' className='bg-white shadow-4 pop-up-payment-checkout' style={{ display: `${popPayState}`, zIndex: '1' }}>
+			<div id='pop-up' className='bg-white shadow-4 pop-up-payment-checkout' style={{ display: `${popPayState}`, zIndex: '1' ,width:'80vw'}}>
 				<div
 					onClick={() => setPopPayStateField()}
 					className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2"
@@ -545,20 +613,25 @@ const Admin = () => {
 				<div style={{ height: '100%' }} className='flex justify-center items-center flex-column'>
 					<h2>TELECALLER LOGS</h2>
 					<div>
-						<input
-							className="pv1 ma2"
-							autoComplete="blej"
-							onChange={(event) => setTeleIdField(event)}
-							placeholder='Enter Telecaller name'
-						/>
-						<span
-							class="f6 link dim ph3 pv2 mb2 dib white br2 bg-dark-blue"
-							onClick={() => onShowDetails()}
+						<p>Select Language</p>
+						<select
+							style={{ width: '185px' }}
+							onChange={(event) => setTeamLangField(event)}
 						>
-							ShowDetails
-						</span>
+							<option value='none'>None</option>
+							<option value='Marathi'>Marathi</option>
+							<option value='Hindi'>Hindi</option>
+						</select>
 					</div>
-					<LogTable headerArray={logDataHeader} ContentArray={logContentArray} />
+					<TeamViewer 
+					header={TeamHeader} 
+					content={caller} 
+					teamLang={teamLang} 
+					setJrCallerArray={setJrCallerArray}
+					/>
+					<div className="jrcaller-drawer">
+						<JrCallerViewer header={JrHeader} content={jrcaller} setJrLog={setJrLog} />
+					</div>
 				</div>
 			</div>
 
@@ -658,6 +731,14 @@ const Admin = () => {
 						>
 							Search
 		                	</div>
+					</div>
+					<div className="unassigned-count flex">
+						<div className="h-unassigned b ma2">
+							<p>Hindi Unassigned Count: {}</p>
+						</div>
+						<div className="m-unassigned b ma2">
+							<p>Marathi Unassigned Count: {}</p>
+						</div>
 					</div>
 					<Table showHandler={showHandler} headerArray={leadDataHeader} ContentArray={leadData} />
 					<div className="flex">
