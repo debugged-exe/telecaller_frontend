@@ -479,6 +479,24 @@ const Admin = () => {
 		})
 	}
 
+	const fetchJrCount = (telecaller_id) => {
+		fetch('https://frozen-river-89705.herokuapp.com/admin/jrcount', {
+			method: 'post',
+			headers: { 'Content-Type': 'application/json'},
+			body: JSON.stringify({
+				telecaller_id: telecaller_id
+			})
+		})
+		.then(response => response.json())
+		.then(resp => {
+			console.log(resp);
+		})
+		.catch(err => {
+			console.log(err)
+			alert('Unable to fetch count details.');
+		})
+	}
+
 	useEffect(() => {
 		fetchBatch()
 		fetchSrCallers()
@@ -630,7 +648,12 @@ const Admin = () => {
 					setJrCallerArray={setJrCallerArray}
 					/>
 					<div className="jrcaller-drawer">
-						<JrCallerViewer header={JrHeader} content={jrcaller} setJrLog={setJrLog} />
+						<JrCallerViewer 
+						header={JrHeader} 
+						content={jrcaller} 
+						setJrLog={setJrLog}
+						fetchJrCount={fetchJrCount}
+						/>
 					</div>
 				</div>
 			</div>
@@ -638,7 +661,7 @@ const Admin = () => {
 			{/* ---------------------------------------------------- */}
 
 
-			{/*-------------- PopUp fpr Batches ----------------------------*/}
+			{/*----------------- PopUp fpr Batches ----------------------------*/}
 			<div id='pop-up' className='bg-white shadow-4 pop-up-batches' style={{ display: `${popBatch}`, zIndex: '1' }}>
 				<div
 					onClick={() => setPopBatches()}

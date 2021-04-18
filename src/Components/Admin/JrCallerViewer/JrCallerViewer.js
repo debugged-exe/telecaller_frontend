@@ -3,8 +3,7 @@ import JrViewRow from './JrViewRow.js';
 import 'tachyons';
 
 
-const JrCallerViewer = ({header,content, setJrLog}) => {
-	console.log(content);
+const JrCallerViewer = ({header,content, setJrLog, fetchJrCount}) => {
 	return (
 		<div className="jrcaller-viewer ma2 pa4">
 			<table className="f6 mw8 center" cellSpacing="0">
@@ -36,6 +35,7 @@ const JrCallerViewer = ({header,content, setJrLog}) => {
 									<td>
 										<div 
 										className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue br2 ma2 pointer"
+										onClick={() => fetchJrCount(item.telecaller_id)}
 										>
 											View Count
 										</div>

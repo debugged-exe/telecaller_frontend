@@ -9,7 +9,6 @@ const Row = ({rowObject, showHandler}) => {
 	Object.keys(rowObject).forEach((key) => {
 				elementArray.push(rowObject[key])
 			})
-	console.log(elementArray)
 
 	const [read, setRead] = useState(true)
 	const [username, setUsername] = useState(rowObject.username)
