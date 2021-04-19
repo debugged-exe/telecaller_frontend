@@ -4,6 +4,7 @@ import LogTable from '../LogTable/LogTable.js';
 import BatchTable from '../BatchTable/BatchTable.js';
 import TeamViewer from './TeamViewer/TeamViewer.js';
 import JrCallerViewer from './JrCallerViewer/JrCallerViewer.js';
+import JrCountViewer from './JrCountViewer/JrCountViewer.js';
 import './Admin.css';
 
 const Admin = () => {
@@ -479,6 +480,16 @@ const Admin = () => {
 		})
 	}
 
+	const countHeader = [
+		'Telecaller Id',
+		'Status1 Count',
+		'Status2 Count',
+		'Both Status Count',
+		'Handover Count',
+	]
+
+	const [count, setCount] = useState([]);
+
 	const fetchJrCount = (telecaller_id) => {
 		fetch('https://frozen-river-89705.herokuapp.com/admin/jrcount', {
 			method: 'post',
@@ -489,7 +500,7 @@ const Admin = () => {
 		})
 		.then(response => response.json())
 		.then(resp => {
-			console.log(resp);
+			setCount(resp);
 		})
 		.catch(err => {
 			console.log(err)
@@ -654,6 +665,9 @@ const Admin = () => {
 						setJrLog={setJrLog}
 						fetchJrCount={fetchJrCount}
 						/>
+					</div>
+					<div className="count-drawer">
+						<JrCountViewer header={countHeader} content={count} />
 					</div>
 				</div>
 			</div>

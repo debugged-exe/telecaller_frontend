@@ -9,7 +9,6 @@ const Row = ({rowObject, showHandler}) => {
 	Object.keys(rowObject).forEach((key) => {
 				elementArray.push(rowObject[key])
 			})
-
 	const [read, setRead] = useState(true)
 	const [username, setUsername] = useState(rowObject.username)
 	const [lead_name, setLeadName] = useState(rowObject.lead_name)
@@ -26,8 +25,6 @@ const Row = ({rowObject, showHandler}) => {
 	const [microsoftid, setMicrosoftId] = useState(rowObject.microsoftid)
 	const [coded, setCoded] = useState(rowObject.coded)
 	const [payment, setPayment] = useState(rowObject.payment)
-
-	console.log(lead_id,coded)
 
 	const onChange = (event) => {
 		const {value, name} = event.target;
