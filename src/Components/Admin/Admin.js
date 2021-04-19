@@ -486,6 +486,7 @@ const Admin = () => {
 		'Status2 Count',
 		'Both Status Count',
 		'Handover Count',
+		'Coded Count'
 	]
 
 	const [count, setCount] = useState([]);
@@ -508,9 +509,25 @@ const Admin = () => {
 		})
 	}
 
+	const [hindiUnassigned, setHindi] = useState('');
+	const [marathiUnassigned, setMarathi] = useState('');
+
+	const fetchUnassigned = () => {
+		fetch('https://frozen-river-89705.herokuapp.com/admin/unassigned')
+		.then(response => response.json())
+		.then(resp => {
+			setHindi(resp[0]);
+			setMarathi(resp[1]);
+		})
+		.catch(err => {
+			console.log(err);
+		})
+	}
+
 	useEffect(() => {
 		fetchBatch()
 		fetchSrCallers()
+		fetchUnassigned()
 	}, [batch])
 
 	return (
@@ -771,10 +788,10 @@ const Admin = () => {
 					</div>
 					<div className="unassigned-count flex">
 						<div className="h-unassigned b ma2">
-							<p>Hindi Unassigned Count: {}</p>
+							<p>Hindi Unassigned Count: {hindiUnassigned}</p>
 						</div>
 						<div className="m-unassigned b ma2">
-							<p>Marathi Unassigned Count: {}</p>
+							<p>Marathi Unassigned Count: {marathiUnassigned}</p>
 						</div>
 					</div>
 					<Table showHandler={showHandler} headerArray={leadDataHeader} ContentArray={leadData} />
