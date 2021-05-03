@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.eb016bbe.chunk.css",
-    "main.js": "/static/js/main.0b4ee114.chunk.js",
-    "main.js.map": "/static/js/main.0b4ee114.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.e6de5737.js",
-    "runtime-main.js.map": "/static/js/runtime-main.e6de5737.js.map",
+    "main.css": "/static/css/main.9cba4a72.chunk.css",
+    "main.js": "/static/js/main.4d858d48.chunk.js",
+    "main.js.map": "/static/js/main.4d858d48.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.d348bd13.js",
+    "runtime-main.js.map": "/static/js/runtime-main.d348bd13.js.map",
     "static/css/2.31461e4f.chunk.css": "/static/css/2.31461e4f.chunk.css",
-    "static/js/2.867a7f8e.chunk.js": "/static/js/2.867a7f8e.chunk.js",
-    "static/js/2.867a7f8e.chunk.js.map": "/static/js/2.867a7f8e.chunk.js.map",
-    "static/js/3.ebddffff.chunk.js": "/static/js/3.ebddffff.chunk.js",
-    "static/js/3.ebddffff.chunk.js.map": "/static/js/3.ebddffff.chunk.js.map",
+    "static/js/2.8611c0c0.chunk.js": "/static/js/2.8611c0c0.chunk.js",
+    "static/js/2.8611c0c0.chunk.js.map": "/static/js/2.8611c0c0.chunk.js.map",
+    "static/js/3.66724a3d.chunk.js": "/static/js/3.66724a3d.chunk.js",
+    "static/js/3.66724a3d.chunk.js.map": "/static/js/3.66724a3d.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.31461e4f.chunk.css.map": "/static/css/2.31461e4f.chunk.css.map",
-    "static/css/main.eb016bbe.chunk.css.map": "/static/css/main.eb016bbe.chunk.css.map",
-    "static/js/2.867a7f8e.chunk.js.LICENSE.txt": "/static/js/2.867a7f8e.chunk.js.LICENSE.txt",
+    "static/css/main.9cba4a72.chunk.css.map": "/static/css/main.9cba4a72.chunk.css.map",
+    "static/js/2.8611c0c0.chunk.js.LICENSE.txt": "/static/js/2.8611c0c0.chunk.js.LICENSE.txt",
     "static/media/Angel-Broking.42e58658.jpg": "/static/media/Angel-Broking.42e58658.jpg",
     "static/media/OurTraining.css": "/static/media/CyberkingCapitals.687d032c.png",
     "static/media/Form.css": "/static/media/FormBg.1a65d9ab.jpg",
@@ -21,10 +21,10 @@
     "static/media/Logo_3D2.0fae168f.png": "/static/media/Logo_3D2.0fae168f.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.e6de5737.js",
+    "static/js/runtime-main.d348bd13.js",
     "static/css/2.31461e4f.chunk.css",
-    "static/js/2.867a7f8e.chunk.js",
-    "static/css/main.eb016bbe.chunk.css",
-    "static/js/main.0b4ee114.chunk.js"
+    "static/js/2.8611c0c0.chunk.js",
+    "static/css/main.9cba4a72.chunk.css",
+    "static/js/main.4d858d48.chunk.js"
   ]
 }
