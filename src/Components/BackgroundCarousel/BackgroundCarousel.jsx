@@ -7,16 +7,16 @@ const BackgroundCarousel = () => {
     return(
         <div style={{marginLeft:'-10px',marginRight:'-10px'}}>
             <img src={Logo} style={{height:'100px',width:'180px'}} className='center-logo' alt='Logo'/>
-        <div className='center-tagline red b f4 pointer'>We Rise by Lifting Others</div>
+        <div className='center-tagline red b f4 f6-m pointer'>We Rise by Lifting Others</div>
         <aside className="left-side side-nav">
         <ul className="mr-auto ml-auto">
           <li className="di pl3 grow">
             <a
-              href="https://twitter.com"
+              href="https://t.me/cyberkingcapitals"
               className="white f6 fw6 di black link1"
-              title="TWITTER"
+              title="TELEGRAM"
             >
-              TWITTER
+              TELEGRAM
             </a>
           </li>
           <li className="di pl3">

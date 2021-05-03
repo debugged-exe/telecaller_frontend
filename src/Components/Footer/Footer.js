@@ -1,35 +1,32 @@
 import React from "react";
 import './Footer.css';
-import Logo from '../../Container/Images/Logo_3D2.png';
 import {FiInstagram} from "react-icons/fi";
 import {SiGmail} from "react-icons/si";
 import {AiOutlineTwitter} from "react-icons/ai";
 import {FaWhatsapp,FaTelegramPlane} from "react-icons/fa";
 import { Link } from "react-router-dom";
-
+import Logo3D from '../../Container/Images/Logo_3D.png'
 function Footer() {
     return (
         <div className="body tl" style={{display: 'inline-block', width: "100%"}}>
             <footer className="footer">
                 <div className="footer-left mr4">
                     <span style={{}}>
-                        <img src={Logo} alt="Logo" style={{width: "180px", height: "120px"}} />
+                        <img src={Logo3D} alt="Logo" style={{width: "180px", height: "100px"}} />
                     </span>
-                    <h1 className={'f2'}>
-                        Cyberking <span className={'red'}>Capitals</span>
-                    </h1>
-                    <p className={'p1 f4'}>The Group of Investing</p>
-                    <Link style={{outline:'none'}} className="f6 link dim br1 ph3 pv2 mb2 dib white bg-dark-blue" to="/signin">Sign In</Link>
+                    <div className={''}>
+                        <Link style={{outline:'none'}} className="f6 link dim br1 ph3 pv2 mb2 dib white bg-dark-blue" to="/signin">Sign In</Link>
+                    </div>
                 </div>
                 <ul className="footer-right">
                     <li>
                         <ul className="box lh-copy f4">
-                            <li><a href={'tel:919156104002'}>+91 91561 04002</a></li>
-                            <li><a href={'https://mailto:cyberkingcapitals@gmail.com'} target={'_blank'}>cyberkingcapitals@gmail.com</a></li>
+                            <li><div className={'mt2 flex flex-wrap'}><a href={'tel:919156104002'}>+91 91561 04002</a></div></li>
+                            <li><div className={'mt2 flex flex-wrap'}><a href={'https://mailto:cyberkingcapitals@gmail.com'} className={'f4-l f5-m f4-s'} target={'_blank'}>cyberkingcapitals@gmail.com</a></div></li>
                         </ul>
                     </li>
                     <li className="features">
-                        <h2 className={'h2 dark-blue mt0'}> CONNECT WITH US</h2>
+                        <h2 className={'h2 dark-blue mt1'}> CONNECT WITH US</h2>
                         <ul style={{display:'flex'}} className="box">
                             <li><a href={"https://instagram.com/cyberking_capitals?igshid=mjv77zi1djho"} target={'_blank'} className={'flex items-center'}><FiInstagram size="2rem" color="white" className={'pr3'}/></a></li>
                             <li><a href="https://mailto:cyberkingcapitals@gmail.com" target={'_blank'} className={'flex items-center'} ><SiGmail size="2rem" color="white" className={'pr3'}/></a></li>

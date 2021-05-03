@@ -8,4 +8,11 @@
     background-size: cover;
     object-fit: fill;
     margin-top:-15px ;
+    background-attachment: fixed;
+}
+.centered {
+    text-align: center;
+    position: relative;
+    transform: translate(-50%, -50%);
+    color: white;
 }

@@ -16,7 +16,7 @@ export default function OpenAccount() {
                         className={'red'}> DEMAT</span> </span></h1></div>
                 </div>
                 <div className={'flex flex-wrap'}>
-                    <article className="w-50-ns  shadow-2 center br3 pa3 pa4-ns mv3 ">
+                    <article className="w-50-ns w-70-m shadow-2 center br3 pa3 pa4-ns mv3 ">
                         <div className={'flex flex-wrap justify-center'}>
                             <div className="tc">
                                 <div>
@@ -39,7 +39,7 @@ export default function OpenAccount() {
                             </div>
                         </div>
                     </article>
-                    <article className="w-50-ns  shadow-2 center br3 pa3 pa4-ns mv3">
+                    <article className="w-50-ns w-70-m shadow-2 center br3 pa3 pa4-ns mv3">
                         <div className={'flex flex-wrap justify-center'}>
                             <div className="tc">
                                 <div>
