@@ -1,3 +1,6 @@
 body{
   overflow-x: hidden;
 }
+.scroll-none-x{
+    overflow-x: hidden;
+}

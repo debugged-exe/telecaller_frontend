@@ -10,7 +10,7 @@ function Footer() {
     return (
         <div className="body tl" style={{display: 'inline-block', width: "100%"}}>
             <footer className="footer">
-                <div className="footer-left mr4">
+                <div data-aos="fade-right" data-aos-duration="1000" className="footer-left mr4">
                     <span style={{}}>
                         <img src={Logo3D} alt="Logo" style={{width: "180px", height: "100px"}} />
                     </span>
@@ -19,20 +19,20 @@ function Footer() {
                     </div>
                 </div>
                 <ul className="footer-right">
-                    <li>
+                    <li data-aos="fade-right" data-aos-duration="1000">
                         <ul className="box lh-copy f4">
                             <li><div className={'mt2 flex flex-wrap'}><a href={'tel:919156104002'}>+91 91561 04002</a></div></li>
                             <li><div className={'mt2 flex flex-wrap'}><a href={'https://mailto:cyberkingcapitals@gmail.com'} className={'f4-l f5-m f4-s'} target={'_blank'}>cyberkingcapitals@gmail.com</a></div></li>
                         </ul>
                     </li>
                     <li className="features">
-                        <h2 className={'h2 dark-blue mt1'}> CONNECT WITH US</h2>
+                        <h2 data-aos="fade-right" data-aos-duration="1000" className={'h2 dark-blue mt1'}> CONNECT WITH US</h2>
                         <ul style={{display:'flex'}} className="box">
-                            <li><a href={"https://instagram.com/cyberking_capitals?igshid=mjv77zi1djho"} target={'_blank'} className={'flex items-center'}><FiInstagram size="2rem" color="white" className={'pr3'}/></a></li>
-                            <li><a href="https://mailto:cyberkingcapitals@gmail.com" target={'_blank'} className={'flex items-center'} ><SiGmail size="2rem" color="white" className={'pr3'}/></a></li>
-                            <li><a href="https://google.com" target={'_blank'} className={'flex items-center'} ><AiOutlineTwitter size="2rem" color="white" className={'pr3'}/></a></li>
-                            <li><a href="https://wa.me/9191566104002" target={'_blank'} className={'flex items-center'} ><FaWhatsapp size="2rem" color="white" className={'pr3'}/></a></li>
-                            <li><a href="https://t.me/cyberkingcapitals" target={'_blank'} className={'flex items-center'} ><FaTelegramPlane size="2rem" color="white" className={'pr3'}/></a></li>
+                            <li><a data-aos="fade-up" data-aos-duration={"1000"} href={"https://instagram.com/cyberking_capitals?igshid=mjv77zi1djho"} target={'_blank'} className={'flex items-center'}><FiInstagram size="2rem" color="white" className={'pr3'}/></a></li>
+                            <li><a data-aos="fade-up" data-aos-duration={"1000"} data-aos-delay="100" href="https://mailto:cyberkingcapitals@gmail.com" target={'_blank'} className={'flex items-center'} ><SiGmail size="2rem" color="white" className={'pr3'}/></a></li>
+                            <li><a data-aos="fade-up" data-aos-duration={"1000"} data-aos-delay="200" href="https://google.com" target={'_blank'} className={'flex items-center'} ><AiOutlineTwitter size="2rem" color="white" className={'pr3'}/></a></li>
+                            <li><a data-aos="fade-up" data-aos-duration={"1000"} data-aos-delay="300" href="https://wa.me/919156104002" target={'_blank'} className={'flex items-center'} ><FaWhatsapp size="2rem" color="white" className={'pr3'}/></a></li>
+                            <li><a data-aos="fade-up" data-aos-duration={"1000"} data-aos-delay="400" href="https://t.me/cyberkingcapitals" target={'_blank'} className={'flex items-center'} ><FaTelegramPlane size="2rem" color="white" className={'pr3'}/></a></li>
                         </ul>
                     </li>
                 </ul>

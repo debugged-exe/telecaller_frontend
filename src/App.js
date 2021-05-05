@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import {
     BrowserRouter as Router,
     Switch,
@@ -15,6 +17,7 @@ import JrCaller from './Components/JrCaller/JrCaller';
 import SrCaller from './Components/SrCaller/SrCaller';
 import Footer from './Components/Footer/Footer';
 
+AOS.init();
 const initialState = {
 	route: 'home',
     user: {

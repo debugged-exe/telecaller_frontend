@@ -41,74 +41,74 @@ const BackgroundCarousel = () => {
       </aside>
             <Carousel enableAutoPlay={true} autoPlaySpeed={2000}>
                 <div className='slide1 flex justify-center items-center font-size flex-column'>
-                    <div className='red b tl'>
+                    <div data-aos="fade-up" data-aos-duration={"1000"} className='red b tl'>
                         CREATE
                     </div>
-                    <div className='b white stroke tl'>
+                    <div data-aos="fade-up" data-aos-duration={"1000"} className='b white stroke tl'>
                         WEALTH
                     </div>
                 </div>
                 <div className='slide2 flex justify-center items-center font-size flex-column'>
-                    <div className='red b tl'>
+                    <div data-aos="fade-up" data-aos-duration={"1000"} className='red b tl'>
                         ACCURATE
                     </div>
-                    <div className='b white stroke tl'>
+                    <div data-aos="fade-up" data-aos-duration={"1000"} className='b white stroke tl'>
                         SIGNALS
                     </div>
                 </div>
                 <div className='slide3 flex justify-center items-center font-size flex-column'>
-                    <div className='red b tl'>
+                    <div data-aos="fade-up" data-aos-duration={"1000"} className='red b tl'>
                         EXPERTISED
                     </div>
-                    <div className='b white stroke tl'>
+                    <div data-aos="fade-up" data-aos-duration={"1000"} className='b white stroke tl'>
                         TEACHING
                     </div>
                 </div>
                 <div className='slide1 flex justify-center items-center font-size flex-column'>
-                    <div className='red b tl'>
+                    <div data-aos="fade-up" data-aos-duration={"1000"} className='red b tl'>
                         CREATE
                     </div>
-                    <div className='b white stroke tl'>
+                    <div data-aos="fade-up" data-aos-duration={"1000"} className='b white stroke tl'>
                         WEALTH
                     </div>
                 </div>
                 <div className='slide2 flex justify-center items-center font-size flex-column'>
-                    <div className='red b tl'>
+                    <div data-aos="fade-up" data-aos-duration={"1000"} className='red b tl'>
                         ACCURATE
                     </div>
-                    <div className='b white stroke tl'>
+                    <div data-aos="fade-up" data-aos-duration={"1000"} className='b white stroke tl'>
                         SIGNALS
                     </div>
                 </div>
                 <div className='slide3 flex justify-center items-center font-size flex-column'>
-                    <div className='red b tl'>
+                    <div data-aos="fade-up" data-aos-duration={"1000"} className='red b tl'>
                         EXPERTISED
                     </div>
-                    <div className='b white stroke tl'>
+                    <div data-aos="fade-up" data-aos-duration={"1000"} className='b white stroke tl'>
                         TEACHING
                     </div>
                 </div>
                 <div className='slide1 flex justify-center items-center font-size flex-column'>
-                    <div className='red b tl'>
+                    <div data-aos="fade-up" data-aos-duration={"1000"} className='red b tl'>
                         CREATE
                     </div>
-                    <div className='b white stroke tl'>
+                    <div data-aos="fade-up" data-aos-duration={"1000"} className='b white stroke tl'>
                         WEALTH
                     </div>
                 </div>
                 <div className='slide2 flex justify-center items-center font-size flex-column'>
-                    <div className='red b tl'>
+                    <div data-aos="fade-up" data-aos-duration={"1000"} className='red b tl'>
                         ACCURATE
                     </div>
-                    <div className='b white stroke tl'>
+                    <div data-aos="fade-up" data-aos-duration={"1000"} className='b white stroke tl'>
                         SIGNALS
                     </div>
                 </div>
                 <div className='slide3 flex justify-center items-center font-size flex-column'>
-                    <div className='red b tl'>
+                    <div data-aos="fade-up" data-aos-duration={"1000"} className='red b tl'>
                         EXPERTISED
                     </div>
-                    <div className='b white stroke tl'>
+                    <div data-aos="fade-up" data-aos-duration={"1000"} className='b white stroke tl'>
                         TEACHING
                     </div>
                 </div>
