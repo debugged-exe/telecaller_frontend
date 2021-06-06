@@ -1,0 +1,35 @@
+.other-courses-section{
+    background: #000;
+    color: white;
+    margin-top: -32px;
+}
+
+.other-courses-main-container{
+    display: grid;
+    grid-template-columns: 33% 34% 33%;
+}
+
+.column-1{
+    width: 70%;
+}
+.column-2{
+    width: 70%;
+}
+.column-3{
+    width: 70%;
+}
+
+@media only screen and (max-width: 760px){
+    .other-courses-main-container{
+        grid-template-columns: 100%;
+    }
+    .column-1{
+        width: 100%;
+    }
+    .column-2{
+        width: 100%;
+    }
+    .column-3{
+        width: 100%;
+    }
+}

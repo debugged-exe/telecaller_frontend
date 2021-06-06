@@ -7,6 +7,7 @@ import StillConfusing from '../StillConfusing/StillConfusing';
 import OpenAccount from '../OpenAccount/OpenAccount';
 import BackgroundCarousel from '../BackgroundCarousel/BackgroundCarousel';
 import JoinOurTelegram from '../JoinOurTelegram/JoinOurTelegram';
+import OtherCourses from "../OtherCourses/OtherCourses";
 
 const Home = ({onRouteChange}) => {
     return (
@@ -15,6 +16,7 @@ const Home = ({onRouteChange}) => {
             <OurTraining/>
             <OurCourses onRouteChange={onRouteChange}/>
             <StillConfusing/>
+            <OtherCourses/>
             <JoinOurTelegram/>
             <OpenAccount/>
         </>

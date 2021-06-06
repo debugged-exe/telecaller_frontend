@@ -17,7 +17,7 @@ export default function OurTraining() {
                     </div>
                     <div className={'pl2 pr3 w-50-ns f4-ns tc lh-copy scroll-none-x'}>
                         <div className={'w-100-ns pl3 f3-ns tl-l tl-m flex-column scroll-none-x'}>
-                            <img data-aos="fade-left" data-aos-duration="1000" src={Logo} alt=" Soham Khade" style={{
+                            <img data-aos="fade-left" data-aos-duration="1000" src={Logo} alt="Not Loading" style={{
                                 width: "180px",
                                 height: "100px"
                             }} className={'scroll-none-x'}/>
