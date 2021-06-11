@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/static/css/main.0413302e.chunk.css",
-    "main.js": "/static/js/main.fdff8033.chunk.js",
-    "main.js.map": "/static/js/main.fdff8033.chunk.js.map",
+    "main.js": "/static/js/main.a815a5c3.chunk.js",
+    "main.js.map": "/static/js/main.a815a5c3.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.73c6e268.js",
     "runtime-main.js.map": "/static/js/runtime-main.73c6e268.js.map",
     "static/css/2.352144f4.chunk.css": "/static/css/2.352144f4.chunk.css",
-    "static/js/2.e92a8520.chunk.js": "/static/js/2.e92a8520.chunk.js",
-    "static/js/2.e92a8520.chunk.js.map": "/static/js/2.e92a8520.chunk.js.map",
+    "static/js/2.9cadf2a7.chunk.js": "/static/js/2.9cadf2a7.chunk.js",
+    "static/js/2.9cadf2a7.chunk.js.map": "/static/js/2.9cadf2a7.chunk.js.map",
     "static/js/3.266101b2.chunk.js": "/static/js/3.266101b2.chunk.js",
     "static/js/3.266101b2.chunk.js.map": "/static/js/3.266101b2.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.352144f4.chunk.css.map": "/static/css/2.352144f4.chunk.css.map",
     "static/css/main.0413302e.chunk.css.map": "/static/css/main.0413302e.chunk.css.map",
-    "static/js/2.e92a8520.chunk.js.LICENSE.txt": "/static/js/2.e92a8520.chunk.js.LICENSE.txt",
+    "static/js/2.9cadf2a7.chunk.js.LICENSE.txt": "/static/js/2.9cadf2a7.chunk.js.LICENSE.txt",
     "static/media/Angel-Broking.42e58658.jpg": "/static/media/Angel-Broking.42e58658.jpg",
     "static/media/OurTraining.css": "/static/media/CyberkingCapitals.687d032c.png",
     "static/media/Form.css": "/static/media/FormBg.1a65d9ab.jpg",
@@ -23,8 +23,8 @@
   "entrypoints": [
     "static/js/runtime-main.73c6e268.js",
     "static/css/2.352144f4.chunk.css",
-    "static/js/2.e92a8520.chunk.js",
+    "static/js/2.9cadf2a7.chunk.js",
     "static/css/main.0413302e.chunk.css",
-    "static/js/main.fdff8033.chunk.js"
+    "static/js/main.a815a5c3.chunk.js"
   ]
 }
