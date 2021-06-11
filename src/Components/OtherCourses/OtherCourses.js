@@ -54,8 +54,7 @@ const OtherCourses = () => {
                 </div>
             </div>
             <div className={'flex justify-center items-center tc pt4-ns'}>
-                <Link style={{outline: 'none'}} data-aos="fade-up" data-aos-delay={"150"}
-                      className=" f5 link dim br1 ph3 pv2 mb2 dib white bg-red br2 b" to="https://www.finq.com/en/live-registration/?bid=310055"> Course Joining Form</Link>
+                <a style={{ outline: 'none' }} data-aos={"fade-up"} data-aos-delay={"150"} className="f5 link dim br1 ph3 pv2 mb2 dib white bg-red br2 b" href="https://www.finq.com/en/live-registration/?bid=310055" >Course Joining Form</a>
             </div>
         </section>
     );
