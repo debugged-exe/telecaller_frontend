@@ -7,7 +7,7 @@ const OtherCourses = () => {
         <section className={'other-courses-section pb6-ns pb5'}>
             <div className={'Heading-container pt4'}>
                 <div data-aos="fade-down" data-aos-duration="1000" className={'tc'}>
-                    <h1 className={'pl3 f1-ns tc'}><span>Our Other <span className={'red tc'}>Courses</span> </span>
+                    <h1 className={'pl3 f1-ns tc'}><span>Explore <span className={'red tc'}>Global Markets</span> </span>
                     </h1>
                 </div>
 
@@ -24,12 +24,6 @@ const OtherCourses = () => {
                         <li data-aos="fade-up" data-aos-delay={"60"}>Fundamentals Of Commodities</li>
                         <li data-aos="fade-up" data-aos-delay={"70"}>Impact Of Global Cues</li>
                     </ul>
-                    <div className={'flex justify-center items-center tc'}>
-                        <Link style={{outline: 'none'}} data-aos="fade-up" data-aos-delay={"150"}
-                              className="f5 link dim br1 ph3 pv2 mb2 dib white bg-red br2 b " to="">Commodity Joining
-                            Form</Link>
-                    </div>
-
                 </div>
                 <div className={'column-2 ml5-l'}>
                     <h1 data-aos="fade-down" data-aos-duration={"1000"} className={'f2 tc'}>Forex Trading</h1>
@@ -46,11 +40,6 @@ const OtherCourses = () => {
                         <li data-aos="fade-up" data-aos-delay={"100"}>Position sizing and money management</li>
                         <li data-aos="fade-up" data-aos-delay={"110"}>Forex exchange risks</li>
                     </ul>
-                    <div className={'flex justify-center items-center tc'}>
-                        <Link style={{outline: 'none'}} data-aos="fade-up" data-aos-delay={"150"}
-                              className=" f5 link dim br1 ph3 pv2 mb2 dib white bg-red br2 b" to="">Forex Joining
-                            Form</Link>
-                    </div>
                 </div>
                 <div className={'column-3'}>
                     <h1 data-aos="fade-down" data-aos-duration={"1000"} className={'f2 tc'}>Index Trading</h1>
@@ -62,12 +51,11 @@ const OtherCourses = () => {
                         <li data-aos="fade-up" data-aos-delay={"50"}>Inflation Related Moves</li>
                         <li data-aos="fade-up" data-aos-delay={"60"}>Global Rallies & Movements</li>
                     </ul>
-                    <div className={'flex justify-center items-center tc'}>
-                        <Link style={{outline: 'none'}} data-aos="fade-up" data-aos-delay={"150"}
-                              className=" f5 link dim br1 ph3 pv2 mb2 dib white bg-red br2 b" to="">Index Joining
-                            Form</Link>
-                    </div>
                 </div>
+            </div>
+            <div className={'flex justify-center items-center tc pt4-ns'}>
+                <Link style={{outline: 'none'}} data-aos="fade-up" data-aos-delay={"150"}
+                      className=" f5 link dim br1 ph3 pv2 mb2 dib white bg-red br2 b" to="https://www.finq.com/en/live-registration/?bid=310055"> Course Joining Form</Link>
             </div>
         </section>
     );
