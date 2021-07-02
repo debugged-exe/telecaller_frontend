@@ -3,7 +3,8 @@ import './BasicCourseForm.scss';
 import FormInput from "./FormInput/FormInput";
 import CustomButton from "./CustomButton/CustomButton";
 import PuffLoader from "react-spinners/PuffLoader";
-
+import {ToastContainer, toast} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 class BasicCourseForm extends Component{
     constructor() {
         super();
@@ -42,7 +43,10 @@ class BasicCourseForm extends Component{
             .then(response => {
                 if(response === "Basic Course Form Registered"){
                     this.setVisible(false);
-                    alert("Registered Successful.");
+                    toast.success('Registered Successfully.',{
+                        position: toast.POSITION.TOP_CENTER,
+                        autoClose: 2500
+                    })
                     this.setState({
                         lead_name: '',
                         lead_contact: '',
@@ -52,12 +56,25 @@ class BasicCourseForm extends Component{
                         course_type: 'basic'
                     })
                 }else if(response === "Failed"){
-                    alert("Failed to register for the course. Please try again");
+                    this.setVisible(false);
+                    toast.error("Failed to register for the course. Please try again",{
+                        position: toast.POSITION.TOP_CENTER,
+                        autoClose: 2500
+                    });
                 }else if(response === "Not Unique"){
-                    alert("Contact has been already registered.Please try with new contact");
+                    this.setVisible(false);
+                    toast.error("Contact has been already registered.Please try with new contact",{
+                        position: toast.POSITION.TOP_CENTER,
+                        autoClose: 2500
+                    });
                 }
             }).catch(err => {
-            console.log(err)
+            console.log(err);
+            this.setVisible(false);
+            toast.error(`${err}`,{
+                position: toast.POSITION.TOP_CENTER,
+                autoClose: 2500
+            });
         })
 
     }
@@ -127,6 +144,7 @@ class BasicCourseForm extends Component{
                 <div className="puff-loader" style={{display: `${this.state.visible?'flex': 'none'}`}}>
                     <PuffLoader loading={true} size={200} color={"red"}/>
                 </div>
+                <ToastContainer/>
             </div>
             );
     }
