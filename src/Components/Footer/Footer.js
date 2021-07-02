@@ -16,6 +16,7 @@ function Footer() {
                     </span>
                     <div className={''}>
                         <Link style={{outline:'none'}} className="f6 link dim br1 ph3 pv2 mb2 dib white bg-dark-blue" to="/signin">Sign In</Link>
+                        <a style={{outline:'none'}} className="f6 link dim br1 ph3 pv2 mb2 dib white bg-dark-blue ml2" target={'new'} href="https://friendly-heyrovsky-7949cc.netlify.app">New Sign In</a>
                     </div>
                 </div>
                 <ul className="footer-right">

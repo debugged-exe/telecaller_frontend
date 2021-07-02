@@ -39,7 +39,7 @@ export default function OurCourses({ onRouteChange }) {
                                     <li data-aos="fade-up" data-aos-delay={"130"}>Live Market Sessions</li>
                                     <li data-aos="fade-up" data-aos-delay={"140"}>Risk Management</li>
                                 </ul>
-                                <Link style={{ outline: 'none' }} data-aos="fade-up" data-aos-delay={"150"} className="f5 link dim br1 ph3 pv2 mb2 dib white bg-red br2 b" to="/form">Session Joining Form</Link>
+                                <Link style={{ outline: 'none' }} data-aos="fade-up" data-aos-delay={"150"} className="f5 link dim br1 ph3 pv2 mb2 dib white bg-red br2 b" to="/basicform">Session Joining Form</Link>
                             </div>
                         </div>
                     </article>
