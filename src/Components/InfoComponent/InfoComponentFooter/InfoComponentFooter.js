@@ -1,12 +1,12 @@
 import React from "react";
-import './Footer.css';
+import './InfoComponentFooter.css';
 import {FiInstagram} from "react-icons/fi";
 import {SiGmail} from "react-icons/si";
-import {AiOutlineTwitter, AiOutlineYoutube} from "react-icons/ai";
+import {AiOutlineTwitter,AiOutlineYoutube} from "react-icons/ai";
 import {FaWhatsapp,FaTelegramPlane} from "react-icons/fa";
 import { Link } from "react-router-dom";
-import Logo3D from '../../Container/Images/Logo_3D.png'
-function Footer() {
+import Logo3D from '../../../Container/Images/Logo_3D.png'
+function InfoComponentFooter() {
     return (
         <div className="body tl" style={{display: 'inline-block', width: "100%"}}>
             <footer className="footer">
@@ -14,10 +14,6 @@ function Footer() {
                     <span style={{}}>
                         <img src={Logo3D} alt="Logo" style={{width: "180px", height: "100px"}} />
                     </span>
-                    <div className={''}>
-                        <Link style={{outline:'none'}} className="f6 link dim br1 ph3 pv2 mb2 dib white bg-dark-blue" to="/signin">Sign In</Link>
-                        <a style={{outline:'none'}} className="f6 link dim br1 ph3 pv2 mb2 dib white bg-dark-blue ml2" target={'new'} href="https://friendly-heyrovsky-7949cc.netlify.app">New Sign In</a>
-                    </div>
                 </div>
                 <ul className="footer-right">
                     <li data-aos="fade-right" data-aos-duration="1000">
@@ -48,4 +44,4 @@ function Footer() {
     );
 }
 
-export default Footer;
+export default InfoComponentFooter;

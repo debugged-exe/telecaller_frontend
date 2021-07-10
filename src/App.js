@@ -17,6 +17,7 @@ import JrCaller from './Components/JrCaller/JrCaller';
 import SrCaller from './Components/SrCaller/SrCaller';
 import Footer from './Components/Footer/Footer';
 import BasicCourseForm from "./Components/BasicCourseForm/BasicCourseForm";
+import InfoComponent from "./Components/InfoComponent/InfoComponent";
 
 AOS.init();
 const initialState = {
@@ -80,7 +81,9 @@ class App extends Component {
                   <Home />
                   <Footer/>
                 </Route>
-                
+                  <Route exact path="/about-course">
+                      <InfoComponent />
+                  </Route>
                 <Route exact path="/basicform">
                   <BasicCourseForm/>
                 </Route>
@@ -115,7 +118,7 @@ class App extends Component {
 	// 			<div>
     //                 {/* <Navbar route = {route} onRouteChange={this.onRouteChange} /> */}
     // 			    <Home onRouteChange={this.onRouteChange} />
-    //                 <Footer onRouteChange={this.onRouteChange}/>
+    //                 <InfoComponentFooter onRouteChange={this.onRouteChange}/>
 	//     		</div>
     // 		);
     // 	}
