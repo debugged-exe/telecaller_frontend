@@ -1,31 +1,31 @@
 {
   "files": {
-    "main.css": "/static/css/main.3bc577a4.chunk.css",
-    "main.js": "/static/js/main.36723713.chunk.js",
-    "main.js.map": "/static/js/main.36723713.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.735a44c4.js",
-    "runtime-main.js.map": "/static/js/runtime-main.735a44c4.js.map",
+    "main.css": "/static/css/main.cacd3327.chunk.css",
+    "main.js": "/static/js/main.e5a1bee7.chunk.js",
+    "main.js.map": "/static/js/main.e5a1bee7.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.13725f30.js",
+    "runtime-main.js.map": "/static/js/runtime-main.13725f30.js.map",
     "static/css/2.70149af6.chunk.css": "/static/css/2.70149af6.chunk.css",
-    "static/js/2.13c478a7.chunk.js": "/static/js/2.13c478a7.chunk.js",
-    "static/js/2.13c478a7.chunk.js.map": "/static/js/2.13c478a7.chunk.js.map",
-    "static/js/3.fb138cc2.chunk.js": "/static/js/3.fb138cc2.chunk.js",
-    "static/js/3.fb138cc2.chunk.js.map": "/static/js/3.fb138cc2.chunk.js.map",
+    "static/js/2.d59cfe7f.chunk.js": "/static/js/2.d59cfe7f.chunk.js",
+    "static/js/2.d59cfe7f.chunk.js.map": "/static/js/2.d59cfe7f.chunk.js.map",
+    "static/js/3.5654fb8c.chunk.js": "/static/js/3.5654fb8c.chunk.js",
+    "static/js/3.5654fb8c.chunk.js.map": "/static/js/3.5654fb8c.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.70149af6.chunk.css.map": "/static/css/2.70149af6.chunk.css.map",
-    "static/css/main.3bc577a4.chunk.css.map": "/static/css/main.3bc577a4.chunk.css.map",
-    "static/js/2.13c478a7.chunk.js.LICENSE.txt": "/static/js/2.13c478a7.chunk.js.LICENSE.txt",
+    "static/css/main.cacd3327.chunk.css.map": "/static/css/main.cacd3327.chunk.css.map",
+    "static/js/2.d59cfe7f.chunk.js.LICENSE.txt": "/static/js/2.d59cfe7f.chunk.js.LICENSE.txt",
     "static/media/Angel-Broking.42e58658.jpg": "/static/media/Angel-Broking.42e58658.jpg",
     "static/media/OurTraining.css": "/static/media/CyberkingCapitals.687d032c.png",
     "static/media/BasicCourseForm.scss": "/static/media/FormBg.1a65d9ab.jpg",
     "static/media/Logo_3D.ef0797d7.png": "/static/media/Logo_3D.ef0797d7.png",
     "static/media/Logo_3D2.0fae168f.png": "/static/media/Logo_3D2.0fae168f.png",
-    "static/media/InfoComponent.css": "/static/media/info-component-bg.b23f950b.jpg"
+    "static/media/InfoComponentEnglish.css": "/static/media/info-component-bg.b23f950b.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.735a44c4.js",
+    "static/js/runtime-main.13725f30.js",
     "static/css/2.70149af6.chunk.css",
-    "static/js/2.13c478a7.chunk.js",
-    "static/css/main.3bc577a4.chunk.css",
-    "static/js/main.36723713.chunk.js"
+    "static/js/2.d59cfe7f.chunk.js",
+    "static/css/main.cacd3327.chunk.css",
+    "static/js/main.e5a1bee7.chunk.js"
   ]
 }
