@@ -77,7 +77,7 @@ export default function OurCourses({ onRouteChange }) {
                                     <li data-aos={"fade-up"} data-aos-delay={"230"}>Equity Swing Trades</li>
                                     <li data-aos={"fade-up"} data-aos-delay={"240"}>Behaviour of Market</li>
                                 </ul>
-                                <a style={{ outline: 'none' }} data-aos={"fade-up"} data-aos-delay={"250"} className="f5 link dim br1 ph3 pv2 mb2 dib white bg-red br2 b" href="https://surveyheart.com/form/60a162ae45e3e052c717728d" >Session Joining Form</a>
+                                <a style={{ outline: 'none' }} data-aos={"fade-up"} data-aos-delay={"250"} className="f5 link dim br1 ph3 pv2 mb2 dib white bg-red br2 b" href="https://surveyheart.com/form/60ec7f573caa4362f8abefa4" >Session Joining Form</a>
                             </div>
                         </div>
                     </article>
