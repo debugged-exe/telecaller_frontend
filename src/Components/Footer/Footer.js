@@ -6,7 +6,7 @@ import {AiOutlineTwitter, AiOutlineYoutube} from "react-icons/ai";
 import {FaWhatsapp,FaTelegramPlane} from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Logo3D from '../../Container/Images/Logo_3D.png'
-function Footer() {
+function Footer(){
     return (
         <div className="body tl" style={{display: 'inline-block', width: "100%"}}>
             <footer className="footer">

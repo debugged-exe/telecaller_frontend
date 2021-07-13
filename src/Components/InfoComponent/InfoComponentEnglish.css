@@ -1,0 +1,22 @@
+.info-component-english-section{
+    background: rgba(0,0,0,0.8) url('../../Container/Images/info-component-bg.jpg') no-repeat center center/cover;
+    background-blend-mode: darken;
+}
+.info-component-english-container{
+
+}
+.info-component-english-img-container{
+    display: block;
+    margin: 0 auto;
+}
+.info-component-english-content-container{
+    line-height: 2;
+    padding-right: 40px;
+    display: block;
+    margin: 0 auto;
+}
+@media only screen and (width: 1024px) {
+    .info-component-english-session-details{
+        padding-left: 4.5rem;
+    }
+}
